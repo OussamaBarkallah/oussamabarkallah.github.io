@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oussama Barkallah – Product & Visual Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    /* ── THEME VARIABLES ── */
+    :root {
+      --bg: #0a0a0a; --surface: #121212; --surface2: #1e1e1e;
+      --border: #262626; --text: #f8f6f2; --muted: #94a3b8;
+      --accent: #e8e0d0; --gold: #dfb76c; --green: #4ade80; --text-invert: #0a0a0a;
+    }
+    html.light {
+      --bg: #f8f6f2; --surface: #ffffff; --surface2: #f1f5f9;
+      --border: #e2e8f0; --text: #0a0a0a; --muted: #64748b;
+      --accent: #1e1e1e; --gold: #b45309; --green: #16a34a; --text-invert: #f8f6f2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; transition: background 0.3s, color 0.3s; }
+    body { overflow-x: hidden; }
+
+    /* ── TYPOGRAPHY SCALE ── 
+       Desktop: base 1rem body, h1 4.5rem, h2 2.75rem
+       Tablet (≤900px): base .95rem, h1 3rem, h2 2.1rem
+       Mobile (≤480px): base .9rem, h1 2.4rem, h2 1.7rem
+    */
+    :root {
+      --fs-body: 1rem;
+      --fs-sm: .88rem;
+      --fs-xs: .78rem;
+      --fs-h1: clamp(2.8rem, 5vw, 4.5rem);
+      --fs-h2: clamp(1.9rem, 3.5vw, 2.75rem);
+      --fs-h3: 1.15rem;
+      --fs-tag: .75rem;
+      --fs-nav: .85rem;
+      --fs-btn: .85rem;
+    }
+    @media (max-width: 900px) {
+      :root {
+        --fs-body: .95rem;
+        --fs-sm: .84rem;
+        --fs-xs: .74rem;
+        --fs-h1: clamp(2.4rem, 7vw, 3.2rem);
+        --fs-h2: clamp(1.75rem, 4vw, 2.2rem);
+        --fs-h3: 1.05rem;
+        --fs-tag: .72rem;
+        --fs-nav: .8rem;
+        --fs-btn: .82rem;
+      }
+    }
+    @media (max-width: 480px) {
+      :root {
+        --fs-body: .9rem;
+        --fs-sm: .8rem;
+        --fs-xs: .7rem;
+        --fs-h1: clamp(2.2rem, 9vw, 2.8rem);
+        --fs-h2: clamp(1.55rem, 5vw, 1.9rem);
+        --fs-h3: 1rem;
+        --fs-tag: .7rem;
+        --fs-nav: .78rem;
+        --fs-btn: .8rem;
+      }
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: .4;
+    }
+
+    h1, h2, h3, h4, nav { font-family: 'Syne', sans-serif; }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem; background: transparent;
+      transition: background .4s, backdrop-filter .4s, border .4s;
+    }
+    #navbar.scrolled { backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    html.light #navbar.scrolled { background: rgba(248,246,242,.85); }
+    html:not(.light) #navbar.scrolled { background: rgba(10,10,10,.85); }
+    .nav-left { display: flex; align-items: center; }
+    .nav-logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
+    .nav-center { display: flex; align-items: center; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-size: var(--fs-nav); font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color .2s; position: relative;
+    }
+    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: var(--gold); transition: width .3s cubic-bezier(0.16,1,0.3,1); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); color: var(--text);
+      cursor: pointer; padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s; font-size: 1rem; z-index: 101;
+    }
+    .theme-toggle:hover { border-color: var(--text); background: var(--surface); }
+    .nav-cta {
+      background: var(--text); color: var(--text-invert); font-family: 'Syne', sans-serif;
+      font-size: var(--fs-btn); font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: .55rem 1.3rem; border-radius: 100px; text-decoration: none;
+      transition: opacity .2s; white-space: nowrap; position: relative; overflow: hidden;
+    }
+    .nav-cta:hover { opacity: .85; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 101; padding: 5px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    #mobile-menu {
+      position: fixed; inset: 0; background: var(--bg); z-index: 99;
+      flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.8rem;
+      padding: 2rem 2.5rem; display: flex; pointer-events: none;
+      transform: translateY(-20px); transition: transform .4s cubic-bezier(0.16,1,0.3,1), opacity .4s ease; opacity: 0;
+    }
+    #mobile-menu.open { pointer-events: auto; transform: translateY(0); opacity: 1; }
+    #mobile-menu a {
+      font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text);
+      text-decoration: none; opacity: 0; transform: translateX(-20px);
+      transition: opacity .4s, transform .4s, color .2s; text-align: left;
+    }
+    #mobile-menu.open a { opacity: 1; transform: translateX(0); }
+    #mobile-menu.open a:nth-child(2) { transition-delay: .05s; }
+    #mobile-menu.open a:nth-child(3) { transition-delay: .1s; }
+    #mobile-menu.open a:nth-child(4) { transition-delay: .15s; }
+    #mobile-menu.open a:nth-child(5) { transition-delay: .2s; }
+    #mobile-menu.open a:nth-child(6) { transition-delay: .25s; }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 7rem 2.5rem 4rem; position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1;
+    }
+    #home::after {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(223,183,108,.07) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(74,222,128,.04) 0%, transparent 60%);
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+    @keyframes heroGlow { 0% { opacity:.6; transform:scale(1); } 100% { opacity:1; transform:scale(1.08); } }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.25);
+      border-radius: 100px; padding: .35rem .9rem;
+      font-size: var(--fs-xs); font-weight: 500; color: var(--green); margin-bottom: 1.5rem;
+      animation: badgeGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes badgeGlow { from { box-shadow: 0 0 0 rgba(74,222,128,0); } to { box-shadow: 0 0 14px rgba(74,222,128,.2); } }
+    .hero-badge::before { content: ''; width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(.8); } }
+
+  .hero-greeting {
+    font-size: var(--fs-body); color: var(--muted); margin-bottom: .4rem; display: flex; align-items: center;
+    gap: .4rem;}
+    .hero-name { font-size: var(--fs-h1); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; margin-bottom: 1.5rem; }
+    .hero-name span { color: var(--gold); }
+    .hero-desc { font-size: var(--fs-body); line-height: 1.7; color: var(--muted); max-width: 480px; margin-bottom: 2.5rem; }
+    .hero-tags { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-tag {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; padding: .4rem 1rem;
+      font-size: var(--fs-xs); font-family: 'Syne', sans-serif; font-weight: 600;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--text); color: var(--text-invert);
+      font-family: 'Syne', sans-serif; font-size: var(--fs-btn); font-weight: 700;
+      padding: .75rem 1.8rem; border-radius: 100px; text-decoration: none;
+      transition: opacity .2s; position: relative; overflow: hidden;
+    }
+    .btn-primary:hover { opacity: .9; }
+    .btn-secondary {
+      border: 1px solid var(--border); color: var(--text);
+      font-family: 'Syne', sans-serif; font-size: var(--fs-btn); font-weight: 600;
+      padding: .75rem 1.8rem; border-radius: 100px; text-decoration: none;
+      transition: background .2s, border-color .2s; position: relative; overflow: hidden;
+    }
+    .btn-secondary:hover { border-color: var(--text); background: var(--surface); }
+    .btn-primary::before, .btn-secondary::before, .nav-cta::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      transition: left .5s ease;
+    }
+    .btn-primary:hover::before, .btn-secondary:hover::before, .nav-cta:hover::before { left: 160%; }
+
+    .hero-image-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    @media (min-width: 1024px) { .hero-image-wrap { align-items: flex-end; } }
+
+    .avatar-container { position: relative; width: 300px; height: 350px; border-radius: 1.5rem; overflow: hidden; border: 1px solid var(--border); }
+    .avatar-container img { width: 100%; height: 100%; object-fit: cover; transition: opacity .4s; }
+    .avatar-container img.hover-img { position: absolute; inset: 0; opacity: 0; }
+    .avatar-container:hover img.default-img { opacity: 0; }
+    .avatar-container:hover img.hover-img { opacity: 1; }
+    .avatar-container::before { content: ''; position: absolute; inset: -4px; border-radius: calc(1.5rem + 4px); background: linear-gradient(135deg, var(--gold), transparent, var(--green)); z-index: -1; opacity: 0; transition: opacity .4s; }
+    .avatar-container:hover::before { opacity: .35; }
+
+    .hero-stats { display: flex; gap: 1.2rem; }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 1rem;
+      padding: 1.2rem 1.5rem; text-align: left; min-width: 90px;
+      transition: transform .3s cubic-bezier(0.16,1,0.3,1), border-color .3s, box-shadow .3s;
+    }
+    .stat-card:hover { transform: translateY(-6px) scale(1.04); border-color: var(--gold); box-shadow: 0 12px 40px rgba(223,183,108,.15); }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1; }
+    .stat-num span { color: var(--gold); }
+    .stat-label { font-size: var(--fs-xs); color: var(--muted); margin-top: .3rem; }
+
+    /* ── SECTIONS SHARED ── */
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 6rem 2.5rem; }
+    .section-tag { font-family: 'Syne', sans-serif; font-size: var(--fs-tag); font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .section-title { font-size: var(--fs-h2); font-weight: 800; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 1rem; }
+    .section-sub { font-size: var(--fs-body); color: var(--muted); line-height: 1.7; max-width: 550px; }
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── SLIDER CONTROLS — always left-aligned ── */
+    .slider-controls {
+      display: flex; align-items: center; gap: 0.6rem;
+      justify-content: flex-end; /* always right */
+      margin-top: 1rem;
+    }
+    .slider-btn {
+      width: 36px; height: 36px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--text); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .2s; flex-shrink: 0;
+    }
+    .slider-btn:hover { border-color: var(--gold); background: var(--surface2); }
+    .slider-btn:active { transform: scale(.93); }
+    .slider-btn svg { width: 14px; height: 14px; }
+
+    /* ── ABOUT ── */
+    #about .section-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { font-size: var(--fs-body); line-height: 1.8; color: var(--muted); margin-bottom: 1.2rem; }
+    .meta-key { font-family: 'Syne', sans-serif; font-size: var(--fs-xs); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+    .meta-val { font-size: var(--fs-sm); color: var(--muted); }
+    .cert-badge {
+      display: inline-flex; align-items: center; gap: .7rem; background: var(--surface);
+      border: 1px solid var(--border); border-radius: .75rem; padding: .9rem 1.2rem;
+      text-decoration: none; margin-top: 1rem; transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .cert-badge:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(223,183,108,.12); }
+    .cert-badge-text small { display: block; font-size: var(--fs-xs); color: var(--muted); }
+    .cert-badge-text strong { font-size: var(--fs-sm); color: var(--text); }
+    .about-services { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .service-card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; transition: all .2s; }
+    .service-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(223,183,108,.12); }
+    .service-icon { font-size: 1.5rem; margin-bottom: .8rem; }
+    .service-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: var(--fs-sm); }
+
+    /* ── PROJECTS / CARDS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; transition: all .25s; }
+    .project-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(223,183,108,.12); }
+    .project-img { width: 100%; height: 220px; object-fit: cover; display: block; filter: grayscale(10%) contrast(95%); }
+    .project-body { padding: 1.5rem; }
+    .project-cat { font-size: var(--fs-xs); color: var(--gold); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; }
+    .project-title { font-family: 'Syne', sans-serif; font-size: var(--fs-h3); font-weight: 700; margin-bottom: .6rem; }
+    .project-desc { font-size: var(--fs-sm); color: var(--muted); line-height: 1.6; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .project-tag { background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; padding: .25rem .7rem; font-size: var(--fs-xs); font-weight: 500; color: var(--muted); }
+
+    /* ── BEFORE/AFTER ── */
+    .brand-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .brand-card { border-radius: 1.25rem; overflow: hidden; position: relative; border: 1px solid var(--border); aspect-ratio: 4/3; background: var(--surface); transition: all .25s; }
+    .brand-card:hover { transform: scale(1.01); border-color: var(--gold); }
+    .brand-card img.brand-bg { width: 100%; height: 100%; object-fit: cover; opacity: .3; }
+    .brand-card img.brand-showcase { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 1.5rem; }
+    .brand-card-footer { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,.9)); padding: 2rem 1.5rem 1.5rem; }
+    .brand-logo { max-height: 28px; margin-bottom: .5rem; filter: brightness(0) invert(1); }
+    .brand-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: var(--fs-body); color: #fff; }
+    .brand-tagline { font-size: var(--fs-sm); color: #ccc; margin-top: .2rem; }
+    .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+    .ba-card { border-radius: 1.25rem 1.25rem 0 0; overflow: hidden; position: relative; border: 1px solid var(--border); aspect-ratio: 4/3; }
+    .ba-slider-wrap { position: absolute; inset: 0; }
+    .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+    .ba-img.after { clip-path: inset(0 0 0 50%); }
+    .ba-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: #fff; cursor: ew-resize; z-index: 10; transform: translateX(-50%); box-shadow: 0 0 10px rgba(0,0,0,.5); }
+    .ba-handle::after { content: '⟺'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: #fff; color: #000; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+    .ba-label { position: absolute; top: 1rem; background: rgba(0,0,0,.75); color: #fff; border-radius: 100px; padding: .25rem .7rem; font-size: var(--fs-xs); font-weight: 600; letter-spacing: .05em; pointer-events: none; }
+    .ba-label.before-lbl { left: 1rem; }
+    .ba-label.after-lbl { right: 1rem; }
+    .ba-info-block { padding: 1.2rem; background: var(--surface); border: 1px solid var(--border); border-top: none; border-radius: 0 0 1.25rem 1.25rem; }
+
+    /* ── TOOLS ── */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin-top: 3rem; }
+    .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.4rem 1rem; text-align: center; transition: all .2s; }
+    .tool-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(223,183,108,.12); }
+    .tool-icon { font-size: 2rem; margin-bottom: .6rem; }
+    .tool-name { font-family: 'Syne', sans-serif; font-size: var(--fs-sm); font-weight: 700; }
+    .tool-cat { font-size: var(--fs-xs); color: var(--muted); margin-top: .2rem; }
+
+    /* ── CONTACT ── */
+    #contact .section-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-field { background: var(--surface); border: 1px solid var(--border); border-radius: .75rem; padding: .9rem 1.1rem; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: var(--fs-body); outline: none; transition: border-color .2s; width: 100%; }
+    .form-field::placeholder { color: var(--muted); }
+    .form-field:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(223,183,108,.15); }
+    textarea.form-field { min-height: 120px; resize: vertical; }
+    .form-submit { background: var(--text); color: var(--text-invert); font-family: 'Syne', sans-serif; font-size: var(--fs-btn); font-weight: 700; padding: .9rem; border-radius: .75rem; border: none; cursor: pointer; transition: opacity .2s; }
+    .form-submit:hover { opacity: .85; }
+    .social-link { background: var(--surface); border: 1px solid var(--border); border-radius: .6rem; padding: .6rem .9rem; text-decoration: none; color: var(--text); font-size: var(--fs-sm); transition: border-color .2s; }
+    .social-link:hover { border-color: var(--gold); }
+    .form-label { font-size: var(--fs-xs); font-weight: 600; font-family: 'Syne', sans-serif; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-name { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; }
+    .footer-copy { font-size: var(--fs-xs); color: var(--muted); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity .7s cubic-bezier(0.16,1,0.3,1), transform .7s cubic-bezier(0.16,1,0.3,1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .7s cubic-bezier(0.16,1,0.3,1), transform .7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .7s cubic-bezier(0.16,1,0.3,1), transform .7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity .6s cubic-bezier(0.16,1,0.3,1), transform .6s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* ── CURSOR GLOW ── */
+    #cursor-glow {
+      position: fixed; width: 450px; height: 450px; border-radius: 50%; pointer-events: none; z-index: 0;
+      background: radial-gradient(circle, rgba(223,183,108,.06) 0%, transparent 70%);
+      transform: translate(-50%,-50%); transition: left .15s ease, top .15s ease, opacity .3s; opacity: 0;
+    }
+    @media (hover: none) { #cursor-glow { display: none; } }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap { overflow: hidden; white-space: nowrap; mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+    .marquee-track { display: inline-flex; gap: 2rem; animation: marquee 28s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item { display: inline-flex; align-items: center; gap: .6rem; padding: .45rem 1.1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-size: var(--fs-xs); font-family: 'Syne', sans-serif; font-weight: 600; color: var(--muted); white-space: nowrap; transition: border-color .2s, color .2s; flex-shrink: 0; }
+    .marquee-item:hover { border-color: var(--gold); color: var(--text); }
+
+    /* ── FLOATING SHAPES ── */
+    .float-shape { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; opacity: .04; filter: blur(60px); }
+    .float-shape-1 { width: 500px; height: 500px; background: var(--gold); top: -100px; right: -100px; animation: floatShape 12s ease-in-out infinite alternate; }
+    .float-shape-2 { width: 300px; height: 300px; background: var(--green); bottom: 50px; left: -80px; animation: floatShape 9s ease-in-out infinite alternate-reverse; }
+    @keyframes floatShape { 0% { transform:translate(0,0) rotate(0deg); } 100% { transform:translate(30px,20px) rotate(20deg); } }
+
+/* ── PROCESS ── */
+.process-step-inner { transition: background .25s, border-color .25s, transform .25s; border: 1px solid transparent; border-radius: 1rem; padding: 1.5rem; margin-left: -1.5rem; }
+.process-step-inner:hover { background: var(--surface); border-color: var(--border); transform: translateX(6px); }
+.process-step-inner div div div { transition: color .25s, opacity .25s; }
+.process-step-inner:hover div div div { opacity: 1 !important; color: var(--gold) !important; }
+
+    /* ── PAGE CURTAIN ── */
+    #page-curtain { position: fixed; inset: 0; z-index: 9999; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: opacity .6s ease, visibility .6s ease; }
+    #page-curtain.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+    .curtain-logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--text); letter-spacing: -.03em; animation: curtainPulse 1s ease-in-out infinite alternate; }
+    .curtain-logo span { color: var(--gold); }
+    @keyframes curtainPulse { from { opacity:.3; } to { opacity:1; } }
+
+    /* ── SCROLL PROGRESS ── */
+    #scroll-progress { position: fixed; top: 0; left: 0; z-index: 200; height: 2px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--green)); transition: width .08s linear; }
+
+    /* ── ANIMATED DIVIDER ── */
+    .animated-divider { height: 1px; width: 100%; background: linear-gradient(90deg, transparent, var(--border), transparent); background-size: 200% 100%; animation: dividerShimmer 4s linear infinite; }
+    @keyframes dividerShimmer { 0% { background-position:-100% 0; } 100% { background-position:300% 0; } }
+
+    /* ── WAVE EMOJI ── */
+    .wave-emoji {
+      display: inline-block;
+      font-size: 1.4em;
+      animation: wave 2.5s infinite;
+      transform-origin: 70% 70%;
+      cursor: default;
+      transition: transform 0.2s ease, font-size 0.2s ease;
+    }
+    .wave-emoji:hover {
+      font-size: 1.8em;
+      animation-play-state: paused;
+      transform: rotate(20deg) scale(1.2);
+    }
+
+    @keyframes wave {
+      0%   { transform: rotate(0deg)   scale(1);    }
+      10%  { transform: rotate(14deg)  scale(1.15); }
+      20%  { transform: rotate(-8deg)  scale(1);    }
+      30%  { transform: rotate(14deg)  scale(1.15); }
+      40%  { transform: rotate(-4deg)  scale(1);    }
+      50%  { transform: rotate(10deg)  scale(1.1);  }
+      60%  { transform: rotate(0deg)   scale(1);    }
+      100% { transform: rotate(0deg)   scale(1);    }
+    }
+
+    /* ── HERO NAME WORD ANIMATION ── */
+    .hero-name-word { display: inline-block; opacity: 0; transform: translateY(20px); animation: wordIn .6s cubic-bezier(0.16,1,0.3,1) forwards; }
+    @keyframes wordIn { to { opacity:1; transform:translateY(0); } }
+
+    /* ── FLASH TEXT ── */
+    .flash-text { animation: flashColor 2s ease-in-out infinite alternate; }
+    @keyframes flashColor { from { color: var(--muted); } to { color: var(--gold); } }
+
+    /* ── FLOATING CONTACT BUTTON ── */
+    #floating-contact { opacity: 0; pointer-events: none; transform: translateY(1rem); transition: all .3s; }
+    #floating-contact.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+
+    /* ── LANG SWITCHER ── */
+    .lang-select {
+      background: var(--surface); border: 1px solid var(--border); color: var(--text);
+      font-family: 'Syne', sans-serif; font-size: var(--fs-xs); font-weight: 700;
+      padding: 0.35rem 0.6rem; border-radius: 100px; cursor: pointer;
+      outline: none; transition: border-color .2s; letter-spacing: .05em;
+      -webkit-appearance: none; appearance: none;
+      text-align: center; min-width: 52px;
+    }
+    .lang-select:hover, .lang-select:focus { border-color: var(--gold); }
+    [lang-hidden] { display: none !important; }
+
+    /* ── RESPONSIVE BREAKPOINTS ── */
+    @media (max-width: 900px) {
+      #navbar { padding: 1rem 1.5rem; }
+      .nav-center { display: none; }
+      .nav-right .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-grid, #about .section-inner, #contact .section-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .brand-grid, .ba-grid { grid-template-columns: 1fr; }
+      .hero-image-wrap { align-items: flex-start; }
+      .about-services { grid-template-columns: 1fr; }
+      .section-inner { padding: 4rem 1.5rem; }
+      .hero-desc, .section-sub { max-width: 100%; }
+      #home { padding: 6.5rem 1.5rem 3.5rem; }
+      .stat-card { text-align: left; }
+    }
+    @media (max-width: 480px) {
+      #home { padding: 6rem 1.25rem 3rem; }
+      .avatar-container { width: 100%; max-width: 260px; height: 290px; }
+      .hero-stats { flex-wrap: wrap; gap: 0.75rem; }
+      .stat-card { min-width: 75px; padding: .9rem 1rem; }
+      .stat-num { font-size: 1.6rem; }
+      .hero-actions { flex-direction: column; gap: 0.75rem; }
+      .hero-actions a { text-align: center; justify-content: center; }
+      .section-inner { padding: 3rem 1.25rem; }
+      footer { padding: 1.75rem 1.25rem; flex-direction: column; align-items: flex-start; }
+      .tools-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+      .tool-card { padding: 1rem .75rem; }
+      .process-step-inner { margin-left: -1rem; padding: 1rem; }
+    }
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</head>
+<body>
+
+<a href="#main-content" style="position:fixed;top:-100px;left:1rem;z-index:10000;background:var(--gold);color:#000;font-family:'Syne',sans-serif;font-weight:700;padding:.6rem 1.2rem;border-radius:.5rem;font-size:.85rem;transition:top .2s;text-decoration:none;" onfocus="this.style.top='1rem'" onblur="this.style.top='-100px'">Skip to main content</a>
+
+<div id="page-curtain"><div class="curtain-logo">Oussama <span>Barkallah</span></div></div>
+<div id="scroll-progress"></div>
+<div id="cursor-glow"></div>
+
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-left">
+    <a href="index.html" class="nav-logo" aria-label="Back to top – Oussama Barkallah portfolio">
+      <img src="assets/photo-flat.png" alt="Oussama Barkallah" />
+    </a>
+  </div>
+  <div class="nav-center">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <select class="lang-select" id="lang-toggle" aria-label="Select language"><option value="en">EN</option><option value="fr">FR</option></select>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">🌙</button>
+    <button class="hamburger" id="hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="mobile-menu" role="dialog" aria-label="Mobile navigation menu" aria-modal="true">
+  <button onclick="closeMobile()" aria-label="Close mobile menu" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid var(--border);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:1rem;height:1rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <a href="#home" onclick="closeMobile()">Home</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#work" onclick="closeMobile()">Work</a>
+  <a href="#process" onclick="closeMobile()">Process</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <!-- ── <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle light/dark theme" style="margin-top:.5rem;">🌙</button> ── -->
+</div>
+
+<main id="main-content">
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="float-shape float-shape-1"></div>
+  <div class="float-shape float-shape-2"></div>
+  <div class="hero-grid">
+    <div class="fade-up">
+      <p class="hero-greeting">Hi, <span class="wave-emoji">👋</span> I'm</p>
+      <h1 class="hero-name">Oussama<br><span>Barkallah</span></h1>
+      <p class="hero-desc">I design and build digital products — from brand identity to live platform. I take products from concept to launch, craft UIs that convert, and write frontends that perform.</p>
+      <div class="hero-tags">
+        <span class="hero-tag"><i class="fa-solid fa-mobile-screen" style="color:var(--gold);"></i> Product Designer</span>
+        <span class="hero-tag"><i class="fa-solid fa-code" style="color:var(--gold);"></i> Front-End</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/oussama-obarkallah/30min'}); return false;" class="btn-primary">Let's schedule a call</a>
+        <a href="#work" class="btn-secondary">View Work</a>
+      </div>
+      <br>
+      <div class="hero-badge">Available for freelance</div>
+    </div>
+    <div class="hero-image-wrap fade-up" style="transition-delay:.2s">
+      <div class="avatar-container">
+        <img class="default-img" src="assets/votre-photo.png" alt="Oussama Barkallah" />
+        <img class="hover-img" src="assets/photo-flat.png" alt="Oussama Barkallah avatar" />
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-label">Years of experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">14<span>+</span></div>
+          <div class="stat-label">Projects delivered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="animated-divider"></div>
+<div style="padding:1.5rem 0;overflow:hidden;">
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item"><i class="fa-brands fa-react" style="color:#61dafb" aria-hidden="true"></i> React</span>
+      <span class="marquee-item"><i class="fa-brands fa-js" style="color:#f7df1e" aria-hidden="true"></i> JavaScript</span>
+      <span class="marquee-item"><i class="fa-solid fa-wind" style="color:#38bdf8" aria-hidden="true"></i> Tailwind CSS</span>
+      <span class="marquee-item"><i class="fa-solid fa-code" style="color:var(--gold)" aria-hidden="true"></i> Front-End Engineering</span>
+      <span class="marquee-item"><i class="fa-brands fa-git-alt" style="color:#f05032" aria-hidden="true"></i> Git</span>
+      <span class="marquee-item"><i class="fa-brands fa-jira" style="color:#0052cc" aria-hidden="true"></i> Jira</span>
+      <span class="marquee-item"><i class="fa-solid fa-note-sticky" style="color:#f9c74f" aria-hidden="true"></i> Notion</span>
+      <span class="marquee-item"><i class="fa-solid fa-diagram-project" style="color:#7b61ff" aria-hidden="true"></i> Miro</span>
+      <span class="marquee-item"><i class="fa-solid fa-users" style="color:var(--green)" aria-hidden="true"></i> Agile / Scrum</span>
+      <span class="marquee-item"><i class="fa-brands fa-figma" style="color:#a259ff" aria-hidden="true"></i> Figma</span>
+      <span class="marquee-item"><i class="fa-solid fa-layer-group" style="color:var(--gold)" aria-hidden="true"></i> UI Design</span>
+      <span class="marquee-item"><i class="fa-solid fa-mobile-screen" style="color:var(--green)" aria-hidden="true"></i> Mobile UX</span>
+      <span class="marquee-item"><i class="fa-solid fa-robot" style="color:#00d2ff" aria-hidden="true"></i> AI Engineering</span>
+      <span class="marquee-item"><i class="fa-solid fa-palette" style="color:#ff6b6b" aria-hidden="true"></i> Brand Identity</span>
+      <span class="marquee-item"><i class="fa-solid fa-pen-nib" style="color:#ff7c00" aria-hidden="true"></i> Illustrator</span>
+      <span class="marquee-item"><i class="fa-solid fa-film" style="color:#9999ff" aria-hidden="true"></i> After Effects</span>
+      <span class="marquee-item"><i class="fa-solid fa-video" style="color:#ea00d9" aria-hidden="true"></i> Premiere Pro</span>
+      <!-- duplicate -->
+      <span class="marquee-item"><i class="fa-brands fa-react" style="color:#61dafb" aria-hidden="true"></i> React</span>
+      <span class="marquee-item"><i class="fa-brands fa-js" style="color:#f7df1e" aria-hidden="true"></i> JavaScript</span>
+      <span class="marquee-item"><i class="fa-solid fa-wind" style="color:#38bdf8" aria-hidden="true"></i> Tailwind CSS</span>
+      <span class="marquee-item"><i class="fa-solid fa-code" style="color:var(--gold)" aria-hidden="true"></i> Front-End Engineering</span>
+      <span class="marquee-item"><i class="fa-brands fa-git-alt" style="color:#f05032" aria-hidden="true"></i> Git</span>
+      <span class="marquee-item"><i class="fa-brands fa-jira" style="color:#0052cc" aria-hidden="true"></i> Jira</span>
+      <span class="marquee-item"><i class="fa-solid fa-note-sticky" style="color:#f9c74f" aria-hidden="true"></i> Notion</span>
+      <span class="marquee-item"><i class="fa-solid fa-diagram-project" style="color:#7b61ff" aria-hidden="true"></i> Miro</span>
+      <span class="marquee-item"><i class="fa-solid fa-users" style="color:var(--green)" aria-hidden="true"></i> Agile / Scrum</span>
+      <span class="marquee-item"><i class="fa-brands fa-figma" style="color:#a259ff" aria-hidden="true"></i> Figma</span>
+      <span class="marquee-item"><i class="fa-solid fa-layer-group" style="color:var(--gold)" aria-hidden="true"></i> UI Design</span>
+      <span class="marquee-item"><i class="fa-solid fa-mobile-screen" style="color:var(--green)" aria-hidden="true"></i> Mobile UX</span>
+      <span class="marquee-item"><i class="fa-solid fa-robot" style="color:#00d2ff" aria-hidden="true"></i> AI Engineering</span>
+      <span class="marquee-item"><i class="fa-solid fa-palette" style="color:#ff6b6b" aria-hidden="true"></i> Brand Identity</span>
+      <span class="marquee-item"><i class="fa-solid fa-pen-nib" style="color:#ff7c00" aria-hidden="true"></i> Illustrator</span>
+      <span class="marquee-item"><i class="fa-solid fa-film" style="color:#9999ff" aria-hidden="true"></i> After Effects</span>
+      <span class="marquee-item"><i class="fa-solid fa-video" style="color:#ea00d9" aria-hidden="true"></i> Premiere Pro</span>
+    </div>
+  </div>
+</div>
+<div class="animated-divider"></div>
+
+<!-- ── ABOUT ── -->
+<section id="about" class="border-t border-[var(--border)]">
+  <div class="section-inner">
+    <div class="fade-up reveal-left">
+      <p class="section-tag">About</p>
+      <h2 class="section-title">Designer, developer,<br>and coordinator.</h2>
+      <div class="about-text">
+        <p>Product Designer based in Bordeaux — fluent in Arabic, French, and English. I design digital products end to end: user research, wireframes, interfaces that convert, and design systems that scale.</p>
+        <p>I'm also comfortable on the frontend: HTML, CSS Tailwind, React and JavaScript, which helps me collaborate closely with dev teams and deliver technically grounded solutions.</p>
+        <p>I've also led freelance projects as a coordinator between business stakeholders and technical teams — whether that's an in-house team, an agency, or a network of freelancers.</p>
+      </div>
+    </div>
+    <div class="fade-up reveal-right" style="transition-delay:.15s">
+      <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-t border-b [border-color:var(--border)] gap-1">
+        <span class="meta-key">Location</span>
+        <span class="meta-val">Bordeaux · Paris, France</span>
+      </div>
+      <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-b [border-color:var(--border)] gap-1">
+        <span class="meta-key">Languages</span>
+        <span class="meta-val">Arabic · French · English</span>
+      </div>
+      <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-b [border-color:var(--border)] gap-1">
+        <span class="meta-key">Available</span>
+        <span class="meta-val">Freelance projects</span>
+      </div>
+      <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-b [border-color:var(--border)] gap-1">
+        <span class="meta-key">Services</span>
+        <span class="meta-val">Product Design · UX Research · Développement front-end</span>
+      </div>
+      <a href="https://www.linkedin.com/in/oussama-barkallah/overlay/Certifications/630679009/treasury/?profileId=ACoAACWP55kBIScUi9Z23_FUVPR0ebUY9Lkyv0w" target="_blank" class="cert-badge" style="display:flex;width:100%;">
+  <span style="font-size:1.8rem" aria-hidden="true">🏅</span>
+  <div class="cert-badge-text">
+    <small>ISTQB Certified</small>
+    <strong>Foundation Level Tester Certificate ↗</strong>
+  </div>
+</a>
+<a href="https://www.coursera.org/account/accomplishments/verify/VNSTONGNNQBL" target="_blank" class="cert-badge" style="display:flex;width:100%;margin-top:.75rem;">
+  <span style="font-size:1.8rem" aria-hidden="true">🏅</span>
+  <div class="cert-badge-text">
+    <small>Google Certified</small>
+    <strong>Google UX Design Certificate ↗</strong>
+  </div>
+</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORK: MOTION & VISUAL ── -->
+<section id="work" class="border-t border-[var(--border)]">
+  <div style="max-width:1200px;margin:0 auto;padding:4rem 2.5rem;">
+    <div class="mb-12 fade-up">
+      <p class="section-tag">Selected Motion & Visual Design Work</p>
+      <h2 class="section-title">Creative Portfolio</h2>
+      <p class="section-sub">Motion, branding, logos — the visual work behind the products.</p>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-8 items-stretch mb-12">
+  <div class="flex-1 flex flex-col min-w-0">
+    <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">01 / Landscape Formats</h3>
+    
+    <div id="slider-landscape" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden flex-1">
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m2.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m3.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m4.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m1.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m5.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m6.mp4" loop muted playsinline autoplay></video>
+      </div>
+
+    </div>
+    
+    <div class="slider-controls">
+      <button class="slider-btn" onclick="scrollCustomSlider('slider-landscape',-1)" aria-label="Previous landscape slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+      <button class="slider-btn" onclick="scrollCustomSlider('slider-landscape',1)" aria-label="Next landscape slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <div class="hidden md:block w-[1px] bg-[var(--border)] self-stretch mx-2"></div>
+
+      <!-- Portrait Slider -->
+      <div class="flex-1 flex flex-col min-w-0">
+        <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">02 / Portrait Reels</h3>
+        <div id="slider-portrait" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp1.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp2.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp3.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp4.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp5.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp6.mp4" loop muted playsinline autoplay></video></div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" onclick="scrollCustomSlider('slider-portrait',-1)" aria-label="Previous portrait slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+          <button class="slider-btn" onclick="scrollCustomSlider('slider-portrait',1)" aria-label="Next portrait slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand + Logo -->
+    <div class="flex flex-col md:flex-row gap-8 items-stretch" id="visual-design-grid">
+      <div class="w-full md:w-2/3 flex flex-col min-w-0">
+        <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">03 / Brand Layouts</h3>
+        <div id="slider-visuals" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A1.png" alt="Brand layout 1"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A2.png" alt="Brand layout 2"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A3.png" alt="Brand layout 3"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A4.png" alt="Brand layout 4"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A5.png" alt="Brand layout 5"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A6.png" alt="Brand layout 6"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A7.png" alt="Brand layout 7"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A8.png" alt="Brand layout 8"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A9.png" alt="Brand layout 9"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A10.png" alt="Brand layout 10"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A11.png" alt="Brand layout 11"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A12.png" alt="Brand layout 12"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A13.png" alt="Brand layout 13"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A14.png" alt="Brand layout 14"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A15.png" alt="Brand layout 15"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A16.png" alt="Brand layout 16"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A17.png" alt="Brand layout 17"></div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" onclick="scrollCustomSlider('slider-visuals',-1)" aria-label="Previous brand layout"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+          <button class="slider-btn" onclick="scrollCustomSlider('slider-visuals',1)" aria-label="Next brand layout"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <div class="hidden md:block w-[1px] bg-[var(--border)] self-stretch mx-2"></div>
+
+      <div class="w-full md:w-1/3 flex flex-col min-w-0">
+        <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">04 / Logo Design</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L1.mp4" loop muted playsinline autoplay></video></div>
+          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L2.mov" loop muted playsinline autoplay></video></div>
+          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L3.mov" loop muted playsinline autoplay></video></div>
+          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L4.mov" loop muted playsinline autoplay></video></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function scrollCustomSlider(id, dir) {
+  const s = document.getElementById(id);
+  if (s) { const step = s.querySelector('div').offsetWidth + 16; s.scrollLeft += dir * step; }
+}
+(function autoScroll() {
+  const slider = document.getElementById('slider-visuals');
+  setInterval(() => {
+    if (!slider) return;
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) slider.scrollLeft = 0;
+    else slider.scrollLeft += slider.offsetWidth;
+  }, 2000);
+})();
+</script>
+
+<!-- ── FRONTEND PROJECTS ── -->
+<section id="frontend" class="border-t border-[var(--border)]">
+  <div style="max-width:1200px;margin:0 auto;padding:4rem 2.5rem;">
+    <div class="mb-10 fade-up">
+      <p class="section-tag">Selected Frontend Engineering Work</p>
+      <h2 class="section-title">Real products, real problems,<br>real impact</h2>
+    </div>
+    <!-- Slider controls LEFT -->
+    <div class="slider-controls mb-6 fade-up">
+      <button class="slider-btn" onclick="scrollFrontendSlider(-1)" aria-label="Slide left"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+      <button class="slider-btn" onclick="scrollFrontendSlider(1)" aria-label="Slide right"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div id="projects-slider" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden fade-up">
+      <div onclick="openProjectModal('fitgym')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
+        <div>
+          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/front-3.mov" loop muted playsinline autoplay></video></div>
+          <div class="px-2">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">Landing Page / Sport / Dynamic UI</span>
+            <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;margin-bottom:.5rem;color:var(--text);">FitGym Premium</h3>
+          </div>
+        </div>
+        <div class="px-2 flex flex-wrap gap-2 mt-auto">
+          <span class="project-tag">JavaScript</span><span class="project-tag">UI UX</span><span class="project-tag">Amplitude</span>
+        </div>
+      </div>
+      <div onclick="openProjectModal('medical')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
+        <div>
+          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/front-2.png" alt="Medic" /></div>
+          <div class="px-2">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">UI Design / Medical UI / Frontend</span>
+            <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;margin-bottom:.5rem;color:var(--text);">Medic Portal</h3>
+          </div>
+        </div>
+        <div class="px-2 flex flex-wrap gap-2 mt-auto">
+          <span class="project-tag">CSS Tailwind</span><span class="project-tag">Medical UI</span><span class="project-tag">UX Trust</span> 
+        </div>
+      </div>
+      <div onclick="openProjectModal('alpha')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
+        <div>
+          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/Alfa.mp4" loop muted playsinline autoplay></video></div>
+          <div class="px-2">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">UI Redesign / UX Audit / Frontend </span>
+            <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;margin-bottom:.5rem;color:var(--text);">Alpha Nutrition</h3> 
+          </div>
+        </div>
+        <div class="px-2 flex flex-wrap gap-2 mt-auto">
+          <span class="project-tag">UX Audit</span><span class="project-tag">UI Redesign</span><span class="project-tag">E-Commerce</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div id="project-modal" role="dialog" aria-modal="true" aria-label="Project details" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 opacity-0 pointer-events-none transition-all duration-300 backdrop-blur-sm">
+  <div id="project-modal-inner" class="bg-[var(--surface)] border border-[var(--border)] rounded-3xl max-w-5xl w-full max-h-[95vh] transform scale-95 transition-all duration-300 shadow-2xl flex flex-col md:flex-row overflow-hidden">
+    <div class="w-full md:w-1/2 bg-[var(--surface2)] flex items-center justify-center p-4 border-b md:border-b-0 md:border-r border-[var(--border)]">
+      <div id="modal-media" class="w-full aspect-[16/10] overflow-hidden rounded-xl"></div>
+    </div>
+    <div class="w-full md:w-1/2 p-6 sm:p-8 relative flex flex-col justify-between">
+      <button onclick="closeProjectModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full border border-[var(--border)] bg-[var(--surface2)] flex items-center justify-center text-[var(--text)] hover:scale-105 active:scale-95 transition-all" aria-label="Close modal">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div>
+        <span id="modal-tagline" style="font-size:var(--fs-xs);font-weight:700;font-family:'Syne',sans-serif;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:.5rem;"></span>
+        <h3 id="modal-title" style="font-family:'Syne',sans-serif;font-weight:800;font-size:var(--fs-h3);margin-bottom:1rem;color:var(--text);"></h3>
+        <p id="modal-desc" style="font-size:var(--fs-sm);color:var(--muted);line-height:1.7;margin-bottom:1.5rem;"></p>
+      </div>
+      <div id="modal-tech-tags" class="flex flex-wrap gap-2 pt-4 border-t border-[var(--border)]"></div>
+    </div>
+  </div>
+</div>
+<script>
+function scrollFrontendSlider(dir) {
+  const s = document.getElementById('projects-slider');
+  if (s) { const w = s.querySelector('div').offsetWidth + 24; s.scrollLeft += dir * w; }
+}
+const projectsData = {
+  medical: { title:"Medic Portal", tagline:"UX / Medical UI / Frontend", desc:"Medic, is a medical platform for an aesthetic surgery clinic, offering quality care in a modern and welcoming environment. I contributed to the design and development with a focus on user trust, medical clarity, and a reassuring patient experience.", image:"assets/front-2.png", isVideo:false, tags:["CSS Tailwind","Medical UI","UX Trust","Responsive"] },
+  fitgym:  { title:"FitGym Premium", tagline:"Landing Page / UX/UI Design / Frontend", desc:"Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.", image:"assets/front-3.mov", isVideo:true, tags:["JavaScript","UI UX","Amplitude","Performance","Accessibility"] },
+  alpha:   { title:"Alpha Nutrition", tagline:"UI Redesign / UX Audit / Frontend", desc:"Alpha Nutrition is a Tunisian leader in animal nutrition, specializing in the manufacturing of premixes and feed for various types of livestock, with over 40 years of expertise. I redesigned the website with a full UX audit, and added an online order and delivery form for animal nutrition products.", image:"assets/Alfa.mp4", isVideo:true, tags:["UX Audit","UI Redesign","E-Commerce","Online Order Form"] }
+};
+function openProjectModal(key) {
+  const d = projectsData[key]; if (!d) return;
+  document.getElementById('modal-title').innerText = d.title;
+  document.getElementById('modal-tagline').innerText = d.tagline;
+  document.getElementById('modal-desc').innerText = d.desc;
+  const mc = document.getElementById('modal-media');
+  mc.innerHTML = d.isVideo ? `<video class="w-full h-full object-cover rounded-xl" src="${d.image}" autoplay loop muted playsinline></video>` : `<img class="w-full h-full object-cover rounded-xl" src="${d.image}" alt="${d.title}">`;
+  const tc = document.getElementById('modal-tech-tags'); tc.innerHTML = '';
+  d.tags.forEach(t => { const s = document.createElement('span'); s.className='project-tag'; s.innerText=t; tc.appendChild(s); });
+  const m = document.getElementById('project-modal'), i = document.getElementById('project-modal-inner');
+  m.classList.remove('opacity-0','pointer-events-none'); i.classList.remove('scale-95'); i.classList.add('scale-100');
+}
+function closeProjectModal() {
+  const m = document.getElementById('project-modal'), i = document.getElementById('project-modal-inner');
+  m.classList.add('opacity-0','pointer-events-none'); i.classList.remove('scale-100'); i.classList.add('scale-95');
+  const mc = document.getElementById('modal-media'); const v = mc.querySelector('video'); if(v) v.pause(); mc.innerHTML='';
+}
+document.getElementById('project-modal').addEventListener('click',function(e){if(e.target===this)closeProjectModal();});
+</script>
+
+<!-- ── ORANGE DESIGN SYSTEM ── -->
+<section id="design-system" class="border-t border-[var(--border)]">
+  <div style="max-width:1200px;margin:0 auto;padding:4rem 2.5rem;">
+    <div class="mb-10 fade-up">
+      <p class="section-tag">Product Infrastructure</p>
+      <h2 class="section-title">Design System at Scale —<br>Orange XDLab</h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="space-y-8">
+        <p style="font-size:var(--fs-body);color:var(--muted);line-height:1.75;">During my internship at <strong style="color:var(--text);">Orange XDLab</strong>, I contributed to the evolution of the Orange Unified Design System (ODS) — a large-scale design ecosystem built to ensure consistent, scalable, and accessible digital experiences across Orange products. I collaborated closely with senior designers, the Product Owner, and developers on components, icon systems, illustration libraries, and onboarding workflows.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)]"><h4 style="font-weight:700;color:var(--text);margin-bottom:.3rem;font-size:var(--fs-sm);">+60 Components</h4><p style="font-size:var(--fs-xs);color:var(--muted);">Improved and redesigned several poorly structured components to optimize usability.</p></div>
+          <div class="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)]"><h4 style="font-weight:700;color:var(--text);margin-bottom:.3rem;font-size:var(--fs-sm);">10 UI Kits</h4><p style="font-size:var(--fs-xs);color:var(--muted);">Developed comprehensive UI kits to accelerate team production and ensure cross-platform visual consistency.</p></div>
+          <div class="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)]"><h4 style="font-weight:700;color:var(--text);margin-bottom:.3rem;font-size:var(--fs-sm);">Solaris Icon Library</h4><p style="font-size:var(--fs-xs);color:var(--muted);">Complete refactoring — cleaned up structures, fixed inconsistencies, removed duplicates, and enhanced metadata and categorization.</p></div>
+          <div class="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)]"><h4 style="font-weight:700;color:var(--text);margin-bottom:.3rem;font-size:var(--fs-sm);">Onboarding Program</h4><p style="font-size:var(--fs-xs);color:var(--muted);">Created an onboarding book, documentation, and a dedicated Teams channel for future interns and apprentices.</p></div>
+          <div class="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)]"><h4 style="font-weight:700;color:var(--text);margin-bottom:.3rem;font-size:var(--fs-sm);">Design System Benchmark</h4><p style="font-size:var(--fs-xs);color:var(--muted);">In-depth analysis of Material Design, Atlassian, Carbon, and others to provide strategic recommendations for OUDS.</p></div>
+          <div class="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)]"><h4 style="font-weight:700;color:var(--text);margin-bottom:.3rem;font-size:var(--fs-sm);">Collaboration</h4><p style="font-size:var(--fs-xs);color:var(--muted);">Partnered with the Product Owner and development teams to ensure system consistency, component maintainability, and technical feasibility.</p></div>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <!-- Carousel nav buttons — left aligned -->
+        <div class="slider-controls mb-2">
+          <button onclick="changeOrangeCarousel(1)" class="slider-btn" aria-label="Previous slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+          <button onclick="changeOrangeCarousel(-1)" class="slider-btn" aria-label="Next slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+        <div class="relative group">
+          <div class="aspect-video rounded-2xl border border-[var(--border)] bg-[var(--surface2)] overflow-hidden shadow-2xl relative cursor-pointer" onclick="openOrangeLightbox()">
+            <div id="carousel-orange" class="w-full h-full relative">
+              <img src="assets/orange-2.png" class="orange-slide w-full h-full object-cover transition-all duration-500" alt="ODS 1">
+              <img src="assets/orange-3.png" class="orange-slide w-full h-full object-cover transition-all duration-500 hidden" alt="ODS 2">
+              <img src="assets/orange-4.png" class="orange-slide w-full h-full object-cover transition-all duration-500 hidden" alt="ODS 3">
+              <img src="assets/orange-5.png" class="orange-slide w-full h-full object-cover transition-all duration-500 hidden" alt="ODS 4">
+              <img src="assets/orange-6.jpg" class="orange-slide w-full h-full object-cover transition-all duration-500 hidden" alt="ODS 5">
+            </div>
+          </div>
+          <div class="mt-4 flex justify-start">
+            <div class="p-4 bg-[var(--surface)] border border-[var(--border)] rounded-xl shadow-xl">
+              <a href="https://unified-design-system.orange.com/472794e18/p/88133e-orange-unified-design-system" target="_blank" class="flash-text flex items-center gap-2 uppercase hover:text-[var(--gold)] transition-colors" style="font-size:var(--fs-xs);font-family:monospace;color:var(--muted);">
+                Old Version / Migration vers OUDS
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="orange-lightbox" class="fixed inset-0 z-[100] hidden bg-black/95 flex flex-col items-center justify-center backdrop-blur-md p-4">
+  <button onclick="closeOrangeLightbox()" class="absolute top-6 right-6 text-white text-4xl hover:scale-110 transition-transform" aria-label="Close Lightbox">&times;</button>
+  <button onclick="changeOrangeLightboxImage(-1)" class="absolute left-6 text-white text-5xl hover:scale-110 transition-transform" aria-label="Previous image">&#8249;</button>
+  <img id="lightbox-img" class="max-w-[90vw] max-h-[80vh] object-contain rounded-lg" src="" alt="Zoom" />
+  <div id="lightbox-counter" class="mt-4 text-white font-mono text-sm"></div>
+  <button onclick="changeOrangeLightboxImage(1)" class="absolute right-6 text-white text-5xl hover:scale-110 transition-transform" aria-label="Next image">&#8250;</button>
+</div>
+<script>
+const orangeImages = ["assets/orange-2.png","assets/orange-3.png","assets/orange-4.png","assets/orange-5.png","assets/orange-6.jpg"];
+let currentIndex = 0;
+function changeOrangeCarousel(dir) {
+  const slides = document.querySelectorAll('.orange-slide');
+  slides[currentIndex].classList.add('hidden');
+  currentIndex = (currentIndex + dir + slides.length) % slides.length;
+  slides[currentIndex].classList.remove('hidden');
+}
+function openOrangeLightbox() {
+  document.getElementById('lightbox-img').src = orangeImages[currentIndex];
+  document.getElementById('orange-lightbox').classList.remove('hidden');
+  updateCounter();
+}
+function closeOrangeLightbox() { document.getElementById('orange-lightbox').classList.add('hidden'); }
+function changeOrangeLightboxImage(dir) {
+  currentIndex = (currentIndex + dir + orangeImages.length) % orangeImages.length;
+  document.getElementById('lightbox-img').src = orangeImages[currentIndex];
+  const slides = document.querySelectorAll('.orange-slide');
+  slides.forEach((s,i) => { if(i===currentIndex) s.classList.remove('hidden'); else s.classList.add('hidden'); });
+  updateCounter();
+}
+function updateCounter() { document.getElementById('lightbox-counter').textContent = `${currentIndex+1} / ${orangeImages.length}`; }
+</script>
+
+<!-- ── UI/UX SECTION ── -->
+<section id="uiux" class="border-t border-[var(--border)]">
+  <div style="max-width:1200px;margin:0 auto;padding:4rem 2.5rem;">
+    <div class="mb-10 fade-up">
+      <p class="section-tag">UI/UX Design</p>
+      <h2 class="section-title">Interfaces that just feel right</h2>
+    </div>
+    <!-- Slider controls LEFT -->
+    <div class="slider-controls mb-6 fade-up">
+      <button class="slider-btn" onclick="scrollUiUxSlider(-1)" aria-label="Slide left"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+      <button class="slider-btn" onclick="scrollUiUxSlider(1)" aria-label="Slide right"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div id="uiux-slider" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden fade-up">
+      <div onclick="openUiUxModal('uspn')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col cursor-pointer hover:border-[var(--gold)] transition-all">
+        <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[var(--surface2)] mb-4"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/ux-ui2.png" alt="USPN Mobile App" /></div>
+        <div class="px-2">
+          <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">Mobile App / Student UX</span>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;color:var(--text);">USPN Mobile App</h3>
+        </div>
+      </div>
+      <div onclick="openUiUxModal('ecofrugale')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col cursor-pointer hover:border-[var(--gold)] transition-all">
+        <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[var(--surface2)] mb-4"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/ux-ui4.png" alt="Mon Atelier Écofrugale" /></div>
+        <div class="px-2">
+          <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">Web Redesign</span>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;color:var(--text);">Mon Atelier Écofrugale</h3>
+        </div>
+      </div>
+      <div onclick="openUiUxModal('retail')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col cursor-pointer hover:border-[var(--gold)] transition-all">
+        <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[var(--surface2)] mb-4"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/ux-ui3.png" alt="Retail Mobile App Concept" /></div>
+        <div class="px-2">
+          <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">Mobile App / E-Commerce</span>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;color:var(--text);">Retail Mobile App</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UIUX MODAL -->
+<div id="uiux-modal" role="dialog" aria-modal="true" aria-label="Project details" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 opacity-0 pointer-events-none transition-all duration-300 backdrop-blur-sm">
+  <div class="bg-[var(--surface)] border border-[var(--border)] rounded-3xl max-w-5xl w-full max-h-[95vh] transform scale-95 transition-all duration-300 shadow-2xl flex flex-col md:flex-row overflow-hidden">
+    <div class="w-full md:w-1/2 bg-[var(--surface2)] flex items-center justify-center p-4 border-b md:border-b-0 md:border-r border-[var(--border)]">
+      <div id="uiux-modal-media" class="w-full aspect-[16/10] overflow-hidden rounded-xl h-full min-h-[300px] md:min-h-[400px]"></div>
+    </div>
+    <div class="w-full md:w-1/2 p-6 sm:p-8 relative flex flex-col justify-between">
+      <button onclick="closeUiUxModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full border border-[var(--border)] bg-[var(--surface2)] flex items-center justify-center text-[var(--text)] hover:scale-105 active:scale-95 transition-all" aria-label="Close modal">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div>
+        <span id="uiux-modal-tagline" style="font-size:var(--fs-xs);font-weight:700;font-family:'Syne',sans-serif;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:.5rem;"></span>
+        <h3 id="uiux-modal-title" style="font-family:'Syne',sans-serif;font-weight:800;font-size:var(--fs-h3);margin-bottom:.75rem;color:var(--text);"></h3>
+        <p id="uiux-modal-desc-main" style="font-size:var(--fs-sm);font-weight:600;color:var(--text);line-height:1.7;margin-bottom:.5rem;"></p>
+        <p id="uiux-modal-desc-details" style="font-size:var(--fs-xs);color:var(--muted);line-height:1.7;"></p>
+      </div>
+      <div>
+        <div id="uiux-modal-tags" class="flex flex-wrap gap-2 pt-4 border-t border-[var(--border)]"></div>
+        <div id="uiux-modal-link-container" class="mt-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function scrollUiUxSlider(dir) {
+  const s = document.getElementById('uiux-slider');
+  if (s) { const w = s.querySelector('div').offsetWidth + 24; s.scrollLeft += dir * w; }
+}
+const uiUxProjectsData = {
+  uspn: {
+    title: "USPN Mobile App",
+    tagline: "Mobile App / UX Research / Product Design",
+    mainDesc: "Designed in a team for students of Université Sorbonne Paris Nord.",
+    detailedDesc: "Goal: Replace scattered schedules, emails, and campus services with a single centralized mobile app.<br>I handled the UI design phase — component structure, UI kit, and high-fidelity screens — and contributed to UX research, from discovery to testing.<br><br>",
+    image: "assets/ux-ui2-2.png",
+    prototypeUrl: null,
+    link: "https://www.univ-spn.fr/lapplication-mobile/",
+    linkLabel: "Download the App →",
+    tags: ["Figma","UX Research","UI Design","Design System","Prototype"]
+  },
+  retail: {
+    title: "Retail Mobile App Concept",
+    tagline: "Mobile App / E-Commerce",
+    mainDesc: "A self-initiated concept for a mobile shopping app — clean, fast, and intuitive.",
+    detailedDesc: "Retail Mobile App is a solo project, I handled the entire process end to end: user flows, sitemap, wireframes, design system, and high-fidelity screens — with a seamless path from discovery to checkout, optimized for one-thumb navigation.<br><br>",
+    image: "assets/ux-ui3-2.png",
+    prototypeUrl: "https://embed.figma.com/proto/8fq9tDbInR7XX7t2Xuja5U/Oussama-Projects?node-id=3576-6512&scaling=scale-down-width&content-scaling=fixed&page-id=2847%3A6699&starting-point-node-id=3576%3A6512&embed-host=share",
+    link: null,
+    linkLabel: "View Prototype →",
+    tags: ["Solo Project","E-Commerce","Design System","Wireframing"]
+  },
+  ecofrugale: {
+    title: "Mon Atelier Écofrugale",
+    tagline: "Web Redesign / Ecological UX",
+    mainDesc: "A platform helping HR and CSR teams guide employees toward more ecological practices.",
+    detailedDesc: "UX audit phase: site analysis, heuristic evaluation, and persona definition.<br>Led the UI redesign of site — restructured the visual hierarchy, improved readability, and aligned the interface with the platform's ecological values.<br><br>",
+    image: "assets/ux-ui4-2.webp",
+    prototypeUrl: "https://www.figma.com/proto/8fq9tDbInR7XX7t2Xuja5U/Oussama-Projects?node-id=2854-10668&scaling=min-zoom&content-scaling=fixed&page-id=2854%3A10111&starting-point-node-id=2854%3A10668",
+    link: null,
+    linkLabel: "View Prototype →",
+    tags: ["UX Audit","Heuristic Analysis","Landing Page","Eco Identity","Hackathon"]
+  }
+};
+
+function openUiUxModal(key) {
+  const d = uiUxProjectsData[key]; if (!d) return;
+  document.getElementById('uiux-modal-title').innerText = d.title;
+  document.getElementById('uiux-modal-tagline').innerText = d.tagline;
+  document.getElementById('uiux-modal-desc-main').innerText = d.mainDesc;
+  document.getElementById('uiux-modal-desc-details').innerHTML = d.detailedDesc;
+
+  // Toujours afficher l'image dans le modal
+  const mc = document.getElementById('uiux-modal-media');
+  mc.innerHTML = `<img class="w-full h-full object-cover rounded-xl" src="${d.image}" alt="${d.title}">`;
+
+  const tc = document.getElementById('uiux-modal-tags'); tc.innerHTML = '';
+  d.tags.forEach(t => { const s = document.createElement('span'); s.className='project-tag'; s.innerText=t; tc.appendChild(s); });
+
+  const lc = document.getElementById('uiux-modal-link-container'); lc.innerHTML = '';
+  const url = d.link || d.prototypeUrl;
+  const label = d.linkLabel || 'Learn More →';
+  if (url) {
+    lc.innerHTML = `<a href="${url}" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:.6rem 1.2rem;border-radius:.75rem;border:1px solid var(--gold);color:var(--gold);font-size:var(--fs-sm);font-family:'Syne',sans-serif;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--gold)';this.style.color='#000';" onmouseout="this.style.background='';this.style.color='var(--gold)';">${label}</a>`;
+  }
+
+  const m = document.getElementById('uiux-modal');
+  m.classList.remove('opacity-0','pointer-events-none');
+  m.querySelector('.max-w-5xl').classList.remove('scale-95');
+  m.querySelector('.max-w-5xl').classList.add('scale-100');
+}
+
+function closeUiUxModal() {
+  const m = document.getElementById('uiux-modal');
+  m.classList.add('opacity-0','pointer-events-none');
+  m.querySelector('.max-w-5xl').classList.remove('scale-100');
+  m.querySelector('.max-w-5xl').classList.add('scale-95');
+  document.getElementById('uiux-modal-media').innerHTML = '';
+  document.getElementById('uiux-modal-link-container').innerHTML = '';
+}
+document.getElementById('uiux-modal').addEventListener('click', function(e) { if (e.target === this) closeUiUxModal(); });
+</script>
+
+<!-- ── BEFORE & AFTER ── -->
+<section id="redesigns" class="border-t border-[var(--border)]">
+  <div class="section-inner">
+    <p class="section-tag fade-up">UX Design</p>
+    <h2 class="section-title fade-up">Before &amp; After</h2>
+    <p class="section-sub fade-up">Every redesign started with a real problem — a confusing layout, a broken flow, or a brand that didn't reflect the product's value. Drag the slider to reveal the transformation.</p>
+    <div class="ba-grid fade-up" style="transition-delay:.1s">
+      <div>
+        <div class="ba-card" id="ba1">
+          <div class="ba-slider-wrap">
+            <img class="ba-img" src="assets/B2.png" alt="Before" />
+            <img class="ba-img after" id="ba1-after" src="assets/B1.png" alt="After" />
+            <div class="ba-label before-lbl">Before</div>
+            <div class="ba-label after-lbl">After</div>
+            <div class="ba-handle" id="ba1-handle"></div>
+          </div>
+        </div>
+        <div class="ba-info-block">
+          <div class="project-cat">Product Design</div>
+          <div class="project-title">Mon Atelier Écofrugale</div>
+          <p style="font-size:var(--fs-sm);color:var(--muted);margin-top:.5rem;">A complete visual overhaul — modernizing the layout, improving user flows, and aligning the interface with the platform's ecological values.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ba-card" id="ba2">
+          <div class="ba-slider-wrap">
+            <img class="ba-img" src="assets/cow1.png" alt="Before" />
+            <img class="ba-img after" id="ba2-after" src="assets/cow2.png" alt="After" />
+            <div class="ba-label before-lbl">Before</div>
+            <div class="ba-label after-lbl">After</div>
+            <div class="ba-handle" id="ba2-handle"></div>
+          </div>
+        </div>
+        <div class="ba-info-block">
+          <div class="project-cat">UI Redesign & Front-end</div>
+          <div class="project-title">Alpha Nutrition</div>
+          <p style="font-size:var(--fs-sm);color:var(--muted);margin-top:.5rem;">Redesigned a custom interface that blends brand identity with complex business tools, including a tonnage calculator and automated order forms.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TOOLS ── -->
+<section id="tools" class="border-t border-[var(--border)]">
+  <div class="section-inner">
+    <p class="section-tag fade-up">Tools &amp; Craft</p>
+    <h2 class="section-title fade-up">The toolkit behind every project</h2>
+    <div class="tools-grid fade-up" style="transition-delay:.1s">
+      <div class="tool-card"><div class="tool-icon text-purple-500"><i class="fa-brands fa-figma" aria-hidden="true"></i></div><div class="tool-name">Figma</div><div class="tool-cat">Design</div></div>
+      <div class="tool-card"><div class="tool-icon text-orange-600"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></div><div class="tool-name">Illustrator</div><div class="tool-cat">Design</div></div>
+      <div class="tool-card"><div class="tool-icon text-indigo-500"><i class="fa-solid fa-film" aria-hidden="true"></i></div><div class="tool-name">After Effects</div><div class="tool-cat">Motion</div></div>
+      <div class="tool-card"><div class="tool-icon text-pink-600"><i class="fa-solid fa-video" aria-hidden="true"></i></div><div class="tool-name">Premiere Pro</div><div class="tool-cat">Video</div></div>
+      <div class="tool-card"><div class="tool-icon text-teal-500"><i class="fa-solid fa-robot" aria-hidden="true"></i></div><div class="tool-name">AI Tools</div><div class="tool-cat">Engineering</div></div>
+      <div class="tool-card"><div class="tool-icon text-blue-400"><i class="fa-brands fa-react" aria-hidden="true"></i></div><div class="tool-name">React</div><div class="tool-cat">Frontend</div></div>
+      <div class="tool-card"><div class="tool-icon text-yellow-500"><i class="fa-brands fa-js" aria-hidden="true"></i></div><div class="tool-name">JavaScript</div><div class="tool-cat">Frontend</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section id="process" class="border-t border-[var(--border)]" style="padding:5rem 0;background:var(--bg);transition:background 0.3s;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 2.5rem;">
+    <div class="mb-14 fade-up">
+      <p class="section-tag">The Process</p>
+      <h2 class="section-title">How I go from idea<br>to finished product</h2>
+    </div>
+    <div style="position:relative;border-left:2px solid var(--gold);margin-left:1rem;display:flex;flex-direction:column;gap:4rem;" role="list" aria-label="Design process steps">
+      <div class="relative pl-10 fade-up" style="transition-delay:.1s;padding-left:2.5rem;" role="listitem">
+        <div style="position:absolute;left:-9px;top:1.5rem;width:16px;height:16px;background:var(--gold);border-radius:50%;"></div>
+        <div class="process-step-inner"><div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div style="max-width:520px;">
+            <div style="font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--gold);opacity:.25;margin-bottom:.5rem;line-height:1;">01</div>
+            <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-h3);font-weight:700;margin-bottom:.6rem;color:var(--text);">Discovery &amp; Brief</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:var(--fs-sm);">I start by understanding your goals, scope, target users, and constraints. Whether it's a brand, a product interface, or a full build — this is where I define what success looks like.</p>
+          </div>
+          <div style="font-size:2.5rem;color:var(--gold);opacity:.75;" class="hidden md:block" aria-hidden="true"><i class="fa-solid fa-list-check"></i></div>
+        </div></div>
+      </div>
+      <div class="relative fade-up" style="transition-delay:.2s;padding-left:2.5rem;" role="listitem">
+        <div style="position:absolute;left:-9px;top:1.5rem;width:16px;height:16px;background:var(--gold);border-radius:50%;"></div>
+        <div class="process-step-inner"><div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div style="max-width:520px;">
+            <div style="font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--gold);opacity:.25;margin-bottom:.5rem;line-height:1;">02</div>
+            <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-h3);font-weight:700;margin-bottom:.6rem;color:var(--text);">Research &amp; Strategy</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:var(--fs-sm);">User research, competitor analysis, and market context. I map out the landscape before making any creative decisions, grounding every choice in real insight rather than assumptions.</p>
+          </div>
+          <div style="font-size:2.5rem;color:var(--gold);opacity:.75;" class="hidden md:block" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
+        </div></div>
+      </div>
+      <div class="relative fade-up" style="transition-delay:.3s;padding-left:2.5rem;" role="listitem">
+        <div style="position:absolute;left:-9px;top:1.5rem;width:16px;height:16px;background:var(--gold);border-radius:50%;"></div>
+        <div class="process-step-inner"><div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div style="max-width:520px;">
+            <div style="font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--gold);opacity:.25;margin-bottom:.5rem;line-height:1;">03</div>
+            <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-h3);font-weight:700;margin-bottom:.6rem;color:var(--text);">Wireframe &amp; Prototype</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:var(--fs-sm);">Structure before aesthetics. I define information architecture, user flows, and key interactions as wireframes or clickable prototypes — aligning on the experience before going into visual design.</p>
+          </div>
+          <div style="font-size:2.5rem;color:var(--gold);opacity:.75;" class="hidden md:block" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></div>
+        </div></div>
+      </div>
+      <div class="relative fade-up" style="transition-delay:.4s;padding-left:2.5rem;" role="listitem">
+        <div style="position:absolute;left:-9px;top:1.5rem;width:16px;height:16px;background:var(--gold);border-radius:50%;"></div>
+        <div class="process-step-inner"><div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div style="max-width:520px;">
+            <div style="font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--gold);opacity:.25;margin-bottom:.5rem;line-height:1;">04</div>
+            <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-h3);font-weight:700;margin-bottom:.6rem;color:var(--text);">Design &amp; Iteration</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:var(--fs-sm);">The main creative phase — UI screens, brand systems, components, or visual assets. Iterative with feedback rounds to make sure every detail is intentional and every decision is justified.</p>
+          </div>
+          <div style="font-size:2.5rem;color:var(--gold);opacity:.75;" class="hidden md:block" aria-hidden="true"><i class="fa-solid fa-pen-nib"></i></div>
+        </div></div>
+      </div>
+      <div class="relative fade-up" style="transition-delay:.5s;padding-left:2.5rem;" role="listitem">
+        <div style="position:absolute;left:-9px;top:1.5rem;width:16px;height:16px;background:var(--gold);border-radius:50%;"></div>
+        <div class="process-step-inner"><div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div style="max-width:520px;">
+            <div style="font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--gold);opacity:.25;margin-bottom:.5rem;line-height:1;">05</div>
+            <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-h3);font-weight:700;margin-bottom:.6rem;color:var(--text);">Build &amp; Develop</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:var(--fs-sm);">I bring designs to life with clean, production-ready code. React, Js, or whatever the stack requires — pixel-perfect, performant, and accessible from day one.</p>
+          </div>
+          <div style="font-size:2.5rem;color:var(--gold);opacity:.75;" class="hidden md:block" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+        </div></div>
+      </div>
+      <div class="relative fade-up" style="transition-delay:.6s;padding-left:2.5rem;" role="listitem">
+        <div style="position:absolute;left:-9px;top:1.5rem;width:16px;height:16px;background:var(--gold);border-radius:50%;"></div>
+        <div class="process-step-inner"><div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div style="max-width:520px;">
+            <div style="font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--gold);opacity:.25;margin-bottom:.5rem;line-height:1;">06</div>
+            <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-h3);font-weight:700;margin-bottom:.6rem;color:var(--text);">Delivery &amp; Handoff</h3>
+            <p style="color:var(--muted);line-height:1.7;font-size:var(--fs-sm);">Final files in the right formats — Figma handoff, brand guidelines, deployed code, or exported assets. Everything organized, documented, and ready to use immediately.</p>
+          </div>
+          <div style="font-size:2.5rem;color:var(--gold);opacity:.75;" class="hidden md:block" aria-hidden="true"><i class="fa-solid fa-rocket"></i></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="border-t border-[var(--border)]">
+  <div class="section-inner">
+    <div class="fade-up">
+      <p class="section-tag">Let's Work Together</p>
+      <h2 class="section-title">Have a project in mind?<br>Let's make it happen</h2>
+      <p class="section-sub" style="margin-bottom:2rem">I take on a small number of freelance projects alongside my full-time work — startups, agencies, and brands who need sharp design, clean code, or both.</p>
+      <div class="hero-actions" style="margin-bottom:2rem">
+        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/oussama-obarkallah/30min'}); return false;" class="btn-primary">Let's schedule a call</a>
+        <a href="/assets/CV_Oussama_BARKALLAH.pdf" target="_blank" class="btn-secondary">View Resume</a>
+      </div>
+      <div class="flex items-center gap-3 mt-6">
+        <a href="https://www.linkedin.com/in/oussama-barkallah/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center rounded-xl text-[var(--text)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all text-xl" aria-label="View LinkedIn profile"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://dribbble.com/oussama-barkallah" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center rounded-xl text-[var(--text)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all text-xl" aria-label="View Dribbble profile"><i class="fa-brands fa-dribbble" aria-hidden="true"></i></a>
+        <a href="mailto:oussama.obarkallah@gmail.com" class="w-11 h-11 bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center rounded-xl text-[var(--text)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all text-xl" aria-label="Send email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:.15s">
+      <p class="section-tag" style="margin-top:0">Drop me a line</p>
+      <form class="contact-form" action="https://formspree.io/f/mqekkgjy" method="POST" aria-label="Contact form">
+        <div style="display:flex;flex-direction:column;gap:.25rem;">
+          <label for="contact-name" class="form-label">Name</label>
+          <input id="contact-name" class="form-field" type="text" name="name" placeholder="Your name" required autocomplete="name" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.25rem;">
+          <label for="contact-email" class="form-label">Email</label>
+          <input id="contact-email" class="form-field" type="email" name="email" placeholder="Your email address" required autocomplete="email" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.25rem;">
+          <label for="contact-subject" class="form-label">Subject</label>
+          <input id="contact-subject" class="form-field" type="text" name="subject" placeholder="Subject" required />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.25rem;">
+          <label for="contact-message" class="form-label">Message</label>
+          <textarea id="contact-message" class="form-field" name="message" placeholder="Your message..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send the raven 🐦</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:var(--bg);border-top:1px solid var(--border);padding:2.5rem;transition:background .3s,color .3s;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:row;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.3;">
+      <span class="footer-name" style="color:var(--text);">Oussama Barkallah</span>
+      <span class="footer-copy">Product Designer · Paris, France</span>
+    </div>
+    <div class="footer-copy">&copy; 2026 Oussama Barkallah. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- ── FLOATING CONTACT ── -->
+<a id="floating-contact" href="#contact" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface2)] hover:border-[var(--gold)] flex items-center justify-center transition-all duration-300 shadow-2xl active:scale-95 group" aria-label="Get in touch">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-[var(--gold)] -rotate-45 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-110" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+  </svg>
+</a>
+
+<script>
+// PAGE CURTAIN
+window.addEventListener('load', () => { setTimeout(() => document.getElementById('page-curtain').classList.add('hide'), 600); });
+
+// SCROLL PROGRESS
+window.addEventListener('scroll', () => {
+  const sc = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('scroll-progress').style.width = (sc / max * 100) + '%';
+}, { passive: true });
+
+// CURSOR GLOW
+const cg = document.getElementById('cursor-glow');
+document.addEventListener('mousemove', e => {
+  cg.style.left = e.clientX + 'px'; cg.style.top = e.clientY + 'px'; cg.style.opacity = '1';
+}, { passive: true });
+document.addEventListener('mouseleave', () => cg.style.opacity = '0');
+
+// REVEAL OBSERVER
+const revObs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.08 });
+document.querySelectorAll('.fade-up, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revObs.observe(el));
+
+// COUNTER ANIMATION
+function animateCount(el, target, suffix='') {
+  let start = 0;
+  const isFloat = target.toString().includes('.');
+  const step = ts => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / 1200, 1), e = 1 - Math.pow(1-p, 3);
+    el.textContent = (isFloat ? (e*target).toFixed(1) : Math.floor(e*target)) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target, raw = el.dataset.count, suffix = el.dataset.suffix || '';
+      animateCount(el, parseFloat(raw), suffix); cntObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num').forEach(card => {
+  const t = card.textContent.trim(), m = t.match(/[\d.]+/);
+  if (m) { card.dataset.count = m[0]; card.dataset.suffix = t.replace(m[0],''); card.textContent = '0' + card.dataset.suffix; cntObs.observe(card); }
+});
+
+// NAVBAR SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+// MOBILE MENU
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+});
+function closeMobile() {
+  mobileMenu.classList.remove('open');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+
+// THEME TOGGLE
+const htmlEl = document.documentElement;
+const toggleBtn = document.getElementById('theme-toggle');
+const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
+function toggleTheme() {
+  const isLight = htmlEl.classList.toggle('light');
+  const icon = isLight ? '☀️' : '🌙';
+  toggleBtn.textContent = icon; if (toggleBtnMobile) toggleBtnMobile.textContent = icon;
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+toggleBtn.addEventListener('click', toggleTheme);
+if (toggleBtnMobile) toggleBtnMobile.addEventListener('click', toggleTheme);
+const saved = localStorage.getItem('theme');
+const prefLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+if (saved !== 'dark') {
+  htmlEl.classList.add('light');
+  toggleBtn.textContent = '☀️';
+  if (toggleBtnMobile) toggleBtnMobile.textContent = '☀️';
+}
+
+// HERO NAME ANIMATION
+const heroName = document.querySelector('.hero-name');
+if (heroName) {
+  heroName.innerHTML = heroName.innerHTML.split('<br>').map((line, li) =>
+    line.split(' ').map((word, wi) => `<span class="hero-name-word" style="animation-delay:${(li*.15+wi*.12+.2).toFixed(2)}s">${word}</span>`).join(' ')
+  ).join('<br>');
+}
+
+// HERO GREETING
+const greet = document.querySelector('.hero-greeting');
+if (greet) {
+  greet.style.cssText = 'opacity:0;transform:translateY(12px);transition:opacity .7s ease .1s,transform .7s cubic-bezier(0.16,1,0.3,1) .1s';
+  setTimeout(() => { greet.style.opacity = '1'; greet.style.transform = 'translateY(0)'; }, 120);
+}
+
+// ACTIVE NAV HIGHLIGHT
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--text)' : ''; });
+}, { passive: true });
+
+// BEFORE/AFTER SLIDER
+function initSlider(cardId, handleId, afterId) {
+  const card = document.getElementById(cardId), handle = document.getElementById(handleId), after = document.getElementById(afterId);
+  if (!card) return;
+  let dragging = false;
+  function setPos(x) {
+    const rect = card.getBoundingClientRect();
+    let pct = Math.min(Math.max((x - rect.left) / rect.width, 0), 1) * 100;
+    handle.style.left = pct + '%'; after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+  }
+  handle.addEventListener('mousedown', e => { dragging = true; e.preventDefault(); });
+  handle.addEventListener('touchstart', () => dragging = true, { passive: true });
+  window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+  window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('mouseup', () => dragging = false);
+  window.addEventListener('touchend', () => dragging = false);
+  card.addEventListener('click', e => { if (e.target !== handle) setPos(e.clientX); });
+}
+initSlider('ba1','ba1-handle','ba1-after');
+initSlider('ba2','ba2-handle','ba2-after');
+
+// FLOATING CONTACT BUTTON
+const floatBtn = document.getElementById('floating-contact');
+const homeSection = document.getElementById('home');
+if (homeSection && floatBtn) {
+  new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) floatBtn.classList.add('visible');
+    else floatBtn.classList.remove('visible');
+  }, { threshold: 0.1 }).observe(homeSection);
+}
+
+// TOOL CARD TILT
+document.querySelectorAll('.tool-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
+    card.style.transform = `perspective(600px) rotateY(${x*12}deg) rotateX(${-y*12}deg) translateY(-3px)`;
+  });
+  card.addEventListener('mouseleave', () => card.style.transform = '');
+});
+
+// SECTION TAG REVEAL
+document.querySelectorAll('.section-tag').forEach(el => { el.classList.add('reveal-scale'); revObs.observe(el); });
+
+// ── LANGUAGE SWITCHER ──
+const translations = {
+  en: {
+    'nav-home': 'Home', 'nav-about': 'About', 'nav-work': 'Work',
+    'nav-process': 'Process', 'nav-contact': 'Contact',
+    'hero-greeting': "Hi, <span class=\"wave-emoji\">👋</span> I'm",
+    'hero-desc': "I design and build digital products — from brand identity to live platform. I take products from concept to launch, craft UIs that convert, and write frontends that perform.",
+    'hero-tag-1': 'Product Designer', 'hero-tag-2': 'Front-End',
+    'hero-btn-call': "Let's schedule a call", 'hero-btn-work': 'View Work',
+    'hero-badge': 'Available for freelance',
+    'hero-stat-1': 'Years of experience', 'hero-stat-2': 'Projects delivered',
+    'about-tag': 'About', 'about-title': 'Designer, developer,<br>and coordinator.',
+    'about-p1': 'Product Designer based in Bordeaux — fluent in Arabic, French, and English. I design digital products end to end: user research, wireframes, interfaces that convert, and design systems that scale.',
+    'about-p2': "I'm also comfortable on the frontend: HTML, CSS Tailwind, React and JavaScript, which helps me collaborate closely with dev teams and deliver technically grounded solutions.",
+    'about-p3': "I've also led freelance projects as a coordinator between business stakeholders and technical teams — whether that's an in-house team, an agency, or a network of freelancers.",
+    'meta-location': 'Location', 'meta-languages': 'Languages', 'meta-available': 'Available', 'meta-services': 'Services',
+    'meta-location-val': 'Bordeaux · Paris, France',
+    'meta-languages-val': 'Arabic · French · English',
+    'meta-available-val': 'Freelance projects',
+    'meta-services-val': 'Product Design · UX Research · Frontend Development',
+    'work-tag': 'Selected Motion & Visual Design Work', 'work-title': 'Creative Portfolio',
+    'work-sub': 'Motion, branding, logos — the visual work behind the products.',
+    'work-h1': '01 / Landscape Formats', 'work-h2': '02 / Portrait Reels',
+    'work-h3': '03 / Brand Layouts', 'work-h4': '04 / Logo Design',
+    'frontend-tag': 'Selected Frontend Engineering Work',
+    'frontend-title': 'Real products, real problems,<br>real impact',
+    'card-fitgym-cat': 'Landing Page / Sport / Dynamic UI',
+    'card-fitgym-title': 'FitGym Premium',
+    'card-medical-cat': 'UI Design / Medical UI / Frontend',
+    'card-medical-title': 'Medic Portal',
+    'card-alpha-cat': 'UI Redesign / UX Audit / Frontend',
+    'card-alpha-title': 'Alpha Nutrition',
+    'ds-tag': 'Product Infrastructure', 'ds-title': 'Design System at Scale —<br>Orange XDLab',
+    'ds-p1': 'During my internship at <strong style="color:var(--text);">Orange XDLab</strong>, I contributed to the evolution of the Orange Unified Design System (ODS) — a large-scale design ecosystem built to ensure consistent, scalable, and accessible digital experiences across Orange products. I collaborated closely with senior designers, the Product Owner, and developers on components, icon systems, illustration libraries, and onboarding workflows.',
+    'ds-stat1-title': 'The Orange Design System ensures a unified and accessible digital experience worldwide. As an intern at XDLab, I worked on optimizing assets and improving the visual consistency of its core tools.', 'ds-stat1-desc': '60+ Components',
+    'ds-stat2-title': 'Improved and redesigned several poorly structured components to optimize usability.', 'ds-stat2-desc': '10+ UI Kits',
+    'ds-stat3-title': 'Developed comprehensive UI kits to accelerate team production and ensure cross-platform visual consistency.', 'ds-stat3-desc': 'Solaris Icon Library',
+    'ds-stat4-title': 'Complete refactoring — cleaned up structures, fixed inconsistencies, removed duplicates, and enhanced metadata and categorization.', 'ds-stat4-desc': 'Onboarding Program',
+    'ds-stat5-title': 'Created an onboarding book, documentation, and a dedicated Teams channel for future interns and apprentices.', 'ds-stat5-desc': 'Design System Benchmark',
+    'ds-stat6-title': 'In-depth analysis of Material Design, Atlassian, Carbon, and others to provide strategic recommendations for OUDS.', 'ds-stat6-desc': "Collaboration",'ds-stat6-title' : 'Partnered with the Product Owner and development teams to ensure system consistency, component maintainability, and technical feasibility.',
+    'ds-link': 'Old Version / Migration to OUDS',
+    'uiux-tag': 'UI/UX Design', 'uiux-title': 'Interfaces that just feel right',
+    'card-uspn-cat': 'Mobile App / Student UX', 'card-uspn-title': 'USPN Mobile App',
+    'card-eco-cat': 'Web Redesign', 'card-eco-title': 'Mon Atelier Écofrugale',
+    'card-retail-cat': 'Mobile App / E-Commerce', 'card-retail-title': 'Retail Mobile App',
+    'ba-tag': 'UX Design', 'ba-title': 'Before &amp; After',
+    'ba-sub': "Every redesign started with a real problem — a confusing layout, a broken flow, or a brand that didn't reflect the product's value. Drag the slider to reveal the transformation.",
+    'ba-label-before': 'Before', 'ba-label-after': 'After',
+    'ba1-cat': 'Product Design', 'ba1-title': 'Mon Atelier Écofrugale',
+    'ba1-desc': "A complete visual overhaul — modernizing the layout, improving user flows, and aligning the interface with the platform's ecological values.",
+    'ba2-cat': 'UI Redesign & Front-end', 'ba2-title': 'Alpha Nutrition',
+    'ba2-desc': 'Redesigned a custom interface that blends brand identity with complex business tools, including a tonnage calculator and automated order forms.',
+    'tools-tag': 'Tools &amp; Craft', 'tools-title': 'The toolkit behind every project',
+    'process-tag': 'The Process', 'process-title': 'How I go from idea<br>to finished product',
+    'process-1-title': 'Discovery &amp; Brief',
+    'process-1-desc': "I start by understanding your goals, scope, target users, and constraints. Whether it's a brand, a product interface, or a full build — this is where I define what success looks like.",
+    'process-2-title': 'Research &amp; Strategy',
+    'process-2-desc': 'User research, competitor analysis, and market context. I map out the landscape before making any creative decisions, grounding every choice in real insight rather than assumptions.',
+    'process-3-title': 'Wireframe &amp; Prototype',
+    'process-3-desc': 'Structure before aesthetics. I define information architecture, user flows, and key interactions as wireframes or clickable prototypes — aligning on the experience before going into visual design.',
+    'process-4-title': 'Design &amp; Iteration',
+    'process-4-desc': 'The main creative phase — UI screens, brand systems, components, or visual assets. Iterative with feedback rounds to make sure every detail is intentional and every decision is justified.',
+    'process-5-title': 'Build &amp; Develop',
+    'process-5-desc': "I bring designs to life with clean, production-ready code. React, Js, or whatever the stack requires — pixel-perfect, performant, and accessible from day one.",
+    'process-6-title': 'Delivery &amp; Handoff',
+    'process-6-desc': 'Final files in the right formats — Figma handoff, brand guidelines, deployed code, or exported assets. Everything organized, documented, and ready to use immediately.',
+    'contact-tag': "Let's Work Together",
+    'contact-title': "Have a project in mind?<br>Let's make it happen",
+    'contact-sub': "I take on a small number of freelance projects alongside my full-time work — startups, agencies, and brands who need sharp design, clean code, or both.",
+    'contact-btn-call': "Let's schedule a call", 'contact-btn-cv': 'View Resume',
+    'contact-form-tag': 'Drop me a line',
+    'form-label-name': 'Name', 'form-placeholder-name': 'Your name',
+    'form-label-email': 'Email', 'form-placeholder-email': 'Your email address',
+    'form-label-subject': 'Subject', 'form-placeholder-subject': 'Subject',
+    'form-label-message': 'Message', 'form-placeholder-message': 'Your message...',
+    'form-submit': 'Send the raven 🐦',
+    'footer-role': 'Product Designer · Paris, France',
+    'footer-copy': '© 2026 Oussama Barkallah. All rights reserved.',
+    'skip-link': 'Skip to main content',
+    'modal-fitgym-tagline': 'Landing Page / UX/UI Design / Frontend',
+    'modal-fitgym-desc': 'Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.',
+    'modal-medical-tagline': 'UX / Medical UI / Frontend',
+    'modal-medical-desc': 'ChirurgiePro is a medical platform for an aesthetic surgery clinic, offering quality care in a modern and welcoming environment. I contributed to the design and development with a focus on user trust, medical clarity, and a reassuring patient experience.',
+    'modal-alpha-tagline': 'UI Redesign / UX Audit / Frontend',
+    'modal-alpha-desc': 'Alpha Nutrition is a Tunisian leader in animal nutrition, specializing in the manufacturing of premixes and feed for various types of livestock, with over 40 years of expertise. I redesigned the website with a full UX audit, and added an online order and delivery form for animal nutrition products.',
+    'modal-uspn-tagline': 'Mobile App / UX Research / Product Design',
+    'modal-uspn-main': 'Designed in a team for students of Université Sorbonne Paris Nord.',
+    'modal-uspn-detail': 'Goal: Replace scattered schedules, emails, and campus services with a single centralized mobile app.<br>I handled the UI design phase — component structure, UI kit, and high-fidelity screens — and contributed to UX research, from discovery to testing.',
+    'modal-uspn-link': 'Download the App →',
+    'modal-retail-tagline': 'Mobile App / E-Commerce',
+    'modal-retail-main': 'A self-initiated concept for a mobile shopping app — clean, fast, and intuitive.',
+    'modal-retail-detail': 'Retail Mobile App is a solo project. I handled the entire process end to end: user flows, sitemap, wireframes, design system, and high-fidelity screens — with a seamless path from discovery to checkout, optimized for one-thumb navigation.',
+    'modal-eco-tagline': 'Web Redesign / Ecological UX',
+    'modal-eco-main': 'A platform helping HR and CSR teams guide employees toward more ecological practices.',
+    'modal-eco-detail': 'UX audit phase: site analysis, heuristic evaluation, and persona definition.<br>Led the UI redesign — restructured the visual hierarchy, improved readability, and aligned the interface with the platform ecological values.',
+  },
+  fr: {
+    'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-work': 'Travaux',
+    'nav-process': 'Processus', 'nav-contact': 'Contact',
+    'hero-greeting': "Bonjour, <span class=\"wave-emoji\">👋</span> je suis",
+    'hero-desc': "Je conçois et développe des produits digitaux — de l'identité de marque à la mise en production. Je prends en charge le cycle complet : UX, interfaces qui convertissent et frontends performants.",
+    'hero-tag-1': 'Product Designer', 'hero-tag-2': 'Développeur Front-End',
+    'hero-btn-call': 'Planifier un appel', 'hero-btn-work': 'Voir les projets',
+    'hero-badge': 'Disponible en freelance',
+    'hero-stat-1': "Années d'expérience", 'hero-stat-2': 'Projets livrés',
+    'about-tag': 'À propos', 'about-title': 'Designer, développeur,<br>et coordinateur.',
+    'about-p1': "Product Designer basé à Bordeaux — arabophone, francophone et anglophone. Je conçois des produits digitaux de bout en bout : recherche utilisateur, wireframes, interfaces qui convertissent et design systems qui passent à l'échelle.",
+    'about-p2': "Je suis également à l'aise côté frontend : HTML, CSS Tailwind, React et JavaScript, ce qui me permet de collaborer étroitement avec les équipes dev et de livrer des solutions techniquement solides.",
+    'about-p3': "J'ai aussi piloté des projets freelance en tant que coordinateur entre les parties prenantes métier et les équipes techniques — équipes internes, agences ou réseaux de freelances.",
+    'meta-location': 'Localisation', 'meta-languages': 'Langues', 'meta-available': 'Disponibilité', 'meta-services': 'Services',
+    'meta-location-val': 'Bordeaux · Paris, France',
+    'meta-languages-val': 'Arabe · Français · Anglais',
+    'meta-available-val': 'Projets freelance',
+    'meta-services-val': 'Product Design · Recherche UX · Développement front-end',
+    'work-tag': 'Motion & Design Visuel — Sélection', 'work-title': 'Portfolio Créatif',
+    'work-sub': 'Motion, branding, logos — le travail visuel derrière les produits.',
+    'work-h1': '01 / Formats Paysage', 'work-h2': '02 / Reels Portrait',
+    'work-h3': '03 / Mises en page Marque', 'work-h4': '04 / Design de Logo',
+    'frontend-tag': 'Développement Frontend — Sélection',
+    'frontend-title': 'De vrais produits, de vrais problèmes,<br>un vrai impact',
+    'card-fitgym-cat': 'Landing Page / Sport / UI Dynamique',
+    'card-fitgym-title': 'FitGym Premium',
+    'card-medical-cat': 'Design UI / Interface Médicale / Frontend',
+    'card-medical-title': 'Portail Médical',
+    'card-alpha-cat': 'Refonte UI / Audit UX / Frontend',
+    'card-alpha-title': 'Alpha Nutrition',
+    'ds-tag': 'Infrastructure Produit', 'ds-title': "Design System à l'échelle —<br>Orange XDLab",
+    'ds-p1': 'Durant mon stage chez <strong style="color:var(--text);">Orange XDLab</strong>, j ai contribué à l évolution de l Orange Unified Design System (ODS) — un écosystème de design à grande échelle conçu pour garantir des expériences digitales cohérentes, évolutives et accessibles sur l ensemble des produits Orange. J ai collaboré étroitement avec des designers seniors, le Product Owner et les développeurs sur les composants, les systèmes d icônes, les bibliothèques d illustrations et les workflows d intégration.',
+    'ds-stat1-title': 'Le design system d Orange garantit une expérience numérique unique et accessible à travers le monde. En tant que stagiaire au sein du XDLab, je suis intervenu pour optimiser ses ressources et renforcer la cohérence visuelle de ses outils.', 'ds-stat1-desc': '+60 Composants',
+    'ds-stat2-title': 'Amélioration et refonte de plusieurs composants mal structurés pour optimiser leur utilisation.', 'ds-stat2-desc': "+10 Kits UI",
+    'ds-stat3-title': 'Création de kits complets accélérant la production de l équipe et garantissant la cohérence visuelle multi-plateformes.', 'ds-stat3-desc': 'Bibliothèque d icônes Solaris',
+    'ds-stat4-title': "Refactorisation complète — nettoyage des structures, correction des incohérences, suppression des doublons et amélioration des métadonnées et de la catégorisation.", 'ds-stat4-desc': 'Programme d intégration :',
+    'ds-stat5-title': 'Création d un livret d accueil (Onboarding Book), d une documentation dédiée et d un canal Teams pour les futurs stagiaires et alternants', 'ds-stat5-desc': "Benchmark Design System",
+    'ds-stat6-title': 'Analyse approfondie de Material Design, Atlassian, Carbon et autres systèmes pour formuler des recommandations stratégiques pour l OUDS.', 'ds-stat6-desc': "Collaboration",'ds-stat6-title':'Travail étroit avec le Product Owner et les équipes de développement pour garantir la cohérence du système, la maintenabilité des composants et la faisabilité technique.',
+    'ds-link': 'Ancienne version / Migration vers OUDS',
+    'uiux-tag': 'UI/UX Design', 'uiux-title': 'Des interfaces qui se sentent juste',
+    'card-uspn-cat': 'Application Mobile / UX Étudiant', 'card-uspn-title': 'Application Mobile USPN',
+    'card-eco-cat': 'Refonte Web', 'card-eco-title': 'Mon Atelier Écofrugale',
+    'card-retail-cat': 'Application Mobile / E-Commerce', 'card-retail-title': 'Concept App Mobile Retail',
+    'ba-tag': 'UX Design', 'ba-title': 'Avant &amp; Après',
+    'ba-sub': "Chaque redesign a démarré d'un vrai problème — une navigation confuse, un parcours cassé, ou une marque qui ne reflétait pas la valeur du produit. Faites glisser le curseur pour révéler la transformation.",
+    'ba-label-before': 'Avant', 'ba-label-after': 'Après',
+    'ba1-cat': 'Product Design', 'ba1-title': 'Mon Atelier Écofrugale',
+    'ba1-desc': "Une refonte visuelle complète — modernisation de la mise en page, amélioration des parcours utilisateurs et alignement de l'interface avec les valeurs écologiques de la plateforme.",
+    'ba2-cat': 'Refonte UI & Frontend', 'ba2-title': 'Alpha Nutrition',
+    'ba2-desc': "Interface redessinée pour allier identité de marque et outils métier complexes, incluant un calculateur de tonnage et des formulaires de commande automatisés.",
+    'tools-tag': 'Outils &amp; Savoir-faire', 'tools-title': "L'arsenal derrière chaque projet",
+    'process-tag': 'Le Processus', 'process-title': "Comment je passe d'une idée<br>au produit final",
+    'process-1-title': 'Découverte &amp; Brief',
+    'process-1-desc': "Je commence par comprendre vos objectifs, le périmètre, les utilisateurs cibles et les contraintes. Qu'il s'agisse d'une marque, d'une interface produit ou d'un développement complet — c'est ici que je définis ce que signifie le succès.",
+    'process-2-title': 'Recherche &amp; Stratégie',
+    'process-2-desc': "Recherche utilisateur, analyse concurrentielle et contexte marché. Je cartographie le terrain avant toute décision créative, en ancrant chaque choix dans de vraies données plutôt que dans des suppositions.",
+    'process-3-title': 'Wireframe &amp; Prototype',
+    'process-3-desc': "La structure avant l'esthétique. Je définis l'architecture de l'information, les parcours utilisateurs et les interactions clés sous forme de wireframes ou de prototypes cliquables — en alignant l'expérience avant de passer au design visuel.",
+    'process-4-title': 'Design &amp; Itération',
+    'process-4-desc': "La phase créative principale — écrans UI, systèmes de marque, composants ou assets visuels. Itératif avec des rounds de feedback pour s'assurer que chaque détail est intentionnel et chaque décision justifiée.",
+    'process-5-title': 'Développement',
+    'process-5-desc': "Je donne vie aux designs avec un code propre et prêt pour la production. React, JS, ou tout ce que la stack requiert — pixel-perfect, performant et accessible dès le premier jour.",
+    'process-6-title': 'Livraison &amp; Passation',
+    'process-6-desc': "Fichiers finaux dans les bons formats — passation Figma, charte graphique, code déployé ou assets exportés. Tout organisé, documenté et prêt à utiliser immédiatement.",
+    'contact-tag': 'Travaillons ensemble',
+    'contact-title': "Un projet en tête ?<br>Concrétisons-le",
+    'contact-sub': "Je prends quelques projets freelance en parallèle de mon activité principale — startups, agences et marques qui ont besoin d'un design soigné, d'un code propre, ou des deux.",
+    'contact-btn-call': 'Planifier un appel', 'contact-btn-cv': 'Voir le CV',
+    'contact-form-tag': 'Écrivez-moi',
+    'form-label-name': 'Nom', 'form-placeholder-name': 'Votre nom',
+    'form-label-email': 'E-mail', 'form-placeholder-email': 'Votre adresse e-mail',
+    'form-label-subject': 'Sujet', 'form-placeholder-subject': 'Sujet',
+    'form-label-message': 'Message', 'form-placeholder-message': 'Votre message...',
+    'form-submit': 'Envoyer 🐦',
+    'footer-role': 'Product Designer · Paris, France',
+    'footer-copy': '© 2026 Oussama Barkallah. Tous droits réservés.',
+    'skip-link': 'Aller au contenu principal',
+    'modal-fitgym-tagline': 'Landing Page / Design UX/UI / Frontend',
+    'modal-fitgym-desc': "Fit Gym est un site fitness. En tant que développeur frontend, j'ai géré l'ensemble du front de la conception à la production. J'ai utilisé Amplitude pour identifier les points de friction dans le parcours de réservation de coaching personnalisé, puis conçu une landing page interactive pour simplifier la prise de rendez-vous et améliorer l'engagement.",
+    'modal-medical-tagline': 'UX / Interface Médicale / Frontend',
+    'modal-medical-desc': "ChirurgiePro est une plateforme médicale pour une clinique de chirurgie esthétique, offrant des soins de qualité dans un cadre moderne et accueillant. J'ai contribué à la conception et au développement en mettant l'accent sur la confiance utilisateur, la clarté médicale et une expérience patient rassurante.",
+    'modal-alpha-tagline': 'Refonte UI / Audit UX / Frontend',
+    'modal-alpha-desc': "Alpha Nutrition est un leader tunisien en nutrition animale, spécialisé dans la fabrication de pré-mélanges et d'aliments pour différents types d'élevages, avec plus de 40 ans d'expertise. J'ai refondu le site avec un audit UX complet et ajouté un formulaire de commande et livraison en ligne.",
+    'modal-uspn-tagline': 'Application Mobile / Recherche UX / Product Design',
+    'modal-uspn-main': "Conçu en équipe pour les étudiants de l'Université Sorbonne Paris Nord.",
+    'modal-uspn-detail': "Objectif : remplacer les emplois du temps éparpillés, les e-mails et les services campus par une seule application mobile centralisée.<br>J'ai géré la phase de design UI — structure des composants, UI kit et écrans haute-fidélité — et contribué à la recherche UX, de la découverte aux tests.",
+    'modal-uspn-link': "Télécharger l'application →",
+    'modal-retail-tagline': 'Application Mobile / E-Commerce',
+    'modal-retail-main': "Un concept personnel pour une application de shopping mobile — épurée, rapide et intuitive.",
+    'modal-retail-detail': "Projet solo mené de bout en bout : parcours utilisateurs, sitemap, wireframes, design system et écrans haute-fidélité — avec un chemin fluide de la découverte au paiement, optimisé pour une navigation à un pouce.",
+    'modal-eco-tagline': 'Refonte Web / UX Écologique',
+    'modal-eco-main': "Une plateforme aidant les équipes RH et RSE à engager les salariés vers des pratiques plus écologiques.",
+    'modal-eco-detail': "Phase d'audit UX : analyse du site, évaluation heuristique et définition des personas.<br>J'ai mené la refonte UI — restructuration de la hiérarchie visuelle, amélioration de la lisibilité et alignement de l'interface avec les valeurs écologiques de la plateforme.",
+  }
+};
+
+const langIds = {
+  'nav-home':        () => document.querySelectorAll('.nav-links a[href="index.html"], #mobile-menu a[href="#home"]'),
+  'nav-about':       () => document.querySelectorAll('.nav-links a[href="#about"], #mobile-menu a[href="#about"]'),
+  'nav-work':        () => document.querySelectorAll('.nav-links a[href="#work"], #mobile-menu a[href="#work"]'),
+  'nav-process':     () => document.querySelectorAll('.nav-links a[href="#process"], #mobile-menu a[href="#process"]'),
+  'nav-contact':     () => document.querySelectorAll('.nav-links a[href="#contact"], #mobile-menu a[href="#contact"]'),
+  'hero-greeting':   () => [document.querySelector('.hero-greeting')],
+  'hero-desc':       () => [document.querySelector('.hero-desc')],
+  'hero-tag-1':      () => [document.querySelectorAll('.hero-tag')[0]],
+  'hero-tag-2':      () => [document.querySelectorAll('.hero-tag')[1]],
+  'hero-badge':      () => [document.querySelector('.hero-badge')],
+  'hero-stat-1':     () => [document.querySelectorAll('.stat-label')[0]],
+  'hero-stat-2':     () => [document.querySelectorAll('.stat-label')[1]],
+  'about-tag':       () => [document.querySelector('#about .section-tag')],
+  'about-title':     () => [document.querySelector('#about .section-title')],
+  'about-p1':        () => [document.querySelectorAll('#about .about-text p')[0]],
+  'about-p2':        () => [document.querySelectorAll('#about .about-text p')[1]],
+  'about-p3':        () => [document.querySelectorAll('#about .about-text p')[2]],
+  'meta-location':   () => [document.querySelectorAll('.meta-key')[0]],
+  'meta-languages':  () => [document.querySelectorAll('.meta-key')[1]],
+  'meta-available':  () => [document.querySelectorAll('.meta-key')[2]],
+  'meta-services':   () => [document.querySelectorAll('.meta-key')[3]],
+  'meta-location-val':  () => [document.querySelectorAll('.meta-val')[0]],
+  'meta-languages-val': () => [document.querySelectorAll('.meta-val')[1]],
+  'meta-available-val': () => [document.querySelectorAll('.meta-val')[2]],
+  'meta-services-val':  () => [document.querySelectorAll('.meta-val')[3]],
+  'work-tag':        () => [document.querySelector('#work .section-tag')],
+  'work-title':      () => [document.querySelector('#work .section-title')],
+  'work-sub':        () => [document.querySelector('#work .section-sub')],
+  'work-h1':         () => document.querySelectorAll('#work h3'),
+  'frontend-tag':    () => [document.querySelector('#frontend .section-tag')],
+  'frontend-title':  () => [document.querySelector('#frontend .section-title')],
+  'ds-tag':          () => [document.querySelector('#design-system .section-tag')],
+  'ds-title':        () => [document.querySelector('#design-system .section-title')],
+  'uiux-tag':        () => [document.querySelector('#uiux .section-tag')],
+  'uiux-title':      () => [document.querySelector('#uiux .section-title')],
+  'ba-tag':          () => [document.querySelector('#redesigns .section-tag')],
+  'ba-title':        () => [document.querySelector('#redesigns .section-title')],
+  'ba-sub':          () => [document.querySelector('#redesigns .section-sub')],
+  'tools-tag':       () => [document.querySelector('#tools .section-tag')],
+  'tools-title':     () => [document.querySelector('#tools .section-title')],
+  'process-tag':     () => [document.querySelector('#process .section-tag')],
+  'process-title':   () => [document.querySelector('#process .section-title')],
+  'contact-tag':     () => [document.querySelector('#contact .section-tag')],
+  'contact-title':   () => [document.querySelector('#contact .section-title')],
+  'contact-sub':     () => [document.querySelector('#contact .section-sub')],
+  'footer-role':     () => [document.querySelector('.footer-copy:first-of-type')],
+  'footer-copy':     () => [document.querySelector('footer .footer-copy:last-of-type')],
+  'skip-link':       () => [document.querySelector('a[href="#main-content"]')],
+};
+
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  const t = translations[lang];
+
+  // Generic keys via langIds
+  for (const [key, getEls] of Object.entries(langIds)) {
+    const val = t[key];
+    if (!val) continue;
+    const els = getEls();
+    if (els instanceof NodeList) els.forEach((el, i) => { if (el) el.textContent = val; });
+    else els.forEach(el => { if (el) el.innerHTML = val; });
+  }
+
+  // Work section sliders headers (4 h3 elements)
+  const workH3s = document.querySelectorAll('#work h3');
+  const workHKeys = ['work-h1','work-h2','work-h3','work-h4'];
+  workH3s.forEach((el, i) => { if (t[workHKeys[i]]) el.textContent = t[workHKeys[i]]; });
+
+  // Hero tags with icons
+  const tags = document.querySelectorAll('.hero-tag');
+  if (tags[0]) tags[0].innerHTML = `<i class="fa-solid fa-mobile-screen" style="color:var(--gold);"></i> ${t['hero-tag-1']}`;
+  if (tags[1]) tags[1].innerHTML = `<i class="fa-solid fa-code" style="color:var(--gold);"></i> ${t['hero-tag-2']}`;
+
+  // Hero badge
+  const badge = document.querySelector('.hero-badge');
+  if (badge) badge.textContent = t['hero-badge'];
+
+  // Hero action buttons (in hero section)
+  const heroBtns = document.querySelectorAll('#home .hero-actions a');
+  if (heroBtns[0]) heroBtns[0].textContent = t['hero-btn-call'];
+  if (heroBtns[1]) heroBtns[1].textContent = t['hero-btn-work'];
+
+  // Contact buttons
+  const contactBtns = document.querySelectorAll('#contact .hero-actions a');
+  if (contactBtns[0]) contactBtns[0].textContent = t['contact-btn-call'];
+  if (contactBtns[1]) contactBtns[1].textContent = t['contact-btn-cv'];
+
+  // Contact form tag
+  const formTag = document.querySelector('#contact .fade-up:last-child .section-tag');
+  if (formTag) formTag.textContent = t['contact-form-tag'];
+
+  // Form labels and placeholders
+  const nameLabel = document.querySelector('label[for="contact-name"]');
+  const emailLabel = document.querySelector('label[for="contact-email"]');
+  const subjectLabel = document.querySelector('label[for="contact-subject"]');
+  const messageLabel = document.querySelector('label[for="contact-message"]');
+  if (nameLabel) nameLabel.textContent = t['form-label-name'];
+  if (emailLabel) emailLabel.textContent = t['form-label-email'];
+  if (subjectLabel) subjectLabel.textContent = t['form-label-subject'];
+  if (messageLabel) messageLabel.textContent = t['form-label-message'];
+  const nameInput = document.getElementById('contact-name');
+  const emailInput = document.getElementById('contact-email');
+  const subjectInput = document.getElementById('contact-subject');
+  const msgInput = document.getElementById('contact-message');
+  if (nameInput) nameInput.placeholder = t['form-placeholder-name'];
+  if (emailInput) emailInput.placeholder = t['form-placeholder-email'];
+  if (subjectInput) subjectInput.placeholder = t['form-placeholder-subject'];
+  if (msgInput) msgInput.placeholder = t['form-placeholder-message'];
+  const submitBtn = document.querySelector('.form-submit');
+  if (submitBtn) submitBtn.textContent = t['form-submit'];
+
+  // Frontend project cards
+  const frontCards = document.querySelectorAll('#projects-slider > div');
+  const frontKeys = [
+    { cat:'card-fitgym-cat', title:'card-fitgym-title', key:'fitgym' },
+    { cat:'card-medical-cat', title:'card-medical-title', key:'medical' },
+    { cat:'card-alpha-cat', title:'card-alpha-title', key:'alpha' },
+  ];
+  frontCards.forEach((card, i) => {
+    const k = frontKeys[i]; if (!k) return;
+    const catEl = card.querySelector('span[style]');
+    const titleEl = card.querySelector('h3');
+    if (catEl && t[k.cat]) catEl.textContent = t[k.cat];
+    if (titleEl && t[k.title]) titleEl.textContent = t[k.title];
+  });
+
+  // UX/UI project cards
+  const uiCards = document.querySelectorAll('#uiux-slider > div');
+  const uiKeys = [
+    { cat:'card-uspn-cat', title:'card-uspn-title' },
+    { cat:'card-eco-cat', title:'card-eco-title' },
+    { cat:'card-retail-cat', title:'card-retail-title' },
+  ];
+  uiCards.forEach((card, i) => {
+    const k = uiKeys[i]; if (!k) return;
+    const catEl = card.querySelector('span[style]');
+    const titleEl = card.querySelector('h3');
+    if (catEl && t[k.cat]) catEl.textContent = t[k.cat];
+    if (titleEl && t[k.title]) titleEl.textContent = t[k.title];
+  });
+
+  // Before/After labels and info blocks
+  document.querySelectorAll('.ba-label.before-lbl').forEach(el => { if (t['ba-label-before']) el.textContent = t['ba-label-before']; });
+  document.querySelectorAll('.ba-label.after-lbl').forEach(el => { if (t['ba-label-after']) el.textContent = t['ba-label-after']; });
+  const baInfos = document.querySelectorAll('.ba-info-block');
+  if (baInfos[0]) {
+    const cat = baInfos[0].querySelector('.project-cat');
+    const title = baInfos[0].querySelector('.project-title');
+    const desc = baInfos[0].querySelector('p');
+    if (cat) cat.textContent = t['ba1-cat'];
+    if (title) title.textContent = t['ba1-title'];
+    if (desc) desc.textContent = t['ba1-desc'];
+  }
+  if (baInfos[1]) {
+    const cat = baInfos[1].querySelector('.project-cat');
+    const title = baInfos[1].querySelector('.project-title');
+    const desc = baInfos[1].querySelector('p');
+    if (cat) cat.textContent = t['ba2-cat'];
+    if (title) title.textContent = t['ba2-title'];
+    if (desc) desc.textContent = t['ba2-desc'];
+  }
+
+  // Design System section
+  const dsPara = document.querySelector('#design-system .space-y-8 > p');
+  if (dsPara) dsPara.innerHTML = t['ds-p1'];
+  const dsStats = document.querySelectorAll('#design-system .grid h4, #design-system .grid p');
+  const dsStatKeys = [
+    'ds-stat1-title','ds-stat1-desc',
+    'ds-stat2-title','ds-stat2-desc',
+    'ds-stat3-title','ds-stat3-desc',
+    'ds-stat4-title','ds-stat4-desc',
+    'ds-stat5-title','ds-stat5-desc',
+    'ds-stat6-title','ds-stat6-desc',
+  ];
+  dsStats.forEach((el, i) => { if (t[dsStatKeys[i]]) el.textContent = t[dsStatKeys[i]]; });
+  const dsLink = document.querySelector('#design-system .flash-text');
+  if (dsLink) { dsLink.childNodes[0].textContent = t['ds-link'] || dsLink.childNodes[0].textContent; }
+
+  // Process steps
+  const processSteps = document.querySelectorAll('#process [role="listitem"]');
+  const procKeys = [
+    { title:'process-1-title', desc:'process-1-desc' },
+    { title:'process-2-title', desc:'process-2-desc' },
+    { title:'process-3-title', desc:'process-3-desc' },
+    { title:'process-4-title', desc:'process-4-desc' },
+    { title:'process-5-title', desc:'process-5-desc' },
+    { title:'process-6-title', desc:'process-6-desc' },
+  ];
+  processSteps.forEach((step, i) => {
+    const k = procKeys[i]; if (!k) return;
+    const titleEl = step.querySelector('h3');
+    const descEl = step.querySelector('p');
+    if (titleEl && t[k.title]) titleEl.innerHTML = t[k.title];
+    if (descEl && t[k.desc]) descEl.textContent = t[k.desc];
+  });
+
+  // Update projectsData and uiUxProjectsData for modals
+  if (window.projectsData) {
+    window.projectsData.fitgym.tagline = t['modal-fitgym-tagline'] || window.projectsData.fitgym.tagline;
+    window.projectsData.fitgym.desc = t['modal-fitgym-desc'] || window.projectsData.fitgym.desc;
+    window.projectsData.medical.tagline = t['modal-medical-tagline'] || window.projectsData.medical.tagline;
+    window.projectsData.medical.desc = t['modal-medical-desc'] || window.projectsData.medical.desc;
+    window.projectsData.alpha.tagline = t['modal-alpha-tagline'] || window.projectsData.alpha.tagline;
+    window.projectsData.alpha.desc = t['modal-alpha-desc'] || window.projectsData.alpha.desc;
+  }
+  if (window.uiUxProjectsData) {
+    window.uiUxProjectsData.uspn.tagline = t['modal-uspn-tagline'] || window.uiUxProjectsData.uspn.tagline;
+    window.uiUxProjectsData.uspn.mainDesc = t['modal-uspn-main'] || window.uiUxProjectsData.uspn.mainDesc;
+    window.uiUxProjectsData.uspn.detailedDesc = t['modal-uspn-detail'] || window.uiUxProjectsData.uspn.detailedDesc;
+    window.uiUxProjectsData.uspn.linkLabel = t['modal-uspn-link'] || window.uiUxProjectsData.uspn.linkLabel;
+    window.uiUxProjectsData.retail.tagline = t['modal-retail-tagline'] || window.uiUxProjectsData.retail.tagline;
+    window.uiUxProjectsData.retail.mainDesc = t['modal-retail-main'] || window.uiUxProjectsData.retail.mainDesc;
+    window.uiUxProjectsData.retail.detailedDesc = t['modal-retail-detail'] || window.uiUxProjectsData.retail.detailedDesc;
+    window.uiUxProjectsData.ecofrugale.tagline = t['modal-eco-tagline'] || window.uiUxProjectsData.ecofrugale.tagline;
+    window.uiUxProjectsData.ecofrugale.mainDesc = t['modal-eco-main'] || window.uiUxProjectsData.ecofrugale.mainDesc;
+    window.uiUxProjectsData.ecofrugale.detailedDesc = t['modal-eco-detail'] || window.uiUxProjectsData.ecofrugale.detailedDesc;
+  }
+
+  // Update select
+  document.getElementById('lang-toggle').value = lang;
+}
+
+const langToggle = document.getElementById('lang-toggle');
+langToggle.value = currentLang;
+langToggle.addEventListener('change', e => applyLang(e.target.value));
+applyLang(currentLang);
+
+</script>
+</body>
+</html>
