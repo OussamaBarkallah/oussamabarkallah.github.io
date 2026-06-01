@@ -782,7 +782,7 @@ function scrollCustomSlider(id, dir) {
     <div id="projects-slider" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden fade-up">
       <div onclick="openProjectModal('fitgym')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
         <div>
-          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/front-3.mov" loop muted playsinline autoplay></video></div>
+          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/front-3.mp4" loop muted playsinline autoplay></video></div>
           <div class="px-2">
             <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">Landing Page / Sport / Dynamic UI</span>
             <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;margin-bottom:.5rem;color:var(--text);">FitGym Premium</h3>
@@ -846,7 +846,7 @@ function scrollFrontendSlider(dir) {
 }
 const projectsData = {
   medical: { title:"Medic Portal", tagline:"UX / Medical UI / Frontend", desc:"Medic, is a medical platform for an aesthetic surgery clinic, offering quality care in a modern and welcoming environment. I contributed to the design and development with a focus on user trust, medical clarity, and a reassuring patient experience.", image:"assets/front-2.png", isVideo:false, tags:["CSS Tailwind","Medical UI","UX Trust","Responsive"] },
-  fitgym:  { title:"FitGym Premium", tagline:"Landing Page / UX/UI Design / Frontend", desc:"Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.", image:"assets/front-3.mov", isVideo:true, tags:["JavaScript","UI UX","Amplitude","Performance","Accessibility"] },
+  fitgym:  { title:"FitGym Premium", tagline:"Landing Page / UX/UI Design / Frontend", desc:"Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.", image:"assets/front-3.mp4", isVideo:true, tags:["JavaScript","UI UX","Amplitude","Performance","Accessibility"] },
   alpha:   { title:"Alpha Nutrition", tagline:"UI Redesign / UX Audit / Frontend", desc:"Alpha Nutrition is a Tunisian leader in animal nutrition, specializing in the manufacturing of premixes and feed for various types of livestock, with over 40 years of expertise. I redesigned the website with a full UX audit, and added an online order and delivery form for animal nutrition products.", image:"assets/Alfa.mp4", isVideo:true, tags:["UX Audit","UI Redesign","E-Commerce","Online Order Form"] }
 };
 function openProjectModal(key) {
@@ -1118,7 +1118,7 @@ document.getElementById('uiux-modal').addEventListener('click', function(e) { if
         <div class="ba-card" id="ba2">
           <div class="ba-slider-wrap">
             <img class="ba-img" src="assets/cow1.png" alt="Before" />
-            <img class="ba-img after" id="ba2-after" src="assets/cow2.png" alt="After" />
+            <img class="ba-img after" id="ba2-after" src="assets/cow2-2.png" alt="After" />
             <div class="ba-label before-lbl">Before</div>
             <div class="ba-label after-lbl">After</div>
             <div class="ba-handle" id="ba2-handle"></div>
