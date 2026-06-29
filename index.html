@@ -481,7 +481,7 @@
   <div class="nav-center">
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="#about">About</a>
+      <!-- ──<a href="#about">About</a> ── --> 
       <a href="#work">Work</a>
       <a href="#process">Process</a>
       <a href="#contact">Contact</a>
@@ -501,7 +501,7 @@
     <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:1rem;height:1rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <a href="#home" onclick="closeMobile()">Home</a>
-  <a href="#about" onclick="closeMobile()">About</a>
+  <!-- ── <a href="#about" onclick="closeMobile()">About</a> ── -->
   <a href="#work" onclick="closeMobile()">Work</a>
   <a href="#process" onclick="closeMobile()">Process</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
@@ -521,7 +521,7 @@
       <p class="hero-desc">I design and build digital products — from brand identity to live platform. I take products from concept to launch, craft UIs that convert, and write frontends that perform.</p>
       <div class="hero-tags">
         <span class="hero-tag"><i class="fa-solid fa-mobile-screen" style="color:var(--gold);"></i> Product Designer</span>
-        <span class="hero-tag"><i class="fa-solid fa-code" style="color:var(--gold);"></i> Front-End</span>
+       <!-- ──   <span class="hero-tag"><i class="fa-solid fa-code" style="color:var(--gold);"></i> Front-End</span>── -->
       </div>
       <div class="hero-actions">
         <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/oussama-obarkallah/30min'}); return false;" class="btn-primary">Let's schedule a call</a>
@@ -595,21 +595,23 @@
 <div class="animated-divider"></div>
 
 <!-- ── ABOUT ── -->
+ <!-- ── 
+
 <section id="about" class="border-t border-[var(--border)]">
   <div class="section-inner">
     <div class="fade-up reveal-left">
       <p class="section-tag">About</p>
-      <h2 class="section-title">Designer, developer,<br>and coordinator.</h2>
+      <h2 class="section-title">Product Designer</h2>
       <div class="about-text">
-        <p>Product Designer based in Bordeaux — fluent in Arabic, French, and English. I design digital products end to end: user research, wireframes, interfaces that convert, and design systems that scale.</p>
+        <p>Based in France — fluent in Arabic, French, and English. I design digital products end to end: user research, wireframes, interfaces that convert, and design systems that scale.</p>
         <p>I'm also comfortable on the frontend: HTML, CSS Tailwind, React and JavaScript, which helps me collaborate closely with dev teams and deliver technically grounded solutions.</p>
-        <p>I've also led freelance projects as a coordinator between business stakeholders and technical teams — whether that's an in-house team, an agency, or a network of freelancers.</p>
+        <p>Beyond product design, I create motion graphics, digital and print assets, retouch images, and use AI to generate and enhance visuals.</p>
       </div>
     </div>
     <div class="fade-up reveal-right" style="transition-delay:.15s">
       <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-t border-b [border-color:var(--border)] gap-1">
         <span class="meta-key">Location</span>
-        <span class="meta-val">Bordeaux · Paris, France</span>
+        <span class="meta-val">France</span>
       </div>
       <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-b [border-color:var(--border)] gap-1">
         <span class="meta-key">Languages</span>
@@ -639,14 +641,14 @@
 </a>
     </div>
   </div>
-</section>
+</section> ── -->
 
 <!-- ── WORK: MOTION & VISUAL ── -->
 <section id="work" class="border-t border-[var(--border)]">
   <div style="max-width:1200px;margin:0 auto;padding:4rem 2.5rem;">
     <div class="mb-12 fade-up">
       <p class="section-tag">Selected Motion & Visual Design Work</p>
-      <h2 class="section-title">Creative Portfolio</h2>
+      <h2 class="section-title">Visual Design Work</h2>
       <p class="section-sub">Motion, branding, logos — the visual work behind the products.</p>
     </div>
 
@@ -1452,16 +1454,16 @@ const translations = {
     'hero-btn-call': "Let's schedule a call", 'hero-btn-work': 'View Work',
     'hero-badge': 'Available for freelance',
     'hero-stat-1': 'Years of experience', 'hero-stat-2': 'Projects delivered',
-    'about-tag': 'About', 'about-title': 'Designer, developer,<br>and coordinator.',
-    'about-p1': 'Product Designer based in Bordeaux — fluent in Arabic, French, and English. I design digital products end to end: user research, wireframes, interfaces that convert, and design systems that scale.',
+    'about-tag': 'About', 'about-title': 'Product Designer',
+    'about-p1': 'Based in France — fluent in Arabic, French, and English. I design digital products end to end: user research, wireframes, interfaces that convert, and design systems that scale.',
     'about-p2': "I'm also comfortable on the frontend: HTML, CSS Tailwind, React and JavaScript, which helps me collaborate closely with dev teams and deliver technically grounded solutions.",
-    'about-p3': "I've also led freelance projects as a coordinator between business stakeholders and technical teams — whether that's an in-house team, an agency, or a network of freelancers.",
+    'about-p3': "Beyond product design, I create motion graphics, digital and print assets, retouch images, and use AI to generate and enhance visuals.",
     'meta-location': 'Location', 'meta-languages': 'Languages', 'meta-available': 'Available', 'meta-services': 'Services',
-    'meta-location-val': 'Bordeaux · Paris, France',
+    'meta-location-val': 'France',
     'meta-languages-val': 'Arabic · French · English',
     'meta-available-val': 'Freelance projects',
-    'meta-services-val': 'Product Design · UX Research · Frontend Development',
-    'work-tag': 'Selected Motion & Visual Design Work', 'work-title': 'Creative Portfolio',
+    'meta-services-val': 'Product Design · UX Research · Frontend Development · Motion & Visual Design',
+    'work-tag': 'Selected Motion & Visual Design Work', 'work-title': 'Ideas and stories brought to life',
     'work-sub': 'Motion, branding, logos — the visual work behind the products.',
     'work-h1': '01 / Landscape Formats', 'work-h2': '02 / Portrait Reels',
     'work-h3': '03 / Brand Layouts', 'work-h4': '04 / Logo Design',
@@ -1475,7 +1477,7 @@ const translations = {
     'card-alpha-title': 'Alpha Nutrition',
     'ds-tag': 'Product Infrastructure', 'ds-title': 'Design System at Scale —<br>Orange XDLab',
     'ds-p1': 'During my internship at <strong style="color:var(--text);">Orange XDLab</strong>, I contributed to the evolution of the Orange Unified Design System (ODS) — a large-scale design ecosystem built to ensure consistent, scalable, and accessible digital experiences across Orange products. I collaborated closely with senior designers, the Product Owner, and developers on components, icon systems, illustration libraries, and onboarding workflows.',
-    'ds-stat1-title': 'The Orange Design System ensures a unified and accessible digital experience worldwide. As an intern at XDLab, I worked on optimizing assets and improving the visual consistency of its core tools.', 'ds-stat1-desc': '60+ Components',
+    'ds-stat1-title': 'Orange Design System ensures a unified and accessible digital experience worldwide. As an intern at XDLab, I worked on optimizing assets and improving the visual consistency of its core tools.', 'ds-stat1-desc': '60+ Components',
     'ds-stat2-title': 'Improved and redesigned several poorly structured components to optimize usability.', 'ds-stat2-desc': '10+ UI Kits',
     'ds-stat3-title': 'Developed comprehensive UI kits to accelerate team production and ensure cross-platform visual consistency.', 'ds-stat3-desc': 'Solaris Icon Library',
     'ds-stat4-title': 'Complete refactoring — cleaned up structures, fixed inconsistencies, removed duplicates, and enhanced metadata and categorization.', 'ds-stat4-desc': 'Onboarding Program',
@@ -1546,16 +1548,16 @@ const translations = {
     'hero-btn-call': 'Planifier un appel', 'hero-btn-work': 'Voir les projets',
     'hero-badge': 'Disponible en freelance',
     'hero-stat-1': "Années d'expérience", 'hero-stat-2': 'Projets livrés',
-    'about-tag': 'À propos', 'about-title': 'Designer, développeur,<br>et coordinateur.',
-    'about-p1': "Product Designer basé à Bordeaux — arabophone, francophone et anglophone. Je conçois des produits digitaux de bout en bout : recherche utilisateur, wireframes, interfaces qui convertissent et design systems qui passent à l'échelle.",
+    'about-tag': 'À propos', 'about-title': 'Product Designer',
+    'about-p1': "Basé en France — arabophone, francophone et anglophone. Je conçois des produits digitaux de bout en bout : recherche utilisateur, wireframes, interfaces qui convertissent et design systems qui passent à l'échelle.",
     'about-p2': "Je suis également à l'aise côté frontend : HTML, CSS Tailwind, React et JavaScript, ce qui me permet de collaborer étroitement avec les équipes dev et de livrer des solutions techniquement solides.",
-    'about-p3': "J'ai aussi piloté des projets freelance en tant que coordinateur entre les parties prenantes métier et les équipes techniques — équipes internes, agences ou réseaux de freelances.",
+    'about-p3': "Au-delà du Product Design, je crée des animations graphiques, des supports digitaux et imprimés, réalise des retouches d'images et utilise l'IA pour générer et améliorer des visuels.",
     'meta-location': 'Localisation', 'meta-languages': 'Langues', 'meta-available': 'Disponibilité', 'meta-services': 'Services',
-    'meta-location-val': 'Bordeaux · Paris, France',
+    'meta-location-val': 'France',
     'meta-languages-val': 'Arabe · Français · Anglais',
     'meta-available-val': 'Projets freelance',
-    'meta-services-val': 'Product Design · Recherche UX · Développement front-end',
-    'work-tag': 'Motion & Design Visuel — Sélection', 'work-title': 'Portfolio Créatif',
+    'meta-services-val': 'Design Produit · Recherche UX · Développement Frontend · Motion Design & Design Visuel',
+    'work-tag': 'Motion & Design Visuel — Sélection', 'work-title': 'Quand les idées prennent vie',
     'work-sub': 'Motion, branding, logos — le travail visuel derrière les produits.',
     'work-h1': '01 / Formats Paysage', 'work-h2': '02 / Reels Portrait',
     'work-h3': '03 / Mises en page Marque', 'work-h4': '04 / Design de Logo',
