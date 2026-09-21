@@ -781,7 +781,22 @@ function scrollCustomSlider(id, dir) {
       <button class="slider-btn" onclick="scrollFrontendSlider(-1)" aria-label="Slide left"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
       <button class="slider-btn" onclick="scrollFrontendSlider(1)" aria-label="Slide right"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
     </div>
+
     <div id="projects-slider" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden fade-up">
+
+      <div onclick="openProjectModal('rufouf')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
+        <div>
+          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/rufouf.mp4" loop muted playsinline autoplay></video></div>
+          <div class="px-2">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">WEB APP / UI-UX DESIGN / FULL-STACK</span>
+            <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;margin-bottom:.5rem;color:var(--text);">رفوف — Rufouf</h3>
+          </div>
+        </div>
+        <div class="px-2 flex flex-wrap gap-2 mt-auto">
+          <span class="project-tag">Next.js</span><span class="project-tag">TypeScript</span><span class="project-tag">Tailwind CSS</span><span class="project-tag">RTL</span><span class="project-tag">Responsive</span><span class="project-tag">UI/UX</span>
+        </div>
+      </div>
+
       <div onclick="openProjectModal('fitgym')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
         <div>
           <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/front-3.mp4" loop muted playsinline autoplay></video></div>
@@ -791,9 +806,10 @@ function scrollCustomSlider(id, dir) {
           </div>
         </div>
         <div class="px-2 flex flex-wrap gap-2 mt-auto">
-          <span class="project-tag">JavaScript</span><span class="project-tag">UI UX</span><span class="project-tag">Amplitude</span>
+          <span class="project-tag">JavaScript</span><span class="project-tag">Tailwind CSS</span><span class="project-tag">UI UX</span><span class="project-tag">Amplitude</span><span class="project-tag">Accessibility</span>
         </div>
       </div>
+
       <div onclick="openProjectModal('medical')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
         <div>
           <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/front-2.png" alt="Medic" /></div>
@@ -806,9 +822,10 @@ function scrollCustomSlider(id, dir) {
           <span class="project-tag">CSS Tailwind</span><span class="project-tag">Medical UI</span><span class="project-tag">UX Trust</span> 
         </div>
       </div>
+
       <div onclick="openProjectModal('alpha')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
         <div>
-          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/Alfa.mp4" loop muted playsinline autoplay></video></div>
+          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/alfa.mp4" loop muted playsinline autoplay></video></div>
           <div class="px-2">
             <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">UI Redesign / UX Audit / Frontend </span>
             <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;margin-bottom:.5rem;color:var(--text);">Alpha Nutrition</h3> 
@@ -844,11 +861,12 @@ function scrollCustomSlider(id, dir) {
 <script>
 function scrollFrontendSlider(dir) {
   const s = document.getElementById('projects-slider');
-  if (s) { const w = s.querySelector('div').offsetWidth + 24; s.scrollLeft += dir * w; }
+  if (s) { const card = s.querySelector(':scope > div'); const w = (card ? card.offsetWidth : 0) + 24; s.scrollLeft += dir * w; }
 }
 const projectsData = {
-  medical: { title:"Medic Portal", tagline:"UX / Medical UI / Frontend", desc:"Medic, is a medical platform for an aesthetic surgery clinic, offering quality care in a modern and welcoming environment. I contributed to the design and development with a focus on user trust, medical clarity, and a reassuring patient experience.", image:"assets/front-2.png", isVideo:false, tags:["CSS Tailwind","Medical UI","UX Trust","Responsive"] },
+  rufouf:  { title:"رفوف — Rufouf", tagline:"Web App / UI-UX Design / Full-Stack", desc:"Rufouf is an Arabic books discovery platform. I owned the project end-to-end: UI/UX design on Google Stitch (full design system, Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. I connected the app to the Google Books API with strict Arabic-only filtering, so every book, price, and purchase/read link shown is real — no mock data anywhere. Features include search, detailed book pages, favorites, and a personal reading library, fully responsive across devices.", image:"assets/rufouf.mp4", isVideo:true, tags:["Next.js","TypeScript","Tailwind CSS","Google Books API","RTL","Accessibility"] },
   fitgym:  { title:"FitGym Premium", tagline:"Landing Page / UX/UI Design / Frontend", desc:"Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.", image:"assets/front-3.mp4", isVideo:true, tags:["JavaScript","UI UX","Amplitude","Performance","Accessibility"] },
+  medical: { title:"Medic Portal", tagline:"UX / Medical UI / Frontend", desc:"Medic, is a medical platform for an aesthetic surgery clinic, offering quality care in a modern and welcoming environment. I contributed to the design and development with a focus on user trust, medical clarity, and a reassuring patient experience.", image:"assets/front-2.png", isVideo:false, tags:["CSS Tailwind","Medical UI","UX Trust","Responsive"] },
   alpha:   { title:"Alpha Nutrition", tagline:"UI Redesign / UX Audit / Frontend", desc:"Alpha Nutrition is a Tunisian leader in animal nutrition, specializing in the manufacturing of premixes and feed for various types of livestock, with over 40 years of expertise. I redesigned the website with a full UX audit, and added an online order and delivery form for animal nutrition products.", image:"assets/Alfa.mp4", isVideo:true, tags:["UX Audit","UI Redesign","E-Commerce","Online Order Form"] }
 };
 function openProjectModal(key) {
@@ -1469,6 +1487,8 @@ const translations = {
     'work-h3': '03 / Brand Layouts', 'work-h4': '04 / Logo Design',
     'frontend-tag': 'Selected Frontend Engineering Work',
     'frontend-title': 'Real products, real problems,<br>real impact',
+    'card-rufouf-cat': 'Web App / UI-UX Design / Full-Stack',
+    'card-rufouf-title': 'Rufouf',
     'card-fitgym-cat': 'Landing Page / Sport / Dynamic UI',
     'card-fitgym-title': 'FitGym Premium',
     'card-medical-cat': 'UI Design / Medical UI / Frontend',
@@ -1522,12 +1542,19 @@ const translations = {
     'footer-role': 'Product Designer · Paris, France',
     'footer-copy': '© 2026 Oussama Barkallah. All rights reserved.',
     'skip-link': 'Skip to main content',
+
+    'modal-rufouf-tagline': 'Web App / UI-UX Design / Full-Stack',
+    'modal-rufouf-desc': 'Rufouf is an Arabic books discovery platform. I owned the project end-to-end: UI/UX design on Google Stitch (full design system, Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. I connected the app to the Google Books API with strict Arabic-only filtering, so every book, price, and purchase/read link shown is real — no mock data anywhere. Features include search, detailed book pages, favorites, and a personal reading library, fully responsive across devices.',
+
     'modal-fitgym-tagline': 'Landing Page / UX/UI Design / Frontend',
     'modal-fitgym-desc': 'Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.',
+
     'modal-medical-tagline': 'UX / Medical UI / Frontend',
     'modal-medical-desc': 'ChirurgiePro is a medical platform for an aesthetic surgery clinic, offering quality care in a modern and welcoming environment. I contributed to the design and development with a focus on user trust, medical clarity, and a reassuring patient experience.',
+
     'modal-alpha-tagline': 'UI Redesign / UX Audit / Frontend',
     'modal-alpha-desc': 'Alpha Nutrition is a Tunisian leader in animal nutrition, specializing in the manufacturing of premixes and feed for various types of livestock, with over 40 years of expertise. I redesigned the website with a full UX audit, and added an online order and delivery form for animal nutrition products.',
+
     'modal-uspn-tagline': 'Mobile App / UX Research / Product Design',
     'modal-uspn-main': 'Designed in a team for students of Université Sorbonne Paris Nord.',
     'modal-uspn-detail': 'Goal: Replace scattered schedules, emails, and campus services with a single centralized mobile app.<br>I handled the UI design phase — component structure, UI kit, and high-fidelity screens — and contributed to UX research, from discovery to testing.',
@@ -1561,8 +1588,10 @@ const translations = {
     'work-sub': 'Motion, branding, logos — le travail visuel derrière les produits.',
     'work-h1': '01 / Formats Paysage', 'work-h2': '02 / Reels Portrait',
     'work-h3': '03 / Mises en page Marque', 'work-h4': '04 / Design de Logo',
-    'frontend-tag': 'Développement Frontend — Sélection',
+    'frontend-tag': 'Développement web — Sélection',
     'frontend-title': 'De vrais produits, de vrais problèmes,<br>un vrai impact',
+    'card-rufouf-cat': 'Web App / UI-UX Design / Full-Stack',
+    'card-rufouf-title': 'Rufouf',
     'card-fitgym-cat': 'Landing Page / Sport / UI Dynamique',
     'card-fitgym-title': 'FitGym Premium',
     'card-medical-cat': 'Design UI / Interface Médicale / Frontend',
@@ -1616,12 +1645,17 @@ const translations = {
     'footer-role': 'Product Designer · Paris, France',
     'footer-copy': '© 2026 Oussama Barkallah. Tous droits réservés.',
     'skip-link': 'Aller au contenu principal',
+
+    'modal-rufouf-tagline': 'Web App / UI-UX Design / Full-Stack',
+    'modal-rufouf-desc': 'Rufouf is an Arabic books discovery platform. I owned the project end-to-end: UI/UX design on Google Stitch (full design system, Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. I connected the app to the Google Books API with strict Arabic-only filtering, so every book, price, and purchase/read link shown is real — no mock data anywhere. Features include search, detailed book pages, favorites, and a personal reading library, fully responsive across devices.',
+
     'modal-fitgym-tagline': 'Landing Page / Design UX/UI / Frontend',
     'modal-fitgym-desc': "Fit Gym est un site fitness. En tant que développeur frontend, j'ai géré l'ensemble du front de la conception à la production. J'ai utilisé Amplitude pour identifier les points de friction dans le parcours de réservation de coaching personnalisé, puis conçu une landing page interactive pour simplifier la prise de rendez-vous et améliorer l'engagement.",
     'modal-medical-tagline': 'UX / Interface Médicale / Frontend',
     'modal-medical-desc': "ChirurgiePro est une plateforme médicale pour une clinique de chirurgie esthétique, offrant des soins de qualité dans un cadre moderne et accueillant. J'ai contribué à la conception et au développement en mettant l'accent sur la confiance utilisateur, la clarté médicale et une expérience patient rassurante.",
     'modal-alpha-tagline': 'Refonte UI / Audit UX / Frontend',
     'modal-alpha-desc': "Alpha Nutrition est un leader tunisien en nutrition animale, spécialisé dans la fabrication de pré-mélanges et d'aliments pour différents types d'élevages, avec plus de 40 ans d'expertise. J'ai refondu le site avec un audit UX complet et ajouté un formulaire de commande et livraison en ligne.",
+
     'modal-uspn-tagline': 'Application Mobile / Recherche UX / Product Design',
     'modal-uspn-main': "Conçu en équipe pour les étudiants de l'Université Sorbonne Paris Nord.",
     'modal-uspn-detail': "Objectif : remplacer les emplois du temps éparpillés, les e-mails et les services campus par une seule application mobile centralisée.<br>J'ai géré la phase de design UI — structure des composants, UI kit et écrans haute-fidélité — et contribué à la recherche UX, de la découverte aux tests.",
@@ -1754,6 +1788,7 @@ function applyLang(lang) {
   // Frontend project cards
   const frontCards = document.querySelectorAll('#projects-slider > div');
   const frontKeys = [
+    { cat:'card-rufouf-cat', title:'card-rufouf-title', key:'rufouf' },
     { cat:'card-fitgym-cat', title:'card-fitgym-title', key:'fitgym' },
     { cat:'card-medical-cat', title:'card-medical-title', key:'medical' },
     { cat:'card-alpha-cat', title:'card-alpha-title', key:'alpha' },
@@ -1838,6 +1873,8 @@ function applyLang(lang) {
 
   // Update projectsData and uiUxProjectsData for modals
   if (window.projectsData) {
+     window.projectsData.rufouf.tagline = t['modal-rufouf-tagline'] || window.projectsData.rufouf.tagline;
+    window.projectsData.rufouf.desc = t['modal-rufouf-desc'] || window.projectsData.rufouf.desc;
     window.projectsData.fitgym.tagline = t['modal-fitgym-tagline'] || window.projectsData.fitgym.tagline;
     window.projectsData.fitgym.desc = t['modal-fitgym-desc'] || window.projectsData.fitgym.desc;
     window.projectsData.medical.tagline = t['modal-medical-tagline'] || window.projectsData.medical.tagline;
