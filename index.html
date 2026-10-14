@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth light">
+<html lang="en" class="scroll-smooth dark">
+  <script>
+  document.documentElement.setAttribute('data-theme', 'dark');
+</script>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oussama Barkallah – Product & Visual Designer</title>
+  <title>Oussama Barkallah — Freelance Product Designer & Front-End</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <style>
+    /* ── Design system ── */
+    a[href*="unified-design-system"] { color: #F16E00 !important; }
+    a[href*="unified-design-system"] svg { stroke: #F16E00 !important;}
+
     /* ── THEME VARIABLES ── */
     :root {
       --bg: #0a0a0a; --surface: #121212; --surface2: #1e1e1e;
@@ -460,6 +467,85 @@
       .tool-card { padding: 1rem .75rem; }
       .process-step-inner { margin-left: -1rem; padding: 1rem; }
     }
+
+    /* Legacy sections are retained in source for later consolidation into Web & UX/UI Projects. */
+    #frontend, #uiux, #redesigns, #tools, #process { display:none !important; }
+
+
+    .project-real-media { padding:0; background:var(--surface2); }
+    .project-real-media img,.project-real-media video { width:100%;height:100%;min-height:245px;max-height:360px;object-fit:cover;display:block;transition:transform .65s cubic-bezier(.2,.8,.2,1); }
+    .project-real-media video { background:#f5f1ec; }
+    .new-project-card:hover .project-real-media img,.new-project-card:hover .project-real-media video { transform:scale(1.035); }
+    .new-project-card[role="button"] { cursor:pointer; }
+    .new-project-card[role="button"]:focus-visible { outline:3px solid var(--gold);outline-offset:4px; }
+    .project-real-media .visual-label { box-shadow:0 4px 18px #0002; }
+
+    /* ── INDEX-1 CREATIVE REDESIGN ── */
+    :root {
+      --bg:#f7f7f4; --surface:#ffffff; --surface2:#eff0ff; --border:#e1e3ec;
+      --text:#111322; --muted:#62677d; --accent:#25264a; --gold:#6558f5;
+      --green:#a9f36b; --text-invert:#ffffff;
+    }
+    html.light { --bg:#f7f7f4; --surface:#ffffff; --surface2:#eff0ff; --border:#e1e3ec; --text:#111322; --muted:#62677d; --accent:#25264a; --gold:#6558f5; --green:#a9f36b; --text-invert:#ffffff; }
+    html:not(.light) { --bg:#10111b; --surface:#191b2a; --surface2:#23263a; --border:#30334a; --text:#f7f7fb; --muted:#b1b5ca; --accent:#f7f7fb; --gold:#a69bff; --green:#b7ff7a; --text-invert:#111322; }
+    body { background:var(--bg); }
+    #navbar { padding:1rem clamp(1.1rem,4vw,4rem); }
+    .nav-logo img { border-radius:14px; }
+    .nav-links { gap:clamp(.8rem,2vw,2rem); }
+    .nav-links a { letter-spacing:.02em; text-transform:none; font-weight:600; }
+    .nav-cta,.btn-primary { background:var(--gold); color:#fff; border-radius:12px; letter-spacing:0; text-transform:none; }
+    .btn-secondary { border-radius:12px; }
+    #home { min-height:92vh; }
+    #home::after { background:radial-gradient(ellipse 45% 50% at 78% 35%,rgba(101,88,245,.17),transparent 70%),radial-gradient(ellipse 35% 35% at 18% 82%,rgba(169,243,107,.16),transparent 70%); }
+    .hero-name { letter-spacing:-.065em; }
+    .hero-name span { color:var(--gold); }
+    .hero-badge { background:color-mix(in srgb,var(--green) 18%,transparent); border-color:color-mix(in srgb,var(--green) 55%,transparent); color:var(--text); }
+    .section-inner { max-width:1320px; padding:clamp(4rem,8vw,7rem) clamp(1.2rem,4vw,3.5rem); }
+    .section-tag { color:var(--gold); letter-spacing:.12em; }
+    .section-title { letter-spacing:-.055em; }
+    .project-card,.brand-card,.service-card,.tool-card,.stat-card { border-radius:1.2rem; }
+    .project-card:hover,.brand-card:hover { box-shadow:0 18px 50px rgba(48,45,110,.12); }
+    .new-projects-section { border-top:1px solid var(--border); position:relative; overflow:hidden; }
+    .new-projects-section::before { content:""; position:absolute; width:32rem;height:32rem;border-radius:50%;right:-15rem;top:2rem;background:rgba(101,88,245,.08);filter:blur(2px);pointer-events:none; }
+    .section-heading { position:relative; z-index:1; margin-bottom:2.5rem; }
+    .accent-dot { color:var(--gold); }
+    .new-projects-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;position:relative;z-index:1; }
+    .new-project-card { min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:1.35rem;background:var(--surface);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,border-color .3s; }
+    .new-project-card:hover { transform:translateY(-7px);box-shadow:0 22px 55px rgba(39,38,90,.13);border-color:var(--gold); }
+    .project-feature { grid-column:span 2;display:grid;grid-template-columns:1.1fr 1fr; }
+    .new-project-visual { min-height:285px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:1.5rem;isolation:isolate; }
+    .visual-label { position:absolute;top:1rem;left:1rem;z-index:5;padding:.38rem .7rem;border-radius:99px;background:rgba(255,255,255,.82);color:#1b1b2d;font-size:.68rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;backdrop-filter:blur(8px); }
+    .visual-shop { background:linear-gradient(135deg,#f0e8db,#d7e0d2); }
+    .shop-window { width:100%;max-width:480px;background:#fcfaf5;color:#20231f;border-radius:12px;box-shadow:0 20px 45px #1d2b2630;overflow:hidden;transform:rotate(-2deg);transition:transform .6s; }
+    .new-project-card:hover .shop-window { transform:rotate(0) scale(1.025); }
+    .mock-top { display:flex;justify-content:space-between;padding:1rem;font-size:.65rem;border-bottom:1px solid #e7e3dc; }
+    .mock-top span:first-child { font-weight:900;letter-spacing:.18em; }
+    .shop-content { min-height:180px;display:flex;align-items:center;justify-content:space-between;padding:1.3rem;gap:1rem; }
+    .shop-content small,.dash-main>small,.phone small { font-size:.55rem;letter-spacing:.13em;font-weight:800; }
+    .shop-content h3 { font-size:clamp(1.2rem,2vw,2rem);line-height:1.02;margin:.6rem 0 1rem; }
+    .mock-button { display:inline-block;background:#232a22;color:#fff;border-radius:99px;padding:.65rem .9rem;font-size:.62rem;font-weight:700; }
+    .product-orb { width:125px;height:155px;flex-shrink:0;border-radius:60px 60px 20px 20px;background:linear-gradient(145deg,#e7d8c1,#b5a287);display:grid;place-items:center;box-shadow:inset -12px -10px 24px #6c574626; }
+    .product-orb span { font-size:.7rem;letter-spacing:.2em;font-weight:900; }
+    .visual-saas { background:linear-gradient(135deg,#e6e9ff,#c5c9ff); }
+    .dashboard-mock { display:flex;width:100%;max-width:490px;min-height:205px;border-radius:12px;background:#fbfbff;box-shadow:0 18px 42px #26295728;overflow:hidden;color:#252744;transform:rotate(1deg);transition:transform .5s; }
+    .new-project-card:hover .dashboard-mock { transform:rotate(0) translateY(-3px); }
+    .dashboard-mock aside { width:90px;background:#242744;color:white;display:flex;flex-direction:column;gap:.9rem;padding:1rem .65rem;font-size:.58rem; }
+    .dashboard-mock aside b { margin-bottom:.8rem;color:#c9c7ff; }.dashboard-mock aside i {font-style:normal;opacity:.7;}
+    .dash-main { flex:1;padding:1.1rem;min-width:0; }.dash-main h3 {font-size:1rem;margin:.5rem 0 .2rem;}.dash-main p {font-size:.6rem;color:#8589a2;}
+    .metric-row {display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.9rem;}.metric-row div {border:1px solid #ececf5;border-radius:8px;padding:.5rem;display:flex;flex-direction:column;gap:.2rem;}.metric-row small {font-size:.55rem;color:#8589a2;}.metric-row b {font-size:1.1rem;}
+    .chart {height:48px;display:flex;align-items:end;gap:6px;padding:.4rem .2rem;margin-top:.5rem;border-bottom:1px solid #e9eaf4;}.chart span {flex:1;border-radius:4px 4px 0 0;background:linear-gradient(#8b81ff,#b9b4ff);height:var(--h,50%);}.chart span:nth-child(1){height:25%}.chart span:nth-child(2){height:43%}.chart span:nth-child(3){height:34%}.chart span:nth-child(4){height:68%}.chart span:nth-child(5){height:54%}.chart span:nth-child(6){height:78%}.chart span:nth-child(7){height:62%}.chart span:nth-child(8){height:92%}
+    .visual-agency {background:#111525;color:#fff;}.agency-mock {width:100%;min-height:220px;padding:1.2rem;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 80%,#414c85,transparent 42%);}.agency-nav {font-size:.6rem;letter-spacing:.1em;display:flex;justify-content:space-between;position:relative;z-index:2;}.agency-nav span {font-size:.5rem;color:#c4c8da;}.agency-title {position:relative;z-index:2;font-size:clamp(1.8rem,4vw,3.3rem);font-weight:800;letter-spacing:-.06em;line-height:.92;margin-top:2rem;}.agency-title em {color:#b8ff83;font-style:normal;}.agency-bottom {position:relative;z-index:2;font-size:.58rem;line-height:1.7;color:#c4c8da;margin-top:1.5rem;}.agency-circle {position:absolute;width:150px;height:150px;border:1px solid #b8ff8355;border-radius:50%;right:-20px;bottom:-50px;box-shadow:0 0 0 22px #b8ff8310,0 0 0 44px #b8ff8308;}
+    .visual-booking {background:linear-gradient(140deg,#f7dfcc,#e7bda9);}.booking-mock {width:100%;max-width:400px;min-height:220px;background:#fffaf5;border-radius:14px;padding:1.1rem;color:#30241f;box-shadow:0 18px 45px #774a3420;position:relative;overflow:hidden;}.booking-head {display:flex;justify-content:space-between;font-size:.6rem;align-items:center;}.booking-head b {font-size:1.1rem;}.booking-head span {color:#87756d;}.booking-mock h3 {font-size:1.5rem;line-height:1.02;margin:1.2rem 0;position:relative;z-index:1;}.booking-fields {display:flex;gap:.35rem;position:relative;z-index:1;}.booking-fields span {background:#f2e8df;padding:.45rem;border-radius:6px;font-size:.48rem;display:flex;flex-direction:column;gap:.2rem;}.booking-fields b {font-size:.58rem;}.booking-mock .mock-button {margin-top:.8rem;background:#452e28;position:relative;z-index:1;}.booking-food {position:absolute;width:125px;height:125px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f5d68d 0 10%,#67814c 11% 20%,#bd5f3b 21% 31%,#f0c98b 32% 46%,#fff 47%);right:-30px;bottom:-45px;opacity:.7;}
+    .visual-mobile {background:linear-gradient(135deg,#e7e2ff,#c6c1f8);}.phone-row {display:flex;gap:1rem;align-items:center;}.phone {width:125px;height:210px;border:5px solid #22243a;border-radius:22px;background:#fcfbff;color:#20213a;padding:1.2rem .65rem .65rem;position:relative;box-shadow:0 14px 25px #24244a25;transition:transform .5s;}.new-project-card:hover .phone:first-child {transform:translateY(-5px) rotate(-3deg);}.new-project-card:hover .phone-back {transform:translateY(5px) rotate(3deg);}.phone-back {background:#242641;color:white;margin-top:1.4rem;}.phone-notch {position:absolute;top:3px;left:50%;transform:translateX(-50%);width:42px;height:8px;background:#22243a;border-radius:99px;}.phone h3 {font-size:.95rem;line-height:1.02;margin:.55rem 0;}.phone-ring {width:70px;height:70px;border-radius:50%;border:7px solid #a5ef6e;border-right-color:#e5e4f3;display:grid;place-content:center;font-weight:900;font-size:1rem;margin:.4rem auto;}.phone-ring span {font-size:.55rem;display:inline;}.phone p {font-size:.55rem;text-align:center;color:#777b92;}.phone-line {height:5px;border-radius:99px;background:#e8e7f4;margin-top:.7rem;}.phone-line.short {width:60%;}.phone-task {font-size:.48rem;background:#353853;border-radius:5px;padding:.45rem .3rem;margin-top:.55rem;}.phone-pill {font-size:.48rem;background:#b5ff7a;color:#20213a;padding:.5rem;border-radius:99px;text-align:center;margin-top:.8rem;}
+    .new-project-copy {padding:1.4rem 1.5rem 1.6rem;}.project-feature .new-project-copy {display:flex;flex-direction:column;justify-content:center;padding:clamp(1.4rem,4vw,3rem);}.project-meta {display:flex;gap:.7rem;flex-wrap:wrap;font-size:.68rem;color:var(--gold);font-weight:700;letter-spacing:.03em;text-transform:uppercase;}.new-project-copy h3 {font-size:clamp(1.2rem,2vw,1.65rem);letter-spacing:-.04em;margin:.65rem 0;}.new-project-copy p {color:var(--muted);font-size:.92rem;line-height:1.7;}.project-tags {display:flex;gap:.45rem;flex-wrap:wrap;margin-top:1rem;}.project-tags span {font-size:.68rem;padding:.35rem .65rem;background:var(--surface2);border-radius:99px;}.project-status {display:inline-flex;margin-top:1.2rem;font-size:.72rem;font-weight:700;color:var(--muted);}.projects-footnote {font-size:.78rem;color:var(--muted);margin-top:1.4rem;}
+    #design-system,#visual-motion,#contact,#about {scroll-margin-top:80px;}
+    #visual-motion .section-inner {padding-top:5rem;}
+    .reveal {opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);}
+    .reveal.is-visible {opacity:1;transform:translateY(0);}
+    .new-project-card:nth-child(2){transition-delay:.06s}.new-project-card:nth-child(3){transition-delay:.12s}.new-project-card:nth-child(4){transition-delay:.18s}.new-project-card:nth-child(5){transition-delay:.24s}
+    @media(max-width:760px){.new-projects-grid{grid-template-columns:1fr}.project-feature{grid-column:auto;display:flex;flex-direction:column}.new-project-visual{min-height:245px}.project-feature .new-project-visual{min-height:260px}.new-project-copy,.project-feature .new-project-copy{padding:1.25rem}.dashboard-mock{max-width:100%}.dashboard-mock aside{width:72px}.agency-title{font-size:2.3rem}.nav-links{gap:.75rem}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal,.fade-up,.reveal-left,.reveal-right,.reveal-scale{opacity:1;transform:none}}
+
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -468,7 +554,7 @@
 
 <a href="#main-content" style="position:fixed;top:-100px;left:1rem;z-index:10000;background:var(--gold);color:#000;font-family:'Syne',sans-serif;font-weight:700;padding:.6rem 1.2rem;border-radius:.5rem;font-size:.85rem;transition:top .2s;text-decoration:none;" onfocus="this.style.top='1rem'" onblur="this.style.top='-100px'">Skip to main content</a>
 
-<div id="page-curtain"><div class="curtain-logo">Oussama <span>Barkallah</span></div></div>
+<div id="page-curtain"><div class="curtain-logo">Loading<span> ...</span></div></div>
 <div id="scroll-progress"></div>
 <div id="cursor-glow"></div>
 
@@ -480,11 +566,12 @@
   </div>
   <div class="nav-center">
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <!-- ──<a href="#about">About</a> ── --> 
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" data-nav-key="nav-home">Hero</a>
+      <a href="#about" data-nav-key="nav-about">About</a> 
+      <a href="#web-uxui" data-nav-key="nav-work">Web UX/UI</a>
+      <a href="#design-system" data-nav-key="nav-process">Orange DS</a>
+      <a href="#visual-motion" data-nav-key="nav-visual">Visual &amp; Motion</a>
+      <a href="#contact" data-nav-key="nav-contact">Contact</a>
     </div>
   </div>
   <div class="nav-right">
@@ -500,11 +587,12 @@
   <button onclick="closeMobile()" aria-label="Close mobile menu" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid var(--border);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);">
     <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:1rem;height:1rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
-  <a href="#home" onclick="closeMobile()">Home</a>
-  <!-- ── <a href="#about" onclick="closeMobile()">About</a> ── -->
-  <a href="#work" onclick="closeMobile()">Work</a>
-  <a href="#process" onclick="closeMobile()">Process</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#home" data-nav-key="nav-home" onclick="closeMobile()">Hero</a>
+  <a href="#about" data-nav-key="nav-about" onclick="closeMobile()">About</a>
+  <a href="#web-uxui" data-nav-key="nav-work" onclick="closeMobile()">Web UX/UI</a>
+  <a href="#design-system" data-nav-key="nav-process" onclick="closeMobile()">Orange DS</a>
+  <a href="#visual-motion" data-nav-key="nav-visual" onclick="closeMobile()">Visual &amp; Motion</a>
+  <a href="#contact" data-nav-key="nav-contact" onclick="closeMobile()">Contact</a>
   <!-- ── <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle light/dark theme" style="margin-top:.5rem;">🌙</button> ── -->
 </div>
 
@@ -525,7 +613,7 @@
       </div>
       <div class="hero-actions">
         <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/oussama-obarkallah/30min'}); return false;" class="btn-primary">Let's schedule a call</a>
-        <a href="#work" class="btn-secondary">View Work</a>
+        <a href="#web-uxui" class="btn-secondary">View Work</a>
       </div>
       <br>
       <div class="hero-badge">Available for freelance</div>
@@ -537,7 +625,7 @@
       </div>
       <div class="hero-stats">
         <div class="stat-card">
-          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-num">7<span>+</span></div>
           <div class="stat-label">Years of experience</div>
         </div>
         <div class="stat-card">
@@ -594,9 +682,7 @@
 </div>
 <div class="animated-divider"></div>
 
-<!-- ── ABOUT ── -->
- <!-- ── 
-
+<!-- ABOUT -->
 <section id="about" class="border-t border-[var(--border)]">
   <div class="section-inner">
     <div class="fade-up reveal-left">
@@ -641,133 +727,11 @@
 </a>
     </div>
   </div>
-</section> ── -->
-
-<!-- ── WORK: MOTION & VISUAL ── -->
-<section id="work" class="border-t border-[var(--border)]">
-  <div style="max-width:1200px;margin:0 auto;padding:4rem 2.5rem;">
-    <div class="mb-12 fade-up">
-      <p class="section-tag">Selected Motion & Visual Design Work</p>
-      <h2 class="section-title">Visual Design Work</h2>
-      <p class="section-sub">Motion, branding, logos — the visual work behind the products.</p>
-    </div>
-
-    <div class="flex flex-col md:flex-row gap-8 items-stretch mb-12">
-  <div class="flex-1 flex flex-col min-w-0">
-    <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">01 / Landscape Formats</h3>
-    
-    <div id="slider-landscape" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden flex-1">
-      
-      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
-        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m2.mp4" loop muted playsinline autoplay></video>
-      </div>
-      
-      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
-        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m3.mp4" loop muted playsinline autoplay></video>
-      </div>
-      
-      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
-        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m4.mp4" loop muted playsinline autoplay></video>
-      </div>
-      
-      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
-        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m1.mp4" loop muted playsinline autoplay></video>
-      </div>
-      
-      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
-        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m5.mp4" loop muted playsinline autoplay></video>
-      </div>
-      
-      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
-        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m6.mp4" loop muted playsinline autoplay></video>
-      </div>
-
-    </div>
-    
-    <div class="slider-controls">
-      <button class="slider-btn" onclick="scrollCustomSlider('slider-landscape',-1)" aria-label="Previous landscape slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
-      <button class="slider-btn" onclick="scrollCustomSlider('slider-landscape',1)" aria-label="Next landscape slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
-    </div>
-  </div>
-
-  <div class="hidden md:block w-[1px] bg-[var(--border)] self-stretch mx-2"></div>
-
-      <!-- Portrait Slider -->
-      <div class="flex-1 flex flex-col min-w-0">
-        <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">02 / Portrait Reels</h3>
-        <div id="slider-portrait" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp1.mp4" loop muted playsinline autoplay></video></div>
-          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp2.mp4" loop muted playsinline autoplay></video></div>
-          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp3.mp4" loop muted playsinline autoplay></video></div>
-          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp4.mp4" loop muted playsinline autoplay></video></div>
-          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp5.mp4" loop muted playsinline autoplay></video></div>
-          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp6.mp4" loop muted playsinline autoplay></video></div>
-        </div>
-        <div class="slider-controls">
-          <button class="slider-btn" onclick="scrollCustomSlider('slider-portrait',-1)" aria-label="Previous portrait slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
-          <button class="slider-btn" onclick="scrollCustomSlider('slider-portrait',1)" aria-label="Next portrait slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Brand + Logo -->
-    <div class="flex flex-col md:flex-row gap-8 items-stretch" id="visual-design-grid">
-      <div class="w-full md:w-2/3 flex flex-col min-w-0">
-        <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">03 / Brand Layouts</h3>
-        <div id="slider-visuals" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A1.png" alt="Brand layout 1"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A2.png" alt="Brand layout 2"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A3.png" alt="Brand layout 3"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A4.png" alt="Brand layout 4"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A5.png" alt="Brand layout 5"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A6.png" alt="Brand layout 6"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A7.png" alt="Brand layout 7"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A8.png" alt="Brand layout 8"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A9.png" alt="Brand layout 9"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A10.png" alt="Brand layout 10"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A11.png" alt="Brand layout 11"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A12.png" alt="Brand layout 12"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A13.png" alt="Brand layout 13"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A14.png" alt="Brand layout 14"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A15.png" alt="Brand layout 15"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A16.png" alt="Brand layout 16"></div>
-          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A17.png" alt="Brand layout 17"></div>
-        </div>
-        <div class="slider-controls">
-          <button class="slider-btn" onclick="scrollCustomSlider('slider-visuals',-1)" aria-label="Previous brand layout"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
-          <button class="slider-btn" onclick="scrollCustomSlider('slider-visuals',1)" aria-label="Next brand layout"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
-        </div>
-      </div>
-
-      <div class="hidden md:block w-[1px] bg-[var(--border)] self-stretch mx-2"></div>
-
-      <div class="w-full md:w-1/3 flex flex-col min-w-0">
-        <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">04 / Logo Design</h3>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L1.mp4" loop muted playsinline autoplay></video></div>
-          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L2.mov" loop muted playsinline autoplay></video></div>
-          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L3.mov" loop muted playsinline autoplay></video></div>
-          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L4.mov" loop muted playsinline autoplay></video></div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<script>
-function scrollCustomSlider(id, dir) {
-  const s = document.getElementById(id);
-  if (s) { const step = s.querySelector('div').offsetWidth + 16; s.scrollLeft += dir * step; }
-}
-(function autoScroll() {
-  const slider = document.getElementById('slider-visuals');
-  setInterval(() => {
-    if (!slider) return;
-    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) slider.scrollLeft = 0;
-    else slider.scrollLeft += slider.offsetWidth;
-  }, 2000);
-})();
-</script>
+
+<!-- ── WORK: MOTION & VISUAL ── -->
+
 
 <!-- ── FRONTEND PROJECTS ── -->
 <section id="frontend" class="border-t border-[var(--border)]">
@@ -867,7 +831,7 @@ const projectsData = {
   rufouf:  { title:"رفوف — Rufouf", tagline:"Web App / UI-UX Design / Full-Stack", desc:"Rufouf is an Arabic books discovery platform. I owned the project end-to-end: UI/UX design on Google Stitch (full design system, Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. I connected the app to the Google Books API with strict Arabic-only filtering, so every book, price, and purchase/read link shown is real — no mock data anywhere. Features include search, detailed book pages, favorites, and a personal reading library, fully responsive across devices.", image:"assets/rufouf.mp4", isVideo:true, tags:["Next.js","TypeScript","Tailwind CSS","Google Books API","RTL","Accessibility"] },
   fitgym:  { title:"FitGym Premium", tagline:"Landing Page / UX/UI Design / Frontend", desc:"Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.", image:"assets/front-3.mp4", isVideo:true, tags:["JavaScript","UI UX","Amplitude","Performance","Accessibility"] },
   medical: { title:"Medic Portal", tagline:"UX / Medical UI / Frontend", desc:"Medic, is a medical platform for an aesthetic surgery clinic, offering quality care in a modern and welcoming environment. I contributed to the design and development with a focus on user trust, medical clarity, and a reassuring patient experience.", image:"assets/front-2.png", isVideo:false, tags:["CSS Tailwind","Medical UI","UX Trust","Responsive"] },
-  alpha:   { title:"Alpha Nutrition", tagline:"UI Redesign / UX Audit / Frontend", desc:"Alpha Nutrition is a Tunisian leader in animal nutrition, specializing in the manufacturing of premixes and feed for various types of livestock, with over 40 years of expertise. I redesigned the website with a full UX audit, and added an online order and delivery form for animal nutrition products.", image:"assets/Alfa.mp4", isVideo:true, tags:["UX Audit","UI Redesign","E-Commerce","Online Order Form"] }
+  alpha:   { title:"Alpha Nutrition", tagline:"UI Redesign / UX Audit / Frontend", desc:"Alpha Nutrition is a Tunisian leader in animal nutrition, specializing in the manufacturing of premixes and feed for various types of livestock, with over 40 years of expertise. I redesigned the website with a full UX audit, and added an online order and delivery form for animal nutrition products.", image:"assets/alfa.mp4", isVideo:true, tags:["UX Audit","UI Redesign","E-Commerce","Online Order Form"] }
 };
 function openProjectModal(key) {
   const d = projectsData[key]; if (!d) return;
@@ -890,6 +854,37 @@ document.getElementById('project-modal').addEventListener('click',function(e){if
 </script>
 
 <!-- ── ORANGE DESIGN SYSTEM ── -->
+
+
+<section id="web-uxui" class="new-projects-section">
+  <div class="section-inner">
+    <div class="section-heading reveal">
+      <p class="section-tag">Web Projects</p>
+      <h2 class="section-title">Web &amp; UX/UI Projects<span class="accent-dot">.</span></h2>
+      <p class="section-sub">A selection of digital products and experiences across web, mobile and product design.</p>
+    </div>
+    <div class="new-projects-grid">
+      <article class="new-project-card project-feature reveal" onclick="openProjectModal('rufouf')" role="button" tabindex="0" aria-label="Open details for Rufouf">
+        <div class="new-project-visual project-real-media"><span class="visual-label">01 / Web app</span><video src="assets/rufouf.mp4" muted playsinline autoplay loop aria-label="Rufouf Arabic books app preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web app</span><span>UX/UI · Front-End</span></div><h3>Rufouf (رفوف)</h3><p>A web app concept focused on discovering and exploring reading content, with a clear navigation system and responsive interface.</p><div class="project-tags"><span>Information architecture</span><span>Web UI</span><span>Responsive</span></div><span class="project-status">Project to detail</span></div>
+      </article>
+      <article class="new-project-card reveal" onclick="openProjectModal('alpha')" role="button" tabindex="0" aria-label="Open details for Alpha Nutrition">
+        <div class="new-project-visual project-real-media"><span class="visual-label">02 / Web &amp; UX</span><video src="assets/alfa.mp4" muted playsinline autoplay loop aria-label="Alpha Nutrition website preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web design</span><span>UX/UI</span></div><h3>Alpha Nutrition</h3><p>A business-focused digital experience for presenting nutrition products and simplifying product discovery and enquiry flows.</p><div class="project-tags"><span>UX audit</span><span>Web design</span><span>Forms</span></div><span class="project-status">Case study to detail</span></div>
+      </article>
+      <article class="new-project-card reveal" onclick="openUiUxModal('uspn')" role="button" tabindex="0" aria-label="Open details for USPN">
+        <div class="new-project-visual project-real-media"><span class="visual-label">03 / Mobile app</span><img src="assets/ux-ui2.png" alt="USPN Mobile App — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Mobile app</span><span>UX/UI</span></div><h3>USPN</h3><p>A student-focused mobile experience designed to make campus information and everyday university journeys easier to access.</p><div class="project-tags"><span>Mobile UX</span><span>User flows</span><span>UI design</span></div><span class="project-status">Case study to detail</span></div>
+      </article>
+      <article class="new-project-card reveal" onclick="openUiUxModal('ecofrugale')" role="button" tabindex="0" aria-label="Open details for Mon Atelier Écofrugal">
+        <div class="new-project-visual project-real-media"><span class="visual-label">04 / Web redesign</span><img src="assets/ux-ui4.png" alt="Mon Atelier Écofrugal — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Web redesign</span><span>UX/UI</span></div><h3>Mon Atelier Écofrugal</h3><p>A clearer and more engaging web experience for discovering eco-friendly ideas, practical guides and workshops.</p><div class="project-tags"><span>Content structure</span><span>Redesign</span><span>Responsive UI</span></div><span class="project-status">Case study to detail</span></div>
+      </article>
+      <article class="new-project-card reveal" onclick="openUiUxModal('retail')" role="button" tabindex="0" aria-label="Open details for E-commerce App">
+        <div class="new-project-visual project-real-media"><span class="visual-label">05 / Product design</span><img src="assets/ux-ui3.png" alt="E-commerce mobile app — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Product design</span><span>E-commerce</span></div><h3>E-commerce App</h3><p>A shopping experience concept focused on product discovery, product details, cart interactions and a smooth mobile journey.</p><div class="project-tags"><span>Product UX</span><span>Shopping flow</span><span>Mobile UI</span></div><span class="project-status">Concept to develop</span></div>
+      </article>
+    </div>
+    
+  </div>
+</section>
+
+
 <section id="design-system" class="border-t border-[var(--border)]">
   <div style="max-width:1200px;margin:0 auto;padding:4rem 2.5rem;">
     <div class="mb-10 fade-up">
@@ -926,7 +921,7 @@ document.getElementById('project-modal').addEventListener('click',function(e){if
           </div>
           <div class="mt-4 flex justify-start">
             <div class="p-4 bg-[var(--surface)] border border-[var(--border)] rounded-xl shadow-xl">
-              <a href="https://unified-design-system.orange.com/472794e18/p/88133e-orange-unified-design-system" target="_blank" class="flash-text flex items-center gap-2 uppercase hover:text-[var(--gold)] transition-colors" style="font-size:var(--fs-xs);font-family:monospace;color:var(--muted);">
+              <a href="https://unified-design-system.orange.com/472794e18/p/88133e-orange-unified-design-system" target="_blank" class="flash-text flex items-center gap-2 uppercase hover:text-[var(--gold)] transition-colors" style="font-size:var(--fs-xs);font-family:monospace;color:#F16E00;">
                 Old Version / Migration vers OUDS
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
               </a>
@@ -1042,7 +1037,7 @@ const uiUxProjectsData = {
     title: "USPN Mobile App",
     tagline: "Mobile App / UX Research / Product Design",
     mainDesc: "Designed in a team for students of Université Sorbonne Paris Nord.",
-    detailedDesc: "Goal: Replace scattered schedules, emails, and campus services with a single centralized mobile app.<br>I handled the UI design phase — component structure, UI kit, and high-fidelity screens — and contributed to UX research, from discovery to testing.<br><br>",
+    detailedDesc: "USPN App is a mobile app concept designed with a team for students at Université Sorbonne Paris Nord. Its goal is to bring schedules, university updates, and campus services together in one accessible platform. I focused on UI design, creating the component structure, UI kit, and high-fidelity screens, while contributing to UX research from discovery to testing.<br><br>",
     image: "assets/ux-ui2-2.png",
     prototypeUrl: null,
     link: "https://www.univ-spn.fr/lapplication-mobile/",
@@ -1250,6 +1245,130 @@ document.getElementById('uiux-modal').addEventListener('click', function(e) { if
 </section>
 
 <!-- ── CONTACT ── -->
+<section id="visual-motion" class="border-t border-[var(--border)]">
+  <div style="max-width:1200px;margin:0 auto;padding:4rem 2.5rem;">
+    <div class="mb-12 fade-up">
+      <p class="section-tag">Visual & Motion</p>
+      <h2 class="section-title">Visual & Motion Design</h2>
+      <p class="section-sub">Motion, branding, logos — the visual work behind the products.</p>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-8 items-stretch mb-12">
+  <div class="flex-1 flex flex-col min-w-0">
+    <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">01 / Landscape Formats</h3>
+    
+    <div id="slider-landscape" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden flex-1">
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m2.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m3.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m4.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m1.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m5.mp4" loop muted playsinline autoplay></video>
+      </div>
+      
+      <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start overflow-hidden flex items-center justify-center">
+        <video class="w-full max-w-2xl aspect-video rounded-xl mx-auto" style="max-height:340px; object-fit:cover;" src="assets/m6.mp4" loop muted playsinline autoplay></video>
+      </div>
+
+    </div>
+    
+    <div class="slider-controls">
+      <button class="slider-btn" onclick="scrollCustomSlider('slider-landscape',-1)" aria-label="Previous landscape slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+      <button class="slider-btn" onclick="scrollCustomSlider('slider-landscape',1)" aria-label="Next landscape slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <div class="hidden md:block w-[1px] bg-[var(--border)] self-stretch mx-2"></div>
+
+      <!-- Portrait Slider -->
+      <div class="flex-1 flex flex-col min-w-0">
+        <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">02 / Portrait Reels</h3>
+        <div id="slider-portrait" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp1.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp2.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp3.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp4.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp5.mp4" loop muted playsinline autoplay></video></div>
+          <div class="w-[calc(50%-8px)] min-w-[calc(50%-8px)] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[9/16] overflow-hidden"><video class="w-full h-full object-cover rounded-xl" src="assets/mp6.mp4" loop muted playsinline autoplay></video></div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" onclick="scrollCustomSlider('slider-portrait',-1)" aria-label="Previous portrait slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+          <button class="slider-btn" onclick="scrollCustomSlider('slider-portrait',1)" aria-label="Next portrait slide"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand + Logo -->
+    <div class="flex flex-col md:flex-row gap-8 items-stretch" id="visual-design-grid">
+      <div class="w-full md:w-2/3 flex flex-col min-w-0">
+        <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">03 / Brand Layouts</h3>
+        <div id="slider-visuals" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A1.png" alt="Brand layout 1"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A2.png" alt="Brand layout 2"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A3.png" alt="Brand layout 3"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A4.png" alt="Brand layout 4"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A5.png" alt="Brand layout 5"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A6.png" alt="Brand layout 6"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A7.png" alt="Brand layout 7"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A8.png" alt="Brand layout 8"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A9.png" alt="Brand layout 9"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A10.png" alt="Brand layout 10"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A11.png" alt="Brand layout 11"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A12.png" alt="Brand layout 12"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A13.png" alt="Brand layout 13"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A14.png" alt="Brand layout 14"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A15.png" alt="Brand layout 15"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A16.png" alt="Brand layout 16"></div>
+          <div class="w-full min-w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start aspect-[16/9] overflow-hidden"><img class="w-full h-full object-cover rounded-xl" src="assets/A17.png" alt="Brand layout 17"></div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" onclick="scrollCustomSlider('slider-visuals',-1)" aria-label="Previous brand layout"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+          <button class="slider-btn" onclick="scrollCustomSlider('slider-visuals',1)" aria-label="Next brand layout"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <div class="hidden md:block w-[1px] bg-[var(--border)] self-stretch mx-2"></div>
+
+      <div class="w-full md:w-1/3 flex flex-col min-w-0">
+        <h3 style="font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:1rem;color:var(--text);">04 / Logo Design</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L1.mp4" loop muted playsinline autoplay></video></div>
+          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L2.mov" loop muted playsinline autoplay></video></div>
+          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L3.mov" loop muted playsinline autoplay></video></div>
+          <div class="aspect-square flex items-center justify-center overflow-hidden bg-black rounded-xl border border-white/20 p-8"><video class="w-full h-full object-contain" src="assets/L4.mov" loop muted playsinline autoplay></video></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function scrollCustomSlider(id, dir) {
+  const s = document.getElementById(id);
+  if (s) { const step = s.querySelector('div').offsetWidth + 16; s.scrollLeft += dir * step; }
+}
+(function autoScroll() {
+  const slider = document.getElementById('slider-visuals');
+  setInterval(() => {
+    if (!slider) return;
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) slider.scrollLeft = 0;
+    else slider.scrollLeft += slider.offsetWidth;
+  }, 2000);
+})();
+</script>
 <section id="contact" class="border-t border-[var(--border)]">
   <div class="section-inner">
     <div class="fade-up">
@@ -1387,7 +1506,7 @@ function toggleTheme() {
 toggleBtn.addEventListener('click', toggleTheme);
 if (toggleBtnMobile) toggleBtnMobile.addEventListener('click', toggleTheme);
 const saved = localStorage.getItem('theme');
-const prefLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+const prefLight = window.matchMedia('(prefers-color-scheme: dark)').matches;
 if (saved !== 'dark') {
   htmlEl.classList.add('light');
   toggleBtn.textContent = '☀️';
@@ -1464,8 +1583,20 @@ document.querySelectorAll('.section-tag').forEach(el => { el.classList.add('reve
 // ── LANGUAGE SWITCHER ──
 const translations = {
   en: {
-    'nav-home': 'Home', 'nav-about': 'About', 'nav-work': 'Work',
-    'nav-process': 'Process', 'nav-contact': 'Contact',
+    'nav-home': 'Home', 'nav-about': 'About', 'nav-work': 'Web UX/UI',
+    'nav-process': 'Orange DS', 'nav-contact': 'Contact', 'nav-visual': 'Visual & Motion',
+    'webprojects-tag': 'Projets web', 'webprojects-title': 'Projets Web & UX/UI', 'webprojects-sub': 'Une sélection de produits et d’expériences numériques pour le web, le mobile et le design produit.',
+    'web-rufouf-desc': 'Une plateforme de découverte de livres en arabe, conçue et développée de bout en bout, avec prise en charge RTL, recherche, fiches de livres, favoris et bibliothèque personnelle.',
+    'web-alpha-desc': 'Une expérience numérique métier pour présenter des produits de nutrition animale et simplifier leur découverte ainsi que les demandes de contact.',
+    'web-uspn-desc': 'Une expérience mobile pensée pour les étudiants afin de faciliter l’accès aux informations du campus et aux services universitaires.',
+    'web-eco-desc': 'Une expérience web plus claire et engageante pour découvrir des idées écologiques, des guides pratiques et des ateliers.',
+    'web-retail-desc': 'Une expérience d’achat centrée sur la découverte des produits, les fiches détaillées, le panier et un parcours mobile fluide.',
+    'webprojects-tag': 'Web Projects', 'webprojects-title': 'Web & UX/UI Projects', 'webprojects-sub': 'A selection of digital products and experiences across web, mobile and product design.',
+    'web-rufouf-desc': 'An Arabic books discovery platform, designed and developed end to end with RTL support, search, book details, favorites and a personal library.',
+    'web-alpha-desc': 'A business-focused digital experience for presenting nutrition products and simplifying product discovery and enquiry flows.',
+    'web-uspn-desc': 'A student-focused mobile experience designed to make campus information and everyday university journeys easier to access.',
+    'web-eco-desc': 'A clearer and more engaging web experience for discovering eco-friendly ideas, practical guides and workshops.',
+    'web-retail-desc': 'A shopping experience focused on product discovery, product details, cart interactions and a smooth mobile journey.',
     'hero-greeting': "Hi, <span class=\"wave-emoji\">👋</span> I'm",
     'hero-desc': "I design and build digital products — from brand identity to live platform. I take products from concept to launch, craft UIs that convert, and write frontends that perform.",
     'hero-tag-1': 'Product Designer', 'hero-tag-2': 'Front-End',
@@ -1481,7 +1612,7 @@ const translations = {
     'meta-languages-val': 'Arabic · French · English',
     'meta-available-val': 'Freelance projects',
     'meta-services-val': 'Product Design · UX Research · Frontend Development · Motion & Visual Design',
-    'work-tag': 'Selected Motion & Visual Design Work', 'work-title': 'Ideas and stories brought to life',
+    'work-tag': 'Visual & Motion', 'work-title': 'Ideas and stories brought to life',
     'work-sub': 'Motion, branding, logos — the visual work behind the products.',
     'work-h1': '01 / Landscape Formats', 'work-h2': '02 / Portrait Reels',
     'work-h3': '03 / Brand Layouts', 'work-h4': '04 / Logo Design',
@@ -1544,7 +1675,7 @@ const translations = {
     'skip-link': 'Skip to main content',
 
     'modal-rufouf-tagline': 'Web App / UI-UX Design / Full-Stack',
-    'modal-rufouf-desc': 'Rufouf is an Arabic books discovery platform. I owned the project end-to-end: UI/UX design on Google Stitch (full design system, Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. I connected the app to the Google Books API with strict Arabic-only filtering, so every book, price, and purchase/read link shown is real — no mock data anywhere. Features include search, detailed book pages, favorites, and a personal reading library, fully responsive across devices.',
+    'modal-rufouf-desc': 'Rufouf is an Arabic book discovery platform that I designed and developed from start to finish. I created the UI/UX design in Google Stitch, then built the app with Next.js and TypeScript. Using the Google Books API, I integrated real book data, with Arabic-only filtering. The app includes search, book details, favorites, and a personal reading library, with a responsive design for all devices.',
 
     'modal-fitgym-tagline': 'Landing Page / UX/UI Design / Frontend',
     'modal-fitgym-desc': 'Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.',
@@ -1567,8 +1698,31 @@ const translations = {
     'modal-eco-detail': 'UX audit phase: site analysis, heuristic evaluation, and persona definition.<br>Led the UI redesign — restructured the visual hierarchy, improved readability, and aligned the interface with the platform ecological values.',
   },
   fr: {
-    'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-work': 'Travaux',
-    'nav-process': 'Processus', 'nav-contact': 'Contact',
+
+    'web-modal-rufouf-title': 'Rufouf — رفوف',
+    'web-modal-rufouf-tagline': 'Application web / Design UX-UI / Full-stack',
+    'web-modal-rufouf-desc': 'Rufouf est une plateforme de découverte de livres en arabe. J’ai piloté le projet de bout en bout : conception UX/UI sur Google Stitch (design system complet, typographie arabe et mise en page RTL), puis développement full-stack avec Next.js et TypeScript. L’application est connectée à l’API Google Books avec un filtrage strict des livres en arabe. Elle propose une recherche, des fiches détaillées, des favoris et une bibliothèque de lecture personnelle, sur tous les écrans.',
+    'web-modal-alpha-title': 'Alpha Nutrition',
+    'web-modal-alpha-tagline': 'Refonte UI / Audit UX / Front-end',
+    'web-modal-alpha-desc': 'Alpha Nutrition est une entreprise tunisienne spécialisée dans la nutrition animale. J’ai repensé son site après un audit UX et conçu des parcours plus clairs pour présenter les produits, faciliter les demandes et accompagner les commandes.',
+    'web-modal-uspn-title': 'Application mobile USPN',
+    'web-modal-uspn-tagline': 'Application mobile / Recherche UX / Design produit',
+    'web-modal-uspn-desc': 'Conçue en équipe pour les étudiants de l’Université Sorbonne Paris Nord, cette application vise à centraliser les emplois du temps, les informations du campus et les services étudiants. J’ai participé à la recherche UX et pris en charge la conception UI, la structure des composants, le kit UI et les écrans haute fidélité.',
+    'web-modal-eco-title': 'Mon Atelier Écofrugal',
+    'web-modal-eco-tagline': 'Refonte web / UX écologique',
+    'web-modal-eco-desc': 'Cette plateforme aide les équipes RH et RSE à encourager des pratiques plus écologiques. J’ai réalisé un audit UX, évalué l’ergonomie et les parcours, puis mené la refonte UI : hiérarchie visuelle, lisibilité et cohérence avec les valeurs écologiques du projet.',
+    'web-modal-retail-title': 'Application e-commerce mobile',
+    'web-modal-retail-tagline': 'Application mobile / E-commerce',
+    'web-modal-retail-desc': 'Ce concept personnel d’application d’achat mobile a été conçu de bout en bout : parcours utilisateur, arborescence, wireframes, design system et écrans haute fidélité. Le parcours est optimisé pour passer facilement de la découverte des produits au paiement, avec une navigation adaptée à une utilisation à une main.',
+
+    'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-work': 'Web UX/UI',
+    'nav-process': 'Orange DS', 'nav-contact': 'Contact', 'nav-visual': 'Motion & visuel',
+    'webprojects-tag': 'Web Projects', 'webprojects-title': 'Web & UX/UI Projects', 'webprojects-sub': 'A selection of digital products and experiences across web, mobile and product design.',
+    'web-rufouf-desc': 'An Arabic books discovery platform, designed and developed end to end with RTL support, search, book details, favorites and a personal library.',
+    'web-alpha-desc': 'A business-focused digital experience for presenting nutrition products and simplifying product discovery and enquiry flows.',
+    'web-uspn-desc': 'A student-focused mobile experience designed to make campus information and everyday university journeys easier to access.',
+    'web-eco-desc': 'A clearer and more engaging web experience for discovering eco-friendly ideas, practical guides and workshops.',
+    'web-retail-desc': 'A shopping experience focused on product discovery, product details, cart interactions and a smooth mobile journey.',
     'hero-greeting': "Bonjour, <span class=\"wave-emoji\">👋</span> je suis",
     'hero-desc': "Je conçois et développe des produits digitaux — de l'identité de marque à la mise en production. Je prends en charge le cycle complet : UX, interfaces qui convertissent et frontends performants.",
     'hero-tag-1': 'Product Designer', 'hero-tag-2': 'Développeur Front-End',
@@ -1585,7 +1739,7 @@ const translations = {
     'meta-available-val': 'Projets freelance',
     'meta-services-val': 'Design Produit · Recherche UX · Développement Frontend · Motion Design & Design Visuel',
     'work-tag': 'Motion & Design Visuel — Sélection', 'work-title': 'Quand les idées prennent vie',
-    'work-sub': 'Motion, branding, logos — le travail visuel derrière les produits.',
+    'work-sub': 'Motion design, identité de marque et logos : l’univers visuel qui donne vie aux projets.',
     'work-h1': '01 / Formats Paysage', 'work-h2': '02 / Reels Portrait',
     'work-h3': '03 / Mises en page Marque', 'work-h4': '04 / Design de Logo',
     'frontend-tag': 'Développement web — Sélection',
@@ -1607,7 +1761,7 @@ const translations = {
     'ds-stat5-title': 'Création d un livret d accueil (Onboarding Book), d une documentation dédiée et d un canal Teams pour les futurs stagiaires et alternants', 'ds-stat5-desc': "Benchmark Design System",
     'ds-stat6-title': 'Analyse approfondie de Material Design, Atlassian, Carbon et autres systèmes pour formuler des recommandations stratégiques pour l OUDS.', 'ds-stat6-desc': "Collaboration",'ds-stat6-title':'Travail étroit avec le Product Owner et les équipes de développement pour garantir la cohérence du système, la maintenabilité des composants et la faisabilité technique.',
     'ds-link': 'Ancienne version / Migration vers OUDS',
-    'uiux-tag': 'UI/UX Design', 'uiux-title': 'Des interfaces qui se sentent juste',
+    'uiux-tag': 'Design UX/UI', 'uiux-title': 'Des interfaces intuitives et agréables',
     'card-uspn-cat': 'Application Mobile / UX Étudiant', 'card-uspn-title': 'Application Mobile USPN',
     'card-eco-cat': 'Refonte Web', 'card-eco-title': 'Mon Atelier Écofrugale',
     'card-retail-cat': 'Application Mobile / E-Commerce', 'card-retail-title': 'Concept App Mobile Retail',
@@ -1670,11 +1824,11 @@ const translations = {
 };
 
 const langIds = {
-  'nav-home':        () => document.querySelectorAll('.nav-links a[href="index.html"], #mobile-menu a[href="#home"]'),
-  'nav-about':       () => document.querySelectorAll('.nav-links a[href="#about"], #mobile-menu a[href="#about"]'),
-  'nav-work':        () => document.querySelectorAll('.nav-links a[href="#work"], #mobile-menu a[href="#work"]'),
-  'nav-process':     () => document.querySelectorAll('.nav-links a[href="#process"], #mobile-menu a[href="#process"]'),
-  'nav-contact':     () => document.querySelectorAll('.nav-links a[href="#contact"], #mobile-menu a[href="#contact"]'),
+  'nav-home':        () => document.querySelectorAll('[data-nav-key="nav-home"]'),
+  'nav-about':       () => document.querySelectorAll('[data-nav-key="nav-about"]'),
+  'nav-work':        () => document.querySelectorAll('[data-nav-key="nav-work"]'),
+  'nav-process':     () => document.querySelectorAll('[data-nav-key="nav-process"]'),
+  'nav-contact':     () => document.querySelectorAll('[data-nav-key="nav-contact"]'),
   'hero-greeting':   () => [document.querySelector('.hero-greeting')],
   'hero-desc':       () => [document.querySelector('.hero-desc')],
   'hero-tag-1':      () => [document.querySelectorAll('.hero-tag')[0]],
@@ -1695,10 +1849,10 @@ const langIds = {
   'meta-languages-val': () => [document.querySelectorAll('.meta-val')[1]],
   'meta-available-val': () => [document.querySelectorAll('.meta-val')[2]],
   'meta-services-val':  () => [document.querySelectorAll('.meta-val')[3]],
-  'work-tag':        () => [document.querySelector('#work .section-tag')],
-  'work-title':      () => [document.querySelector('#work .section-title')],
-  'work-sub':        () => [document.querySelector('#work .section-sub')],
-  'work-h1':         () => document.querySelectorAll('#work h3'),
+  'work-tag':        () => [document.querySelector('#visual-motion .section-tag')],
+  'work-title':      () => [document.querySelector('#visual-motion .section-title')],
+  'work-sub':        () => [document.querySelector('#visual-motion .section-sub')],
+  'work-h1':         () => document.querySelectorAll('#visual-motion h3'),
   'frontend-tag':    () => [document.querySelector('#frontend .section-tag')],
   'frontend-title':  () => [document.querySelector('#frontend .section-title')],
   'ds-tag':          () => [document.querySelector('#design-system .section-tag')],
@@ -1728,6 +1882,7 @@ function applyLang(lang) {
   document.documentElement.lang = lang;
   const t = translations[lang];
 
+
   // Generic keys via langIds
   for (const [key, getEls] of Object.entries(langIds)) {
     const val = t[key];
@@ -1737,8 +1892,19 @@ function applyLang(lang) {
     else els.forEach(el => { if (el) el.innerHTML = val; });
   }
 
+  // Navigation labels: the Hero link returns to the top; Visual & Motion scrolls to its gallery.
+  document.querySelectorAll('[data-nav-key]').forEach(link => {
+    const key = link.getAttribute('data-nav-key');
+    if (key === 'nav-home') link.textContent = lang === 'fr' ? 'Accueil' : 'Hero';
+    if (key === 'nav-about') link.textContent = lang === 'fr' ? 'À propos' : 'About';
+    if (key === 'nav-work') link.textContent = lang === 'fr' ? 'Projets Web & UX/UI' : 'Web UX/UI';
+    if (key === 'nav-process') link.textContent = 'Orange DS';
+    if (key === 'nav-visual') link.textContent = lang === 'fr' ? 'Motion & visuel' : 'Visual & Motion';
+    if (key === 'nav-contact') link.textContent = lang === 'fr' ? 'Contact' : 'Contact';
+  });
+
   // Work section sliders headers (4 h3 elements)
-  const workH3s = document.querySelectorAll('#work h3');
+  const workH3s = document.querySelectorAll('#visual-motion h3');
   const workHKeys = ['work-h1','work-h2','work-h3','work-h4'];
   workH3s.forEach((el, i) => { if (t[workHKeys[i]]) el.textContent = t[workHKeys[i]]; });
 
@@ -1895,6 +2061,124 @@ function applyLang(lang) {
     window.uiUxProjectsData.ecofrugale.detailedDesc = t['modal-eco-detail'] || window.uiUxProjectsData.ecofrugale.detailedDesc;
   }
 
+
+
+  const visualSection = document.querySelector('#visual-motion');
+  if (visualSection) {
+    const tag = visualSection.querySelector('.section-tag');
+    const title = visualSection.querySelector('.section-title');
+    const subtitle = visualSection.querySelector('.section-sub');
+    if (tag) tag.textContent = lang === 'fr' ? 'Motion & design visuel — sélection' : 'Visual & Motion';
+    if (title) title.textContent = lang === 'fr' ? 'Quand les idées prennent vie' : 'Ideas and stories brought to life';
+    if (subtitle) subtitle.textContent = lang === 'fr'
+      ? 'Motion design, identité de marque et logos : l’univers visuel qui donne vie aux projets.'
+      : 'Motion, branding, logos — the visual work behind the products.';
+  }
+
+  // Dedicated translations for the redesigned Web & UX/UI Projects section.
+  const webCopy = {
+    en: {
+      tag: 'Web Projects', title: 'Web & UX/UI Projects',
+      subtitle: 'A selection of digital products and experiences across web, mobile and product design.',
+      projects: [
+        ['Rufouf (رفوف)', 'An Arabic book discovery platform designed to help readers explore books, find new titles, and manage their personal reading library through a simple, intuitive, and responsive experience.', 'Web app', 'UX/UI · Front-End', ['Information architecture', 'Web UI', 'Responsive'], 'Project details'],
+        ['Alpha Nutrition', 'A business-focused digital experience for presenting animal nutrition products and simplifying product enquiries.', 'Web design', 'UX/UI', ['UX audit', 'Web design', 'Forms'], 'Case study'],
+        ['USPN', 'A mobile app designed to simplify everyday life for students at Université Sorbonne Paris Nord.', 'Mobile app', 'UX/UI', ['Mobile UX', 'User flows', 'UI design'], 'Case study'],
+        ['Mon Atelier Écofrugal', 'A clearer web experience for discovering eco-friendly ideas, practical guides and workshops.', 'Web redesign', 'UX/UI', ['Content structure', 'Redesign', 'Responsive UI'], 'Case study'],
+        ['E-commerce App', 'A shopping experience focused on product discovery, product details, cart interactions and a smooth mobile journey.', 'Product design', 'E-commerce', ['Product UX', 'Shopping flow', 'Mobile UI'], 'Concept project']
+      ]
+    },
+    fr: {
+      tag: 'Projets web', title: 'Projets Web & UX/UI',
+      subtitle: 'Une sélection de produits et d’expériences numériques pour le web, le mobile et le design produit.',
+      projects: [
+        ['Rufouf (رفوف)', 'Une plateforme de découverte de livres en arabe qui permet aux lecteurs d’explorer de nouveaux ouvrages, de trouver leurs prochaines lectures et de gérer leur bibliothèque personnelle grâce à une expérience intuitive et adaptée à tous les écrans.', 'Application web', 'UX/UI · Front-End', ['Architecture de l’information', 'Interface web', 'Responsive'], 'Détails du projet'],
+        ['Alpha Nutrition', 'Une expérience numérique métier pour présenter des produits de nutrition animale et simplifier les demandes de contact.', 'Design web', 'UX/UI', ['Audit UX', 'Design web', 'Formulaires'], 'Étude de cas'],
+        ['USPN', 'Une application mobile conçue pour simplifier le quotidien des étudiants de l’Université Sorbonne Paris Nord.', 'Application mobile', 'UX/UI', ['UX mobile', 'Parcours utilisateur', 'Design UI'], 'Étude de cas'],
+        ['Mon Atelier Écofrugal', 'Une expérience web plus claire pour découvrir des idées écologiques, des guides pratiques et des ateliers.', 'Refonte web', 'UX/UI', ['Structure de contenu', 'Refonte', 'Interface responsive'], 'Étude de cas'],
+        ['Application e-commerce', 'Une expérience d’achat centrée sur la découverte des produits, les fiches détaillées, le panier et un parcours mobile fluide.', 'Design produit', 'E-commerce', ['UX produit', 'Parcours d’achat', 'Interface mobile'], 'Projet conceptuel']
+      ]
+    }
+  };
+  const webLang = webCopy[lang] || webCopy.en;
+  const webSection = document.querySelector('#web-uxui');
+  if (webSection) {
+    const tag = webSection.querySelector('.section-tag');
+    const title = webSection.querySelector('.section-title');
+    const subtitle = webSection.querySelector('.section-sub');
+    if (tag) tag.textContent = webLang.tag;
+    if (title) title.innerHTML = webLang.title + '<span class="accent-dot">.</span>';
+    if (subtitle) subtitle.textContent = webLang.subtitle;
+    webSection.querySelectorAll('.new-project-card').forEach((card, i) => {
+      const heading = card.querySelector('.new-project-copy h3');
+      const description = card.querySelector('.new-project-copy p');
+      if (webLang.projects[i]) {
+        if (heading) heading.textContent = webLang.projects[i][0];
+        if (description) description.textContent = webLang.projects[i][1];
+        const meta = card.querySelectorAll('.project-meta span');
+        if (meta[0]) meta[0].textContent = webLang.projects[i][2];
+        if (meta[1]) meta[1].textContent = webLang.projects[i][3];
+        const tags = card.querySelectorAll('.project-tags span');
+        webLang.projects[i][4].forEach((label, j) => { if (tags[j]) tags[j].textContent = label; });
+        const status = card.querySelector('.project-status');
+        if (status) status.textContent = webLang.projects[i][5];
+      }
+    });
+  }
+
+  // Ensure the legacy UX/UI showcase headings and project captions follow the selected language.
+  const uxSection = document.querySelector('#uiux');
+  if (uxSection) {
+    const uxTag = uxSection.querySelector('.section-tag');
+    const uxTitle = uxSection.querySelector('.section-title');
+    if (uxTag) uxTag.textContent = lang === 'fr' ? 'Design UX/UI' : 'UI/UX Design';
+    if (uxTitle) uxTitle.textContent = lang === 'fr' ? 'Des interfaces intuitives et agréables' : 'Interfaces that just feel right';
+  }
+
+
+  // Keep project popups synchronized with the selected language, including cards opened after switching.
+  const popupIsFrench = lang === 'fr';
+  if (window.projectsData) {
+    const pd = window.projectsData;
+    const modalCopy = popupIsFrench ? {
+      rufouf: ['Rufouf — رفوف', t['web-modal-rufouf-tagline'], t['web-modal-rufouf-desc'], ['Recherche', 'Livres en arabe', 'Favoris', 'Next.js', 'TypeScript', 'API Google Books']],
+      alpha: ['Alpha Nutrition', t['web-modal-alpha-tagline'], t['web-modal-alpha-desc'], ['Audit UX', 'Refonte UI', 'E-commerce', 'Formulaire de commande']],
+    } : {
+      rufouf: ['Rufouf', t['modal-rufouf-tagline'], t['modal-rufouf-desc'], ['Search', 'Arabic books', 'Favorites', 'Next.js', 'TypeScript', 'Google Books API']],
+      alpha: ['Alpha Nutrition', t['modal-alpha-tagline'], t['modal-alpha-desc'], ['UX Audit', 'UI Redesign', 'E-Commerce', 'Online Order Form']],
+    };
+    ['rufouf','alpha'].forEach(key => {
+      if (pd[key] && modalCopy[key]) {
+        pd[key].title = modalCopy[key][0];
+        pd[key].tagline = modalCopy[key][1] || pd[key].tagline;
+        pd[key].desc = modalCopy[key][2] || pd[key].desc;
+        pd[key].tags = modalCopy[key][3];
+      }
+    });
+  }
+  if (window.uiUxProjectsData) {
+    const ud = window.uiUxProjectsData;
+    const uxCopy = popupIsFrench ? {
+      uspn: ['Application mobile USPN', t['web-modal-uspn-tagline'], 'Cette application étudiante centralise les informations du campus et les services universitaires.', t['web-modal-uspn-desc'], 'Télécharger l’application →', ['Figma', 'Recherche UX', 'Design UI', 'Design system', 'Prototype']],
+      ecofrugale: ['Mon Atelier Écofrugal', t['web-modal-eco-tagline'], 'Une plateforme qui accompagne les organisations dans leurs démarches écologiques.', t['web-modal-eco-desc'], 'Voir le projet →', ['Audit UX', 'Analyse heuristique', 'Refonte web', 'Identité écologique']],
+      retail: ['Application e-commerce mobile', t['web-modal-retail-tagline'], 'Un concept personnel d’application d’achat mobile, conçu pour être clair, rapide et intuitif.', t['web-modal-retail-desc'], 'Voir le prototype →', ['Projet personnel', 'E-commerce', 'Design system', 'Wireframes']]
+    } : {
+      uspn: ['USPN Mobile App', t['modal-uspn-tagline'], t['modal-uspn-main'], t['modal-uspn-detail'], 'Download the App →', ['Figma', 'UX Research', 'UI Design', 'Design System', 'Prototype']],
+      ecofrugale: ['Mon Atelier Écofrugal', t['modal-eco-tagline'], t['modal-eco-main'], t['modal-eco-detail'], 'View Project →', ['UX Audit', 'Heuristic Analysis', 'Landing Page', 'Eco Identity']],
+      retail: ['Retail Mobile App Concept', t['modal-retail-tagline'], t['modal-retail-main'], t['modal-retail-detail'], 'View Prototype →', ['Solo Project', 'E-Commerce', 'Design System', 'Wireframing']]
+    };
+    Object.keys(uxCopy).forEach(key => {
+      if (ud[key]) {
+        ud[key].title = uxCopy[key][0];
+        ud[key].tagline = uxCopy[key][1] || ud[key].tagline;
+        ud[key].mainDesc = uxCopy[key][2] || ud[key].mainDesc;
+        ud[key].detailedDesc = uxCopy[key][3] || ud[key].detailedDesc;
+        ud[key].linkLabel = uxCopy[key][4] || ud[key].linkLabel;
+        ud[key].tags = uxCopy[key][5];
+      }
+    });
+  }
+
   // Update select
   document.getElementById('lang-toggle').value = lang;
 }
@@ -1905,5 +2189,37 @@ langToggle.addEventListener('change', e => applyLang(e.target.value));
 applyLang(currentLang);
 
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(item => observer.observe(item));
+  } else {
+    items.forEach(item => item.classList.add('is-visible'));
+  }
+});
+</script>
+
+
+<script>
+document.querySelectorAll('#web-uxui .new-project-card[role="button"]').forEach(card => {
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      card.click();
+    }
+  });
+});
+</script>
+
 </body>
 </html>
