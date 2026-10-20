@@ -551,6 +551,24 @@
       --green:#b7ff7a; --text-invert:#111322;
     }
     #home, #design-system { background:var(--bg); color:var(--text); }
+
+    /* ── Video-only project popup: title + large video ── */
+    #project-modal-inner.video-only { max-width:min(1180px,96vw); flex-direction:column; }
+    #project-modal-inner.video-only > div:first-child { width:100%; order:2; border-right:0; padding:0 1.25rem 1.25rem; background:transparent; }
+    #project-modal-inner.video-only > div:last-child { width:100%; order:1; padding:1.1rem 4rem .9rem 1.5rem; }
+    #project-modal-inner.video-only #modal-tagline,
+    #project-modal-inner.video-only #modal-desc,
+    #project-modal-inner.video-only #modal-tech-tags { display:none; }
+    #project-modal-inner.video-only #modal-title { margin:0; }
+    #project-modal-inner.video-only #modal-media { aspect-ratio:16/10; width:min(100%,calc(70vh*1.6)); margin:0 auto; background:#000; }
+    #project-modal-inner.video-only #modal-media video { object-fit:contain; }
+
+    /* ── HERO: small name in the greeting, role as the big title, certification chips ── */
+    .hero-greeting-name { font-family:'Syne',sans-serif; font-weight:700; color:var(--text); font-size:1.12em; }
+    .hero-name { font-size:clamp(1.8rem,3vw,2.7rem); line-height:1.12; }
+    .hero-cert { display:inline-flex; align-items:center; gap:.45rem; background:var(--surface); border:1px solid var(--border); border-radius:100px; padding:.45rem 1.05rem; font-size:var(--fs-xs); font-family:'Syne',sans-serif; font-weight:600; color:var(--text); text-decoration:none; transition:border-color .2s, transform .2s; }
+    .hero-cert:hover { border-color:var(--gold); transform:translateY(-2px); }
+    @media (max-width:900px){ .hero-name { font-size:clamp(1.8rem,8vw,3rem); } }
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -572,7 +590,6 @@
   <div class="nav-center">
     <div class="nav-links">
       <a href="#home" data-nav-key="nav-home">Home</a>
-      <a href="#about" data-nav-key="nav-about">About</a> 
       <a href="#web-uxui" data-nav-key="nav-work">Web UX/UI</a>
       <a href="#design-system" data-nav-key="nav-process">Orange DS</a>
       <a href="#visual-motion" data-nav-key="nav-visual">Visual &amp; Motion</a>
@@ -593,7 +610,6 @@
     <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:1rem;height:1rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <a href="#home" data-nav-key="nav-home" onclick="closeMobile()">Home</a>
-  <a href="#about" data-nav-key="nav-about" onclick="closeMobile()">About</a>
   <a href="#web-uxui" data-nav-key="nav-work" onclick="closeMobile()">Web UX/UI</a>
   <a href="#design-system" data-nav-key="nav-process" onclick="closeMobile()">Orange DS</a>
   <a href="#visual-motion" data-nav-key="nav-visual" onclick="closeMobile()">Visual &amp; Motion</a>
@@ -609,12 +625,12 @@
   <div class="float-shape float-shape-2"></div>
   <div class="hero-grid">
     <div class="fade-up">
-      <p class="hero-greeting">Hi, <span class="wave-emoji">👋</span> I'm</p>
-      <h1 class="hero-name">Oussama<br><span>Barkallah</span></h1>
+      <p class="hero-greeting">Hi, <span class="wave-emoji">👋</span> I'm <span class="hero-greeting-name">Oussama Barkallah</span></p>
+      <h1 class="hero-name">Product Designer<br><span>&amp;</span> <span>AI</span> <span>Developer</span></h1>
       <p class="hero-desc">I design and build digital products — from brand identity to live platform. I take products from concept to launch, craft UIs that convert, and write frontends that perform.</p>
-      <div class="hero-tags">
-        <span class="hero-tag"><i class="fa-solid fa-mobile-screen" style="color:var(--gold);"></i> Product Designer</span>
-        <span class="hero-tag"><i class="fa-solid fa-code" style="color:var(--gold);"></i> Front-End</span>
+      <div class="hero-tags hero-certs">
+        <a class="hero-cert" href="https://www.linkedin.com/in/oussama-barkallah/overlay/Certifications/630679009/treasury/?profileId=ACoAACWP55kBIScUi9Z23_FUVPR0ebUY9Lkyv0w" target="_blank" rel="noopener noreferrer" aria-label="ISTQB Foundation Level Tester Certificate (opens in a new tab)" title="ISTQB Foundation Level Tester Certificate"><span aria-hidden="true">🏅</span> ISTQB</a>
+        <a class="hero-cert" href="https://www.coursera.org/account/accomplishments/verify/VNSTONGNNQBL" target="_blank" rel="noopener noreferrer" aria-label="Google UX Design Certificate (opens in a new tab)" title="Google UX Design Certificate"><span aria-hidden="true">🏅</span> Google UX</a>
       </div>
       <div class="hero-actions">
         <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/oussama-obarkallah/30min'}); return false;" class="btn-primary">Let's schedule a call</a>
@@ -641,99 +657,6 @@
     </div>
   </div>
 </section>
-
-<!-- ── MARQUEE ── -->
-<div class="animated-divider"></div>
-<div style="padding:1.5rem 0;overflow:hidden;">
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span class="marquee-item"><i class="fa-brands fa-react" style="color:#61dafb" aria-hidden="true"></i> React</span>
-      <span class="marquee-item"><i class="fa-brands fa-js" style="color:#f7df1e" aria-hidden="true"></i> JavaScript</span>
-      <span class="marquee-item"><i class="fa-solid fa-wind" style="color:#38bdf8" aria-hidden="true"></i> Tailwind CSS</span>
-      <span class="marquee-item"><i class="fa-solid fa-code" style="color:var(--gold)" aria-hidden="true"></i> Front-End Engineering</span>
-      <span class="marquee-item"><i class="fa-brands fa-git-alt" style="color:#f05032" aria-hidden="true"></i> Git</span>
-      <span class="marquee-item"><i class="fa-brands fa-jira" style="color:#0052cc" aria-hidden="true"></i> Jira</span>
-      <span class="marquee-item"><i class="fa-solid fa-note-sticky" style="color:#f9c74f" aria-hidden="true"></i> Notion</span>
-      <span class="marquee-item"><i class="fa-solid fa-diagram-project" style="color:#7b61ff" aria-hidden="true"></i> Miro</span>
-      <span class="marquee-item"><i class="fa-solid fa-users" style="color:var(--green)" aria-hidden="true"></i> Agile / Scrum</span>
-      <span class="marquee-item"><i class="fa-brands fa-figma" style="color:#a259ff" aria-hidden="true"></i> Figma</span>
-      <span class="marquee-item"><i class="fa-solid fa-layer-group" style="color:var(--gold)" aria-hidden="true"></i> UI Design</span>
-      <span class="marquee-item"><i class="fa-solid fa-mobile-screen" style="color:var(--green)" aria-hidden="true"></i> Mobile UX</span>
-      <span class="marquee-item"><i class="fa-solid fa-robot" style="color:#00d2ff" aria-hidden="true"></i> AI Engineering</span>
-      <span class="marquee-item"><i class="fa-solid fa-palette" style="color:#ff6b6b" aria-hidden="true"></i> Brand Identity</span>
-      <span class="marquee-item"><i class="fa-solid fa-pen-nib" style="color:#ff7c00" aria-hidden="true"></i> Illustrator</span>
-      <span class="marquee-item"><i class="fa-solid fa-film" style="color:#9999ff" aria-hidden="true"></i> After Effects</span>
-      <span class="marquee-item"><i class="fa-solid fa-video" style="color:#ea00d9" aria-hidden="true"></i> Premiere Pro</span>
-      <!-- duplicate -->
-      <span class="marquee-item"><i class="fa-brands fa-react" style="color:#61dafb" aria-hidden="true"></i> React</span>
-      <span class="marquee-item"><i class="fa-brands fa-js" style="color:#f7df1e" aria-hidden="true"></i> JavaScript</span>
-      <span class="marquee-item"><i class="fa-solid fa-wind" style="color:#38bdf8" aria-hidden="true"></i> Tailwind CSS</span>
-      <span class="marquee-item"><i class="fa-solid fa-code" style="color:var(--gold)" aria-hidden="true"></i> Front-End Engineering</span>
-      <span class="marquee-item"><i class="fa-brands fa-git-alt" style="color:#f05032" aria-hidden="true"></i> Git</span>
-      <span class="marquee-item"><i class="fa-brands fa-jira" style="color:#0052cc" aria-hidden="true"></i> Jira</span>
-      <span class="marquee-item"><i class="fa-solid fa-note-sticky" style="color:#f9c74f" aria-hidden="true"></i> Notion</span>
-      <span class="marquee-item"><i class="fa-solid fa-diagram-project" style="color:#7b61ff" aria-hidden="true"></i> Miro</span>
-      <span class="marquee-item"><i class="fa-solid fa-users" style="color:var(--green)" aria-hidden="true"></i> Agile / Scrum</span>
-      <span class="marquee-item"><i class="fa-brands fa-figma" style="color:#a259ff" aria-hidden="true"></i> Figma</span>
-      <span class="marquee-item"><i class="fa-solid fa-layer-group" style="color:var(--gold)" aria-hidden="true"></i> UI Design</span>
-      <span class="marquee-item"><i class="fa-solid fa-mobile-screen" style="color:var(--green)" aria-hidden="true"></i> Mobile UX</span>
-      <span class="marquee-item"><i class="fa-solid fa-robot" style="color:#00d2ff" aria-hidden="true"></i> AI Engineering</span>
-      <span class="marquee-item"><i class="fa-solid fa-palette" style="color:#ff6b6b" aria-hidden="true"></i> Brand Identity</span>
-      <span class="marquee-item"><i class="fa-solid fa-pen-nib" style="color:#ff7c00" aria-hidden="true"></i> Illustrator</span>
-      <span class="marquee-item"><i class="fa-solid fa-film" style="color:#9999ff" aria-hidden="true"></i> After Effects</span>
-      <span class="marquee-item"><i class="fa-solid fa-video" style="color:#ea00d9" aria-hidden="true"></i> Premiere Pro</span>
-    </div>
-  </div>
-</div>
-<div class="animated-divider"></div>
-
-<!-- ABOUT -->
-<section id="about" class="border-t border-[var(--border)]">
-  <div class="section-inner">
-    <div class="fade-up reveal-left">
-      <p class="section-tag">About</p>
-      <h2 class="section-title">Product Designer</h2>
-      <div class="about-text">
-        <p>Based in France — fluent in Arabic, French, and English. I design digital products end to end: user research, wireframes, interfaces that convert, and design systems that scale.</p>
-        <p>I'm also comfortable on the frontend: HTML, CSS Tailwind, React and JavaScript, which helps me collaborate closely with dev teams and deliver technically grounded solutions.</p>
-        <p>Beyond product design, I create motion graphics, digital and print assets, retouch images, and use AI to generate and enhance visuals.</p>
-      </div>
-    </div>
-    <div class="fade-up reveal-right" style="transition-delay:.15s">
-      <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-t border-b [border-color:var(--border)] gap-1">
-        <span class="meta-key">Location</span>
-        <span class="meta-val">France</span>
-      </div>
-      <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-b [border-color:var(--border)] gap-1">
-        <span class="meta-key">Languages</span>
-        <span class="meta-val">Arabic · French · English</span>
-      </div>
-      <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-b [border-color:var(--border)] gap-1">
-        <span class="meta-key">Available</span>
-        <span class="meta-val">Freelance projects</span>
-      </div>
-      <div class="meta-row flex flex-col justify-start items-start py-[1.2rem] border-b [border-color:var(--border)] gap-1">
-        <span class="meta-key">Services</span>
-        <span class="meta-val">Product Design · UX Research · Développement front-end</span>
-      </div>
-      <a href="https://www.linkedin.com/in/oussama-barkallah/overlay/Certifications/630679009/treasury/?profileId=ACoAACWP55kBIScUi9Z23_FUVPR0ebUY9Lkyv0w" target="_blank" class="cert-badge" style="display:flex;width:100%;">
-  <span style="font-size:1.8rem" aria-hidden="true">🏅</span>
-  <div class="cert-badge-text">
-    <small>ISTQB Certified</small>
-    <strong>Foundation Level Tester Certificate ↗</strong>
-  </div>
-</a>
-<a href="https://www.coursera.org/account/accomplishments/verify/VNSTONGNNQBL" target="_blank" class="cert-badge" style="display:flex;width:100%;margin-top:.75rem;">
-  <span style="font-size:1.8rem" aria-hidden="true">🏅</span>
-  <div class="cert-badge-text">
-    <small>Google Certified</small>
-    <strong>Google UX Design Certificate ↗</strong>
-  </div>
-</a>
-    </div>
-  </div>
-</section>
-
 
 <!-- ── WORK: MOTION & VISUAL ── -->
 
@@ -846,17 +769,18 @@ function scrollFrontendSlider(dir) {
   if (s) { const card = s.querySelector(':scope > div'); const w = (card ? card.offsetWidth : 0) + 24; s.scrollLeft += dir * w; }
 }
 const projectsData = {
-  yestube: { title:"yesTube", tagline:"Web Tool / UI-UX Design / Full-Stack", desc:"yesTube is a dedicated media conversion website (MP4, MP3, WAV and 10+ other formats), simple and fast: paste a YouTube link, choose a format and go, with clear progress states, a light/dark theme and an FR/EN language switch. The tool was built locally and has not been published.", image:"assets/yestube.mp4", isVideo:true, tags:["Web Development","Python","AI Engineering","Prompting","Format Conversion","Product Design"] },
-  rufouf:  { title:"رفوف — Rufouf", tagline:"Web App / UI-UX Design / Full-Stack", desc:"Rufouf is an Arabic books discovery platform. I owned the project end-to-end: UI/UX design on Google Stitch (full design system, Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. I connected the app to the Google Books API with strict Arabic-only filtering, so every book, price, and purchase/read link shown is real — no mock data anywhere. Features include search, detailed book pages, favorites, and a personal reading library, fully responsive across devices.", image:"assets/rufouf.mp4", isVideo:true, tags:["Next.js","TypeScript","Tailwind CSS","Google Books API","RTL","Accessibility"] },
+  yestube: { title:"yesTube", tagline:"Web Tool / UI-UX Design / Full-Stack", desc:"yesTube is a dedicated media conversion website (MP4, MP3, WAV and 10+ other formats), simple and fast: paste a YouTube link, choose a format and go, with clear progress states, a light/dark theme and an FR/EN language switch. The tool was built locally and has not been published.", image:"assets/yestube.mp4", isVideo:true, videoOnly:true, tags:["Web Development","Python","AI Engineering","Prompting","Format Conversion","Product Design"] },
+  rufouf:  { title:"رفوف — Rufouf", tagline:"Web App / UI-UX Design / Full-Stack", desc:"Rufouf is an Arabic books discovery platform. I owned the project end-to-end: UI/UX design on Google Stitch (full design system, Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. I connected the app to the Google Books API with strict Arabic-only filtering, so every book, price, and purchase/read link shown is real — no mock data anywhere. Features include search, detailed book pages, favorites, and a personal reading library, fully responsive across devices.", image:"assets/rufouf.mp4", isVideo:true, videoOnly:true, tags:["Next.js","TypeScript","Tailwind CSS","Google Books API","RTL","Accessibility"] },
   fitgym:  { title:"FitGym Premium", tagline:"Landing Page / UX/UI Design / Frontend", desc:"Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.", image:"assets/front-3.mp4", isVideo:true, tags:["JavaScript","UI UX","Amplitude","Performance","Accessibility"] },
   medical: { title:"Medic Portal", tagline:"UX / Medical UI / Frontend", desc:"Medic, is a medical platform for an aesthetic surgery clinic, offering quality care in a modern and welcoming environment. I contributed to the design and development with a focus on user trust, medical clarity, and a reassuring patient experience.", image:"assets/front-2.png", isVideo:false, tags:["CSS Tailwind","Medical UI","UX Trust","Responsive"] },
-  alpha:   { title:"Alpha Nutrition", tagline:"UI Redesign / UX Audit / Frontend", desc:"Alpha Nutrition is a Tunisian leader in animal nutrition, specializing in the manufacturing of premixes and feed for various types of livestock, with over 40 years of expertise. I redesigned the website with a full UX audit, and added an online order and delivery form for animal nutrition products.", image:"assets/alfa.mp4", isVideo:true, tags:["UX Audit","UI Redesign","E-Commerce","Online Order Form"] }
+  alpha:   { title:"Alpha Nutrition", tagline:"UI Redesign / UX Audit / Frontend", desc:"Alpha Nutrition is a Tunisian leader in animal nutrition, specializing in the manufacturing of premixes and feed for various types of livestock, with over 40 years of expertise. I redesigned the website with a full UX audit, and added an online order and delivery form for animal nutrition products.", image:"assets/alfa.mp4", isVideo:true, videoOnly:true, tags:["UX Audit","UI Redesign","E-Commerce","Online Order Form"] }
 };
 function openProjectModal(key) {
   const d = projectsData[key]; if (!d) return;
   document.getElementById('modal-title').innerText = d.title;
   document.getElementById('modal-tagline').innerText = d.tagline;
   document.getElementById('modal-desc').innerText = d.desc;
+  document.getElementById('project-modal-inner').classList.toggle('video-only', !!d.videoOnly);
   const mc = document.getElementById('modal-media');
   mc.innerHTML = d.isVideo ? `<video class="w-full h-full object-cover rounded-xl" src="${d.image}" autoplay loop muted playsinline></video>` : `<img class="w-full h-full object-cover rounded-xl" src="${d.image}" alt="${d.title}">`;
   const tc = document.getElementById('modal-tech-tags'); tc.innerHTML = '';
@@ -884,22 +808,22 @@ document.getElementById('project-modal').addEventListener('click',function(e){if
     </div>
     <div class="new-projects-grid">
       <article class="new-project-card reveal" onclick="openProjectModal('yestube')" role="button" tabindex="0" aria-label="Open details for yesTube">
-        <div class="new-project-visual project-real-media"><span class="visual-label">01 / Web tool – built locally</span><video src="assets/yestube.mp4" muted playsinline autoplay loop aria-label="yesTube media conversion interface preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web tool</span><span>UX/UI · Front-End</span></div><h3>yesTube</h3><p>A dedicated media conversion website (MP4, MP3, WAV and 10+ other formats): paste a YouTube link, choose a format and go, with clear progress states, a light/dark theme and an FR/EN switch. Built locally, not published.</p><div class="project-tags"><span>Web Development</span><span>Python</span><span>AI Engineering</span><span>Prompting</span><span>Format Conversion</span><span>Product Design</span></div><span class="project-status">Project</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">01 / Web tool – built locally</span><video src="assets/yestube.mp4" muted playsinline autoplay loop aria-label="yesTube media conversion interface preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web tool</span><span>UX/UI · Full-Stack</span></div><h3>yesTube</h3><p>Locally built media converter: paste a YouTube link, pick a format and get MP4, MP3, WAV or 10+ other formats. Developed with Python and AI engineering (prompt-driven development), with a product-designed interface: clear progress states, light/dark theme and FR/EN language switch. Not published.</p><div class="project-tags"><span>Web Development</span><span>Python</span><span>AI Engineering</span><span>Prompting</span><span>Format Conversion</span><span>Product Design</span></div></div>
       </article>
       <article class="new-project-card reveal" onclick="openProjectModal('rufouf')" role="button" tabindex="0" aria-label="Open details for Rufouf">
-        <div class="new-project-visual project-real-media"><span class="visual-label">02 / Web app – built locally</span><video src="assets/rufouf.mp4" muted playsinline autoplay loop aria-label="Rufouf Arabic books app preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web app</span><span>UX/UI · Front-End</span></div><h3>Rufouf (رفوف)</h3><p>A web app concept focused on discovering and exploring reading content, with a clear navigation system and responsive interface.</p><div class="project-tags"><span>Information architecture</span><span>Web UI</span><span>Responsive</span></div><span class="project-status">Project to detail</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">02 / Web app – built locally</span><video src="assets/rufouf.mp4" muted playsinline autoplay loop aria-label="Rufouf Arabic books app preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web app</span><span>UX/UI · Full-Stack</span></div><h3>Rufouf (رفوف)</h3><p>Arabic book discovery platform designed and built end to end: UI/UX and design system on Google Stitch (Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. Connected to the Google Books API with strict Arabic-only filtering and real data only. Search, detailed book pages, favorites and a personal reading library, fully responsive.</p><div class="project-tags"><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>Google Books API</span><span>RTL</span><span>Accessibility</span></div></div>
       </article>
       <article class="new-project-card reveal" onclick="openProjectModal('alpha')" role="button" tabindex="0" aria-label="Open details for Alpha Nutrition">
-        <div class="new-project-visual project-real-media"><span class="visual-label">03 / Web &amp; UX – integration phase</span><video src="assets/alfa.mp4" muted playsinline autoplay loop aria-label="Alpha Nutrition website preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web design</span><span>UX/UI</span></div><h3>Alpha Nutrition</h3><p>A business-focused digital experience for presenting nutrition products and simplifying product discovery and enquiry flows.</p><div class="project-tags"><span>UX audit</span><span>Web design</span><span>Forms</span></div><span class="project-status">Case study to detail</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">03 / Web &amp; UX – integration phase</span><video src="assets/alfa.mp4" muted playsinline autoplay loop aria-label="Alpha Nutrition website preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>UI redesign</span><span>UX audit · Front-End</span></div><h3>Alpha Nutrition</h3><p>Website redesign for Alpha Nutrition, a Tunisian animal-nutrition manufacturer with 40+ years of expertise (premixes and livestock feed). Full UX audit, UI redesign and front-end integration, plus a new online order and delivery form for its products.</p><div class="project-tags"><span>UX Audit</span><span>UI Redesign</span><span>Front-End</span><span>E-Commerce</span><span>Online Order Form</span></div></div>
       </article>
       <article class="new-project-card reveal" onclick="openUiUxModal('uspn')" role="button" tabindex="0" aria-label="Open details for USPN">
-        <div class="new-project-visual project-real-media"><span class="visual-label">04 / Mobile app – download the app</span><img src="assets/ux-ui2.png" alt="USPN Mobile App — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Mobile app</span><span>UX/UI</span></div><h3>USPN</h3><p>A student-focused mobile experience designed to make campus information and everyday university journeys easier to access.</p><div class="project-tags"><span>Mobile UX</span><span>User flows</span><span>UI design</span></div><span class="project-status">Case study to detail</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">04 / Mobile app – download the app</span><img src="assets/ux-ui2.png" alt="USPN Mobile App — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Mobile app</span><span>UX/UI</span></div><h3>USPN</h3><p>A student-focused mobile experience designed to make campus information and everyday university journeys easier to access.</p><div class="project-tags"><span>Mobile UX</span><span>User flows</span><span>UI design</span></div></div>
       </article>
       <article class="new-project-card reveal" onclick="openUiUxModal('ecofrugale')" role="button" tabindex="0" aria-label="Open details for Mon Atelier Écofrugal">
-        <div class="new-project-visual project-real-media"><span class="visual-label">05 / Web redesign – prototype</span><img src="assets/ux-ui4.png" alt="Mon Atelier Écofrugal — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Web redesign</span><span>UX/UI</span></div><h3>Mon Atelier Écofrugal</h3><p>A clearer and more engaging web experience for discovering eco-friendly ideas, practical guides and workshops.</p><div class="project-tags"><span>Content structure</span><span>Redesign</span><span>Responsive UI</span></div><span class="project-status">Case study to detail</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">05 / Web redesign – prototype</span><img src="assets/ux-ui4.png" alt="Mon Atelier Écofrugal — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Web redesign</span><span>UX/UI</span></div><h3>Mon Atelier Écofrugal</h3><p>A clearer and more engaging web experience for discovering eco-friendly ideas, practical guides and workshops.</p><div class="project-tags"><span>Content structure</span><span>Redesign</span><span>Responsive UI</span></div></div>
       </article>
       <article class="new-project-card reveal" onclick="openUiUxModal('retail')" role="button" tabindex="0" aria-label="Open details for E-commerce App">
-        <div class="new-project-visual project-real-media"><span class="visual-label">06 / Product design – prototype</span><img src="assets/ux-ui3.png" alt="E-commerce mobile app — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Product design</span><span>E-commerce</span></div><h3>E-commerce App</h3><p>A shopping experience concept focused on product discovery, product details, cart interactions and a smooth mobile journey.</p><div class="project-tags"><span>Product UX</span><span>Shopping flow</span><span>Mobile UI</span></div><span class="project-status">Concept to develop</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">06 / Product design – prototype</span><img src="assets/ux-ui3.png" alt="E-commerce mobile app — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Product design</span><span>E-commerce</span></div><h3>E-commerce App</h3><p>A shopping experience concept focused on product discovery, product details, cart interactions and a smooth mobile journey.</p><div class="project-tags"><span>Product UX</span><span>Shopping flow</span><span>Mobile UI</span></div></div>
       </article>
     </div>
     
@@ -1437,10 +1361,10 @@ function scrollCustomSlider(id, dir) {
 <footer style="background:var(--bg);border-top:1px solid var(--border);padding:2.5rem;transition:background .3s,color .3s;">
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:row;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
     <div style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.3;">
-      <span class="footer-name" style="color:var(--text);">Oussama Barkallah</span>
+      <span class="footer-name" style="color:var(--text);"></span>
       <span class="footer-copy">Product Designer · Paris, France</span>
     </div>
-    <div class="footer-copy">&copy; 2026 Oussama Barkallah. All rights reserved.</div>
+    <div class="footer-copy"></div>
   </div>
 </footer>
 
@@ -1533,13 +1457,19 @@ htmlEl.setAttribute('data-theme', 'light');
 toggleBtn.textContent = '☀️';
 if (toggleBtnMobile) toggleBtnMobile.textContent = '☀️';
 
-// HERO NAME ANIMATION
-const heroName = document.querySelector('.hero-name');
-if (heroName) {
-  heroName.innerHTML = heroName.innerHTML.split('<br>').map((line, li) =>
-    line.split(' ').map((word, wi) => `<span class="hero-name-word" style="animation-delay:${(li*.15+wi*.12+.2).toFixed(2)}s">${word}</span>`).join(' ')
-  ).join('<br>');
+// HERO TITLE (role) ANIMATION
+function buildHeroTitle(line1, line2) {
+  const el = document.querySelector('.hero-name');
+  if (!el) return;
+  const key = line1 + '|' + line2;
+  if (el.dataset.built === key) return;
+  el.dataset.built = key;
+  const word = (w, i) => `<span class="hero-name-word" style="animation-delay:${i.toFixed(2)}s">${w}</span>`;
+  const l1 = line1.split(' ').map((w, i) => word(w, .2 + i * .12)).join(' ');
+  const l2 = line2.split(' ').map((w, i) => word(`<span>${w}</span>`, .35 + i * .12)).join(' ');
+  el.innerHTML = l1 + '<br>' + l2;
 }
+buildHeroTitle('Product Designer', '& AI Developer');
 
 // HERO GREETING
 const greet = document.querySelector('.hero-greeting');
@@ -1617,7 +1547,8 @@ const translations = {
     'web-uspn-desc': 'A student-focused mobile experience designed to make campus information and everyday university journeys easier to access.',
     'web-eco-desc': 'A clearer and more engaging web experience for discovering eco-friendly ideas, practical guides and workshops.',
     'web-retail-desc': 'A shopping experience focused on product discovery, product details, cart interactions and a smooth mobile journey.',
-    'hero-greeting': "Hi, <span class=\"wave-emoji\">👋</span> I'm",
+    'hero-greeting': "Hi, <span class=\"wave-emoji\">👋</span> I'm <span class=\"hero-greeting-name\">Oussama Barkallah</span>",
+    'hero-line1': 'Product Designer', 'hero-line2': '& AI Developer',
     'hero-desc': "I design and build digital products — from brand identity to live platform. I take products from concept to launch, craft UIs that convert, and write frontends that perform.",
     'hero-tag-1': 'Product Designer', 'hero-tag-2': 'Front-End',
     'hero-btn-call': "Let's schedule a call", 'hero-btn-work': 'View Work',
@@ -1747,7 +1678,8 @@ const translations = {
     'web-uspn-desc': 'A student-focused mobile experience designed to make campus information and everyday university journeys easier to access.',
     'web-eco-desc': 'A clearer and more engaging web experience for discovering eco-friendly ideas, practical guides and workshops.',
     'web-retail-desc': 'A shopping experience focused on product discovery, product details, cart interactions and a smooth mobile journey.',
-    'hero-greeting': "Bonjour, <span class=\"wave-emoji\">👋</span> je suis",
+    'hero-greeting': "Bonjour, <span class=\"wave-emoji\">👋</span> je suis <span class=\"hero-greeting-name\">Oussama Barkallah</span>",
+    'hero-line1': 'Product Designer', 'hero-line2': '& Développeur AI',
     'hero-desc': "Je conçois et développe des produits digitaux — de l'identité de marque à la mise en production. Je prends en charge le cycle complet : UX, interfaces qui convertissent et frontends performants.",
     'hero-tag-1': 'Product Designer', 'hero-tag-2': 'Développeur Front-End',
     'hero-btn-call': 'Planifier un appel', 'hero-btn-work': 'Voir les projets',
@@ -1941,6 +1873,9 @@ function applyLang(lang) {
   if (tags[0]) tags[0].innerHTML = `<i class="fa-solid fa-mobile-screen" style="color:var(--gold);"></i> ${t['hero-tag-1']}`;
   if (tags[1]) tags[1].innerHTML = `<i class="fa-solid fa-code" style="color:var(--gold);"></i> ${t['hero-tag-2']}`;
 
+  // Hero title (role)
+  if (t['hero-line1']) buildHeroTitle(t['hero-line1'], t['hero-line2']);
+
   // Hero badge
   const badge = document.querySelector('.hero-badge');
   if (badge) badge.textContent = t['hero-badge'];
@@ -2113,9 +2048,9 @@ function applyLang(lang) {
       tag: 'Web Projects', title: 'Web & UX/UI Projects',
       subtitle: 'A selection of digital products and experiences across web, mobile and product design.',
       projects: [
-        ['yesTube', 'A dedicated media conversion website (MP4, MP3, WAV and 10+ other formats): paste a YouTube link, choose a format and go, with clear progress states, a light/dark theme and an FR/EN switch. Built locally, not published.', 'Web tool', 'UX/UI · Full-Stack', ['Web Development', 'Python', 'AI Engineering', 'Prompting', 'Format Conversion', 'Product Design'], 'Project'],
-        ['Rufouf (رفوف)', 'An Arabic book discovery platform designed to help readers explore books, find new titles, and manage their personal reading library through a simple, intuitive, and responsive experience.', 'Web app', 'UX/UI · Front-End', ['Information architecture', 'Web UI', 'Responsive'], 'Project details'],
-        ['Alpha Nutrition', 'A business-focused digital experience for presenting animal nutrition products and simplifying product enquiries.', 'Web design', 'UX/UI', ['UX audit', 'Web design', 'Forms'], 'Case study'],
+        ['yesTube', 'Locally built media converter: paste a YouTube link, pick a format and get MP4, MP3, WAV or 10+ other formats. Developed with Python and AI engineering (prompt-driven development), with a product-designed interface: clear progress states, light/dark theme and FR/EN language switch. Not published.', 'Web tool', 'UX/UI · Full-Stack', ['Web Development', 'Python', 'AI Engineering', 'Prompting', 'Format Conversion', 'Product Design'], ''],
+        ['Rufouf (رفوف)', 'Arabic book discovery platform designed and built end to end: UI/UX and design system on Google Stitch (Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. Connected to the Google Books API with strict Arabic-only filtering and real data only. Search, detailed book pages, favorites and a personal reading library, fully responsive.', 'Web app', 'UX/UI · Full-Stack', ['Next.js', 'TypeScript', 'Tailwind CSS', 'Google Books API', 'RTL', 'Accessibility'], ''],
+        ['Alpha Nutrition', 'Website redesign for Alpha Nutrition, a Tunisian animal-nutrition manufacturer with 40+ years of expertise (premixes and livestock feed). Full UX audit, UI redesign and front-end integration, plus a new online order and delivery form for its products.', 'UI redesign', 'UX audit · Front-End', ['UX Audit', 'UI Redesign', 'Front-End', 'E-Commerce', 'Online Order Form'], ''],
         ['USPN', 'A mobile app designed to simplify everyday life for students at Université Sorbonne Paris Nord.', 'Mobile app', 'UX/UI', ['Mobile UX', 'User flows', 'UI design'], 'Case study'],
         ['Mon Atelier Écofrugal', 'A clearer web experience for discovering eco-friendly ideas, practical guides and workshops.', 'Web redesign', 'UX/UI', ['Content structure', 'Redesign', 'Responsive UI'], 'Case study'],
         ['E-commerce App', 'A shopping experience focused on product discovery, product details, cart interactions and a smooth mobile journey.', 'Product design', 'E-commerce', ['Product UX', 'Shopping flow', 'Mobile UI'], 'Concept project']
@@ -2126,9 +2061,9 @@ function applyLang(lang) {
       tag: 'Projets web', title: 'Projets Web & UX/UI',
       subtitle: 'Une sélection de produits et d’expériences numériques pour le web, le mobile et le design produit.',
       projects: [
-        ['yesTube', 'Un site web dédié à la conversion média (MP4, MP3, WAV et plus de 10 autres formats) : collez un lien YouTube, choisissez un format et c’est parti, avec des états de progression clairs, un thème clair/sombre et un sélecteur FR/EN. Créé localement, non publié.', 'Outil web', 'UX/UI · Full-Stack', ['Développement web', 'Python', 'AI Engineering', 'Prompting', 'Conversion de formats', 'Product Design'], 'Projet'],
-        ['Rufouf (رفوف)', 'Une plateforme de découverte de livres en arabe qui permet aux lecteurs d’explorer de nouveaux ouvrages, de trouver leurs prochaines lectures et de gérer leur bibliothèque personnelle grâce à une expérience intuitive et adaptée à tous les écrans.', 'Application web', 'UX/UI · Front-End', ['Architecture de l’information', 'Interface web', 'Responsive'], 'Détails du projet'],
-        ['Alpha Nutrition', 'Une expérience numérique métier pour présenter des produits de nutrition animale et simplifier les demandes de contact.', 'Design web', 'UX/UI', ['Audit UX', 'Design web', 'Formulaires'], 'Étude de cas'],
+        ['yesTube', 'Convertisseur média créé en local : collez un lien YouTube, choisissez un format et obtenez du MP4, MP3, WAV ou plus de 10 autres formats. Développé avec Python et une approche AI engineering (prompting), avec une interface pensée en product design : états de progression clairs, thème clair/sombre et sélecteur FR/EN. Non publié.', 'Outil web', 'UX/UI · Full-Stack', ['Développement web', 'Python', 'AI Engineering', 'Prompting', 'Conversion de formats', 'Product Design'], ''],
+        ['Rufouf (رفوف)', 'Plateforme de découverte de livres en arabe, conçue et développée de bout en bout : UX/UI et design system sur Google Stitch (typographie arabe, mise en page RTL), puis développement full-stack avec Next.js et TypeScript. Connectée à l’API Google Books avec un filtrage strict des livres en arabe et des données réelles uniquement. Recherche, fiches détaillées, favoris et bibliothèque personnelle, responsive sur tous les écrans.', 'Application web', 'UX/UI · Full-Stack', ['Next.js', 'TypeScript', 'Tailwind CSS', 'API Google Books', 'RTL', 'Accessibilité'], ''],
+        ['Alpha Nutrition', 'Refonte du site d’Alpha Nutrition, fabricant tunisien de nutrition animale (pré-mélanges et aliments pour élevages) avec plus de 40 ans d’expertise. Audit UX complet, refonte UI et intégration front-end, avec un nouveau formulaire de commande et de livraison en ligne.', 'Refonte UI', 'Audit UX · Front-end', ['Audit UX', 'Refonte UI', 'Front-end', 'E-commerce', 'Formulaire de commande'], ''],
         ['USPN', 'Une application mobile conçue pour simplifier le quotidien des étudiants de l’Université Sorbonne Paris Nord.', 'Application mobile', 'UX/UI', ['UX mobile', 'Parcours utilisateur', 'Design UI'], 'Étude de cas'],
         ['Mon Atelier Écofrugal', 'Une expérience web plus claire pour découvrir des idées écologiques, des guides pratiques et des ateliers.', 'Refonte web', 'UX/UI', ['Structure de contenu', 'Refonte', 'Interface responsive'], 'Étude de cas'],
         ['Application e-commerce', 'Une expérience d’achat centrée sur la découverte des produits, les fiches détaillées, le panier et un parcours mobile fluide.', 'Design produit', 'E-commerce', ['UX produit', 'Parcours d’achat', 'Interface mobile'], 'Projet conceptuel']
