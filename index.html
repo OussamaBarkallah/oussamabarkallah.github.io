@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
-  <script>
-  document.documentElement.setAttribute('data-theme', 'dark');
-</script>
+<html lang="en" class="scroll-smooth light" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -546,6 +543,14 @@
     @media(max-width:760px){.new-projects-grid{grid-template-columns:1fr}.project-feature{grid-column:auto;display:flex;flex-direction:column}.new-project-visual{min-height:245px}.project-feature .new-project-visual{min-height:260px}.new-project-copy,.project-feature .new-project-copy{padding:1.25rem}.dashboard-mock{max-width:100%}.dashboard-mock aside{width:72px}.agency-title{font-size:2.3rem}.nav-links{gap:.75rem}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal,.fade-up,.reveal-left,.reveal-right,.reveal-scale{opacity:1;transform:none}}
 
+
+    /* ── FIXED DARK SECTIONS: Hero + Orange XDLab keep the same colors in light AND dark mode ── */
+    #home, #design-system, html.light #navbar:not(.scrolled) {
+      --bg:#10111b; --surface:#191b2a; --surface2:#23263a; --border:#30334a;
+      --text:#f7f7fb; --muted:#b1b5ca; --accent:#f7f7fb; --gold:#a69bff;
+      --green:#b7ff7a; --text-invert:#111322;
+    }
+    #home, #design-system { background:var(--bg); color:var(--text); }
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -748,6 +753,19 @@
 
     <div id="projects-slider" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden fade-up">
 
+      <div onclick="openProjectModal('yestube')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
+        <div>
+          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/yestube.mp4" loop muted playsinline autoplay></video></div>
+          <div class="px-2">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;">Web Tool / UI-UX Design / Full-Stack</span>
+            <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:var(--fs-h3);margin-top:.3rem;margin-bottom:.5rem;color:var(--text);">yesTube</h3>
+          </div>
+        </div>
+        <div class="px-2 flex flex-wrap gap-2 mt-auto">
+          <span class="project-tag">Web Development</span><span class="project-tag">Python</span><span class="project-tag">AI Engineering</span><span class="project-tag">Prompting</span><span class="project-tag">Format Conversion</span><span class="project-tag">Product Design</span>
+        </div>
+      </div>
+
       <div onclick="openProjectModal('rufouf')" class="min-w-[280px] sm:min-w-[340px] w-[calc(100vw-48px)] sm:w-[440px] bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3 snap-start group flex-shrink-0 flex flex-col justify-between cursor-pointer hover:border-[var(--gold)] transition-all">
         <div>
           <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0a0a0a] mb-4"><video class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/rufouf.mp4" loop muted playsinline autoplay></video></div>
@@ -828,6 +846,7 @@ function scrollFrontendSlider(dir) {
   if (s) { const card = s.querySelector(':scope > div'); const w = (card ? card.offsetWidth : 0) + 24; s.scrollLeft += dir * w; }
 }
 const projectsData = {
+  yestube: { title:"yesTube", tagline:"Web Tool / UI-UX Design / Full-Stack", desc:"yesTube is a dedicated media conversion website (MP4, MP3, WAV and 10+ other formats), simple and fast: paste a YouTube link, choose a format and go, with clear progress states, a light/dark theme and an FR/EN language switch. The tool was built locally and has not been published.", image:"assets/yestube.mp4", isVideo:true, tags:["Web Development","Python","AI Engineering","Prompting","Format Conversion","Product Design"] },
   rufouf:  { title:"رفوف — Rufouf", tagline:"Web App / UI-UX Design / Full-Stack", desc:"Rufouf is an Arabic books discovery platform. I owned the project end-to-end: UI/UX design on Google Stitch (full design system, Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. I connected the app to the Google Books API with strict Arabic-only filtering, so every book, price, and purchase/read link shown is real — no mock data anywhere. Features include search, detailed book pages, favorites, and a personal reading library, fully responsive across devices.", image:"assets/rufouf.mp4", isVideo:true, tags:["Next.js","TypeScript","Tailwind CSS","Google Books API","RTL","Accessibility"] },
   fitgym:  { title:"FitGym Premium", tagline:"Landing Page / UX/UI Design / Frontend", desc:"Fit Gym is a fitness website. As the frontend developer, I owned the full frontend from design to production. I used Amplitude to identify friction points in the personal coaching booking journey, then designed an interactive landing page to streamline session booking and improve user engagement.", image:"assets/front-3.mp4", isVideo:true, tags:["JavaScript","UI UX","Amplitude","Performance","Accessibility"] },
   medical: { title:"Medic Portal", tagline:"UX / Medical UI / Frontend", desc:"Medic, is a medical platform for an aesthetic surgery clinic, offering quality care in a modern and welcoming environment. I contributed to the design and development with a focus on user trust, medical clarity, and a reassuring patient experience.", image:"assets/front-2.png", isVideo:false, tags:["CSS Tailwind","Medical UI","UX Trust","Responsive"] },
@@ -864,20 +883,23 @@ document.getElementById('project-modal').addEventListener('click',function(e){if
       <p class="section-sub">A selection of digital products and experiences across web, mobile and product design.</p>
     </div>
     <div class="new-projects-grid">
-      <article class="new-project-card project-feature reveal" onclick="openProjectModal('rufouf')" role="button" tabindex="0" aria-label="Open details for Rufouf">
-        <div class="new-project-visual project-real-media"><span class="visual-label">01 / Web app</span><video src="assets/rufouf.mp4" muted playsinline autoplay loop aria-label="Rufouf Arabic books app preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web app</span><span>UX/UI · Front-End</span></div><h3>Rufouf (رفوف)</h3><p>A web app concept focused on discovering and exploring reading content, with a clear navigation system and responsive interface.</p><div class="project-tags"><span>Information architecture</span><span>Web UI</span><span>Responsive</span></div><span class="project-status">Project to detail</span></div>
+      <article class="new-project-card reveal" onclick="openProjectModal('yestube')" role="button" tabindex="0" aria-label="Open details for yesTube">
+        <div class="new-project-visual project-real-media"><span class="visual-label">01 / Web tool – built locally</span><video src="assets/yestube.mp4" muted playsinline autoplay loop aria-label="yesTube media conversion interface preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web tool</span><span>UX/UI · Front-End</span></div><h3>yesTube</h3><p>A dedicated media conversion website (MP4, MP3, WAV and 10+ other formats): paste a YouTube link, choose a format and go, with clear progress states, a light/dark theme and an FR/EN switch. Built locally, not published.</p><div class="project-tags"><span>Web Development</span><span>Python</span><span>AI Engineering</span><span>Prompting</span><span>Format Conversion</span><span>Product Design</span></div><span class="project-status">Project</span></div>
+      </article>
+      <article class="new-project-card reveal" onclick="openProjectModal('rufouf')" role="button" tabindex="0" aria-label="Open details for Rufouf">
+        <div class="new-project-visual project-real-media"><span class="visual-label">02 / Web app – built locally</span><video src="assets/rufouf.mp4" muted playsinline autoplay loop aria-label="Rufouf Arabic books app preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web app</span><span>UX/UI · Front-End</span></div><h3>Rufouf (رفوف)</h3><p>A web app concept focused on discovering and exploring reading content, with a clear navigation system and responsive interface.</p><div class="project-tags"><span>Information architecture</span><span>Web UI</span><span>Responsive</span></div><span class="project-status">Project to detail</span></div>
       </article>
       <article class="new-project-card reveal" onclick="openProjectModal('alpha')" role="button" tabindex="0" aria-label="Open details for Alpha Nutrition">
-        <div class="new-project-visual project-real-media"><span class="visual-label">02 / Web &amp; UX</span><video src="assets/alfa.mp4" muted playsinline autoplay loop aria-label="Alpha Nutrition website preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web design</span><span>UX/UI</span></div><h3>Alpha Nutrition</h3><p>A business-focused digital experience for presenting nutrition products and simplifying product discovery and enquiry flows.</p><div class="project-tags"><span>UX audit</span><span>Web design</span><span>Forms</span></div><span class="project-status">Case study to detail</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">03 / Web &amp; UX – integration phase</span><video src="assets/alfa.mp4" muted playsinline autoplay loop aria-label="Alpha Nutrition website preview"></video></div><div class="new-project-copy"><div class="project-meta"><span>Web design</span><span>UX/UI</span></div><h3>Alpha Nutrition</h3><p>A business-focused digital experience for presenting nutrition products and simplifying product discovery and enquiry flows.</p><div class="project-tags"><span>UX audit</span><span>Web design</span><span>Forms</span></div><span class="project-status">Case study to detail</span></div>
       </article>
       <article class="new-project-card reveal" onclick="openUiUxModal('uspn')" role="button" tabindex="0" aria-label="Open details for USPN">
-        <div class="new-project-visual project-real-media"><span class="visual-label">03 / Mobile app</span><img src="assets/ux-ui2.png" alt="USPN Mobile App — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Mobile app</span><span>UX/UI</span></div><h3>USPN</h3><p>A student-focused mobile experience designed to make campus information and everyday university journeys easier to access.</p><div class="project-tags"><span>Mobile UX</span><span>User flows</span><span>UI design</span></div><span class="project-status">Case study to detail</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">04 / Mobile app – download the app</span><img src="assets/ux-ui2.png" alt="USPN Mobile App — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Mobile app</span><span>UX/UI</span></div><h3>USPN</h3><p>A student-focused mobile experience designed to make campus information and everyday university journeys easier to access.</p><div class="project-tags"><span>Mobile UX</span><span>User flows</span><span>UI design</span></div><span class="project-status">Case study to detail</span></div>
       </article>
       <article class="new-project-card reveal" onclick="openUiUxModal('ecofrugale')" role="button" tabindex="0" aria-label="Open details for Mon Atelier Écofrugal">
-        <div class="new-project-visual project-real-media"><span class="visual-label">04 / Web redesign</span><img src="assets/ux-ui4.png" alt="Mon Atelier Écofrugal — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Web redesign</span><span>UX/UI</span></div><h3>Mon Atelier Écofrugal</h3><p>A clearer and more engaging web experience for discovering eco-friendly ideas, practical guides and workshops.</p><div class="project-tags"><span>Content structure</span><span>Redesign</span><span>Responsive UI</span></div><span class="project-status">Case study to detail</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">05 / Web redesign – prototype</span><img src="assets/ux-ui4.png" alt="Mon Atelier Écofrugal — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Web redesign</span><span>UX/UI</span></div><h3>Mon Atelier Écofrugal</h3><p>A clearer and more engaging web experience for discovering eco-friendly ideas, practical guides and workshops.</p><div class="project-tags"><span>Content structure</span><span>Redesign</span><span>Responsive UI</span></div><span class="project-status">Case study to detail</span></div>
       </article>
       <article class="new-project-card reveal" onclick="openUiUxModal('retail')" role="button" tabindex="0" aria-label="Open details for E-commerce App">
-        <div class="new-project-visual project-real-media"><span class="visual-label">05 / Product design</span><img src="assets/ux-ui3.png" alt="E-commerce mobile app — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Product design</span><span>E-commerce</span></div><h3>E-commerce App</h3><p>A shopping experience concept focused on product discovery, product details, cart interactions and a smooth mobile journey.</p><div class="project-tags"><span>Product UX</span><span>Shopping flow</span><span>Mobile UI</span></div><span class="project-status">Concept to develop</span></div>
+        <div class="new-project-visual project-real-media"><span class="visual-label">06 / Product design – prototype</span><img src="assets/ux-ui3.png" alt="E-commerce mobile app — real portfolio screenshot" loading="lazy"></div><div class="new-project-copy"><div class="project-meta"><span>Product design</span><span>E-commerce</span></div><h3>E-commerce App</h3><p>A shopping experience concept focused on product discovery, product details, cart interactions and a smooth mobile journey.</p><div class="project-tags"><span>Product UX</span><span>Shopping flow</span><span>Mobile UI</span></div><span class="project-status">Concept to develop</span></div>
       </article>
     </div>
     
@@ -1505,13 +1527,11 @@ function toggleTheme() {
 }
 toggleBtn.addEventListener('click', toggleTheme);
 if (toggleBtnMobile) toggleBtnMobile.addEventListener('click', toggleTheme);
-const saved = localStorage.getItem('theme');
-const prefLight = window.matchMedia('(prefers-color-scheme: dark)').matches;
-if (saved !== 'dark') {
-  htmlEl.classList.add('light');
-  toggleBtn.textContent = '☀️';
-  if (toggleBtnMobile) toggleBtnMobile.textContent = '☀️';
-}
+// Always start in light mode (the toggle still works during the visit)
+htmlEl.classList.add('light');
+htmlEl.setAttribute('data-theme', 'light');
+toggleBtn.textContent = '☀️';
+if (toggleBtnMobile) toggleBtnMobile.textContent = '☀️';
 
 // HERO NAME ANIMATION
 const heroName = document.querySelector('.hero-name');
@@ -1618,6 +1638,8 @@ const translations = {
     'work-h3': '03 / Brand Layouts', 'work-h4': '04 / Logo Design',
     'frontend-tag': 'Selected Frontend Engineering Work',
     'frontend-title': 'Real products, real problems,<br>real impact',
+    'card-yestube-cat': 'Web Tool / UI-UX Design / Full-Stack',
+    'card-yestube-title': 'yesTube',
     'card-rufouf-cat': 'Web App / UI-UX Design / Full-Stack',
     'card-rufouf-title': 'Rufouf',
     'card-fitgym-cat': 'Landing Page / Sport / Dynamic UI',
@@ -1674,6 +1696,8 @@ const translations = {
     'footer-copy': '© 2026 Oussama Barkallah. All rights reserved.',
     'skip-link': 'Skip to main content',
 
+    'modal-yestube-tagline': 'Web Tool / UI-UX Design / Full-Stack',
+    'modal-yestube-desc': 'yesTube is a dedicated media conversion website (MP4, MP3, WAV and 10+ other formats), simple and fast: paste a YouTube link, choose a format and go, with clear progress states, a light/dark theme and an FR/EN language switch. The tool was built locally and has not been published.',
     'modal-rufouf-tagline': 'Web App / UI-UX Design / Full-Stack',
     'modal-rufouf-desc': 'Rufouf is an Arabic book discovery platform that I designed and developed from start to finish. I created the UI/UX design in Google Stitch, then built the app with Next.js and TypeScript. Using the Google Books API, I integrated real book data, with Arabic-only filtering. The app includes search, book details, favorites, and a personal reading library, with a responsive design for all devices.',
 
@@ -1744,6 +1768,8 @@ const translations = {
     'work-h3': '03 / Mises en page Marque', 'work-h4': '04 / Design de Logo',
     'frontend-tag': 'Développement web — Sélection',
     'frontend-title': 'De vrais produits, de vrais problèmes,<br>un vrai impact',
+    'card-yestube-cat': 'Outil web / Design UI-UX / Full-Stack',
+    'card-yestube-title': 'yesTube',
     'card-rufouf-cat': 'Web App / UI-UX Design / Full-Stack',
     'card-rufouf-title': 'Rufouf',
     'card-fitgym-cat': 'Landing Page / Sport / UI Dynamique',
@@ -1800,6 +1826,8 @@ const translations = {
     'footer-copy': '© 2026 Oussama Barkallah. Tous droits réservés.',
     'skip-link': 'Aller au contenu principal',
 
+    'modal-yestube-tagline': 'Outil web / Design UI-UX / Full-Stack',
+    'modal-yestube-desc': 'yesTube est un site web dédié à la conversion média (MP4, MP3, WAV et plus de 10 autres formats), simple et rapide : collez un lien YouTube, choisissez un format et c’est parti, avec des états de progression clairs, un thème clair/sombre et un sélecteur de langue FR/EN. L’outil a été créé localement et n’a pas été publié.',
     'modal-rufouf-tagline': 'Web App / UI-UX Design / Full-Stack',
     'modal-rufouf-desc': 'Rufouf is an Arabic books discovery platform. I owned the project end-to-end: UI/UX design on Google Stitch (full design system, Arabic typography, RTL layout), then full-stack development with Next.js and TypeScript. I connected the app to the Google Books API with strict Arabic-only filtering, so every book, price, and purchase/read link shown is real — no mock data anywhere. Features include search, detailed book pages, favorites, and a personal reading library, fully responsive across devices.',
 
@@ -1954,6 +1982,7 @@ function applyLang(lang) {
   // Frontend project cards
   const frontCards = document.querySelectorAll('#projects-slider > div');
   const frontKeys = [
+    { cat:'card-yestube-cat', title:'card-yestube-title', key:'yestube' },
     { cat:'card-rufouf-cat', title:'card-rufouf-title', key:'rufouf' },
     { cat:'card-fitgym-cat', title:'card-fitgym-title', key:'fitgym' },
     { cat:'card-medical-cat', title:'card-medical-title', key:'medical' },
@@ -2039,6 +2068,8 @@ function applyLang(lang) {
 
   // Update projectsData and uiUxProjectsData for modals
   if (window.projectsData) {
+    window.projectsData.yestube.tagline = t['modal-yestube-tagline'] || window.projectsData.yestube.tagline;
+    window.projectsData.yestube.desc = t['modal-yestube-desc'] || window.projectsData.yestube.desc;
      window.projectsData.rufouf.tagline = t['modal-rufouf-tagline'] || window.projectsData.rufouf.tagline;
     window.projectsData.rufouf.desc = t['modal-rufouf-desc'] || window.projectsData.rufouf.desc;
     window.projectsData.fitgym.tagline = t['modal-fitgym-tagline'] || window.projectsData.fitgym.tagline;
@@ -2078,9 +2109,11 @@ function applyLang(lang) {
   // Dedicated translations for the redesigned Web & UX/UI Projects section.
   const webCopy = {
     en: {
+      labels: ['01 / Web tool – built locally','02 / Web app – built locally','03 / Web & UX – integration phase','04 / Mobile app – download the app','05 / Web redesign – prototype','06 / Product design – prototype'],
       tag: 'Web Projects', title: 'Web & UX/UI Projects',
       subtitle: 'A selection of digital products and experiences across web, mobile and product design.',
       projects: [
+        ['yesTube', 'A dedicated media conversion website (MP4, MP3, WAV and 10+ other formats): paste a YouTube link, choose a format and go, with clear progress states, a light/dark theme and an FR/EN switch. Built locally, not published.', 'Web tool', 'UX/UI · Full-Stack', ['Web Development', 'Python', 'AI Engineering', 'Prompting', 'Format Conversion', 'Product Design'], 'Project'],
         ['Rufouf (رفوف)', 'An Arabic book discovery platform designed to help readers explore books, find new titles, and manage their personal reading library through a simple, intuitive, and responsive experience.', 'Web app', 'UX/UI · Front-End', ['Information architecture', 'Web UI', 'Responsive'], 'Project details'],
         ['Alpha Nutrition', 'A business-focused digital experience for presenting animal nutrition products and simplifying product enquiries.', 'Web design', 'UX/UI', ['UX audit', 'Web design', 'Forms'], 'Case study'],
         ['USPN', 'A mobile app designed to simplify everyday life for students at Université Sorbonne Paris Nord.', 'Mobile app', 'UX/UI', ['Mobile UX', 'User flows', 'UI design'], 'Case study'],
@@ -2089,9 +2122,11 @@ function applyLang(lang) {
       ]
     },
     fr: {
+      labels: ['01 / Outil web – créé localement','02 / Web app – créée localement','03 / Web & UX – phase d’intégration','04 / App mobile – télécharger l’app','05 / Refonte web – prototype','06 / Design produit – prototype'],
       tag: 'Projets web', title: 'Projets Web & UX/UI',
       subtitle: 'Une sélection de produits et d’expériences numériques pour le web, le mobile et le design produit.',
       projects: [
+        ['yesTube', 'Un site web dédié à la conversion média (MP4, MP3, WAV et plus de 10 autres formats) : collez un lien YouTube, choisissez un format et c’est parti, avec des états de progression clairs, un thème clair/sombre et un sélecteur FR/EN. Créé localement, non publié.', 'Outil web', 'UX/UI · Full-Stack', ['Développement web', 'Python', 'AI Engineering', 'Prompting', 'Conversion de formats', 'Product Design'], 'Projet'],
         ['Rufouf (رفوف)', 'Une plateforme de découverte de livres en arabe qui permet aux lecteurs d’explorer de nouveaux ouvrages, de trouver leurs prochaines lectures et de gérer leur bibliothèque personnelle grâce à une expérience intuitive et adaptée à tous les écrans.', 'Application web', 'UX/UI · Front-End', ['Architecture de l’information', 'Interface web', 'Responsive'], 'Détails du projet'],
         ['Alpha Nutrition', 'Une expérience numérique métier pour présenter des produits de nutrition animale et simplifier les demandes de contact.', 'Design web', 'UX/UI', ['Audit UX', 'Design web', 'Formulaires'], 'Étude de cas'],
         ['USPN', 'Une application mobile conçue pour simplifier le quotidien des étudiants de l’Université Sorbonne Paris Nord.', 'Application mobile', 'UX/UI', ['UX mobile', 'Parcours utilisateur', 'Design UI'], 'Étude de cas'],
@@ -2110,6 +2145,8 @@ function applyLang(lang) {
     if (title) title.innerHTML = webLang.title + '<span class="accent-dot">.</span>';
     if (subtitle) subtitle.textContent = webLang.subtitle;
     webSection.querySelectorAll('.new-project-card').forEach((card, i) => {
+      const visualLabel = card.querySelector('.visual-label');
+      if (visualLabel && webLang.labels[i]) visualLabel.textContent = webLang.labels[i];
       const heading = card.querySelector('.new-project-copy h3');
       const description = card.querySelector('.new-project-copy p');
       if (webLang.projects[i]) {
@@ -2141,13 +2178,15 @@ function applyLang(lang) {
   if (window.projectsData) {
     const pd = window.projectsData;
     const modalCopy = popupIsFrench ? {
+      yestube: ['yesTube', t['modal-yestube-tagline'], t['modal-yestube-desc'], ['Développement web', 'Python', 'AI Engineering', 'Prompting', 'Conversion de formats', 'Product design']],
       rufouf: ['Rufouf — رفوف', t['web-modal-rufouf-tagline'], t['web-modal-rufouf-desc'], ['Recherche', 'Livres en arabe', 'Favoris', 'Next.js', 'TypeScript', 'API Google Books']],
       alpha: ['Alpha Nutrition', t['web-modal-alpha-tagline'], t['web-modal-alpha-desc'], ['Audit UX', 'Refonte UI', 'E-commerce', 'Formulaire de commande']],
     } : {
+      yestube: ['yesTube', t['modal-yestube-tagline'], t['modal-yestube-desc'], ['Web Development', 'Python', 'AI Engineering', 'Prompting', 'Format Conversion', 'Product Design']],
       rufouf: ['Rufouf', t['modal-rufouf-tagline'], t['modal-rufouf-desc'], ['Search', 'Arabic books', 'Favorites', 'Next.js', 'TypeScript', 'Google Books API']],
       alpha: ['Alpha Nutrition', t['modal-alpha-tagline'], t['modal-alpha-desc'], ['UX Audit', 'UI Redesign', 'E-Commerce', 'Online Order Form']],
     };
-    ['rufouf','alpha'].forEach(key => {
+    ['yestube','rufouf','alpha'].forEach(key => {
       if (pd[key] && modalCopy[key]) {
         pd[key].title = modalCopy[key][0];
         pd[key].tagline = modalCopy[key][1] || pd[key].tagline;
